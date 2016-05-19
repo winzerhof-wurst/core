@@ -12,7 +12,7 @@
         <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/wiwu.css" rel="stylesheet">
     </head>
-    <body>
+    <body id="#app">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid ">
                 <div class="col-sm-3 col-md-2 header-logo hidden-xs">
@@ -81,9 +81,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <!-- content -->
-                    <hr>
+                <div id="wiwu-content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 </div>
             </div>
         </div>
