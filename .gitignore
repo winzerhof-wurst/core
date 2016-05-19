@@ -4,4 +4,9 @@
 Homestead.yaml
 Homestead.json
 .env
+
+# Netbeans
 /nbproject/private/
+
+# Bower
+/public/vendor/
