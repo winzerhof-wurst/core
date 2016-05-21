@@ -21,11 +21,17 @@ define(function (require) {
      * @class AppView
      */
     var AppView = Marionette.LayoutView.extend({
+        /**
+         * @type Pages
+         */
+        _pages: undefined,
         regions: {
-            content: '#wiwu-content'
+            content: '#wiwu-content',
+            navigation: '#navigation',
+            navigationMobile: '#navigation-mobile'
         },
-        initialize: function () {
-            console.log('App view initialized');
+        initialize: function (options) {
+            this._pages = options.pages;
         },
         show: function () {
             this.content.show(new LoadingView());

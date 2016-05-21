@@ -41,10 +41,13 @@ define(function () {
         contact: function () {
             this.appView.showPage('contact');
         },
-        rooms: function() {
+        rooms: function () {
             this.appView.showPage('rooms');
         },
-        wines: function() {
+        tidbits: function () {
+            this.appView.showPage('tidbits');
+        },
+        wines: function () {
             this.appView.showPage('wines');
         }
     };

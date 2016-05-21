@@ -17,13 +17,12 @@ define(function (require) {
      * @class Router
      */
     var Router = Marionette.AppRouter.extend({
-        appRoutes: {
-            '': 'default',
-            'aktuelles': 'news',
-            'betrieb': 'about',
-            'zimmer': 'rooms',
-            'kontakt': 'contact',
-            'weine': 'wines'
+        appRoutes: {},
+        initialize: function (options) {
+            var _this = this;
+            options.pages.forEach(function (page) {
+                _this.appRoute(page.get('url'), page.get('id'));
+            });
         }
     });
 
