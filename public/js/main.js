@@ -51,21 +51,9 @@ define({
             module: 'views/appview',
             args: [
                 {
-                    el: '#app',
-                    loadingView: {$ref: 'LoadingView'},
-                    newsView: {$ref: 'NewsView'}
+                    el: '#app'
                 }
             ]
-        }
-    },
-    NewsView: {
-        create: {
-            module: 'views/newsview'
-        }
-    },
-    LoadingView: {
-        create: {
-            module: 'views/loadingview'
         }
     },
     /**

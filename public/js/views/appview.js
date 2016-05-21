@@ -13,27 +13,22 @@ define(function (require) {
 
     var Marionette = require('marionette');
 
+    var LoadingView = require('views/loadingview');
+    var NewsView = require('views/newsview');
+    var NotFoundView = require('views/notfoundview');
+
     /**
      * @class AppView
      */
     var AppView = Marionette.LayoutView.extend({
-        /**
-         * @type LoadingView
-         */
-        _loadingView: undefined,
-        /**
-         * @type NewsView
-         */
-        _newsView: undefined,
         regions: {
             content: '#wiwu-content'
         },
-        initialize: function (options) {
-            this._loadingView = options.loadingView;
-            this._newsView = options.newsView;
+        initialize: function () {
+            console.log('App view initialized');
         },
         show: function () {
-            this.content.show(this._loadingView);
+            this.content.show(new LoadingView());
         },
         updateTitle: function (title) {
             if (title) {
@@ -45,10 +40,10 @@ define(function (require) {
         showPage: function (name, options) {
             switch (name) {
                 case 'news':
-                    this.content.show(this._newsView);
+                    this.content.show(new NewsView());
                     break;
                 default :
-                    this.content.show(this._loadingView);
+                    this.content.show(new NotFoundView());
                     console.log('unknown page ' + name);
             }
         }

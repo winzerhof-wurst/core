@@ -40,6 +40,12 @@ define(function () {
         },
         contact: function () {
             this.appView.showPage('contact');
+        },
+        rooms: function() {
+            this.appView.showPage('rooms');
+        },
+        wines: function() {
+            this.appView.showPage('wines');
         }
     };
 

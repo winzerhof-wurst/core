@@ -39,7 +39,7 @@
                             <a href="#betrieb">Unser Betrieb</a>
                         </li>
                         <li class="">
-                            <a href="#gästezimmer">G&auml;stezimmer</a>
+                            <a href="#gaestezimmer">G&auml;stezimmer</a>
                         </li>
                         <li class="">
                             <a href="#weinkarte">Weinkarte</a>
@@ -68,7 +68,7 @@
                             <a href="#betrieb">Unser Betrieb</a>
                         </li>
                         <li class="">
-                            <a href="#gästezimmer">G&auml;stezimmer</a>
+                            <a href="#gaestezimmer">G&auml;stezimmer</a>
                         </li>
                         <li class="">
                             <a href="#weinkarte">Weinkarte</a>
