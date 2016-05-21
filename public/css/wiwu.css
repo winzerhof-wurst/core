@@ -1,7 +1,3 @@
-/*
- * Home
- */
-
 #overlay {
     position: absolute;
     width: 100%;
@@ -9,6 +5,70 @@
     z-index: 10000;
     overflow: hidden;
     background-color: #ffffcd;
+}
+
+/*
+ * Home
+ */
+
+#home-wrapper {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    background-image: url('../images/home.jpg');
+    background-position: center;
+    background-size: cover;
+
+    /* disable selection */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+    cursor: default;
+}
+
+.cover-heading {
+    font-size: 4em;
+}
+
+#home-wrapper .lead {
+    color: #ffffcd;
+}
+
+#home-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#home-navigation a {
+    flex-grow: 1;
+    flex-basis: 200px;
+    text-align: center;
+    height: 1.5em;
+    margin: 0.8em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    color: #ffffcd;
+    border-top: 1px solid #ad1430;
+    background-color: rgba(173, 20, 48, 0.05);
+}
+
+#home-rooms {
+    width: 700px;
+}
+
+@media screen and (max-width: 800px) {
+    #home-rooms {
+        width: 80%;
+    }
 }
 
 /*

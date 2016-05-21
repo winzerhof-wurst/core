@@ -85,6 +85,7 @@ define(function (require) {
             }
         },
         showNotFound: function () {
+            this._showContent();
             this.content.currentView.showContent(new NotFoundView());
         },
         _showHome: function () {
