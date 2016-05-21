@@ -39,7 +39,7 @@ define(function (require) {
             this.add({
                 id: 'rooms',
                 name: 'Gästezimmer',
-                url: 'zimmer'
+                url: 'gaestezimmer'
             });
             this.add({
                 id: 'wines',
