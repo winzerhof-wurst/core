@@ -11,6 +11,7 @@
 define(function (require) {
     'use strict';
 
+    var $ = require('jquery');
     var Marionette = require('marionette');
 
     var LoadingView = require('views/loadingview');
@@ -43,18 +44,23 @@ define(function (require) {
                 document.title = 'Winzerhof Wurst';
             }
         },
-        showPage: function (name, options) {
-            switch (name) {
+        showPage: function (id, options) {
+            $('.nav li').removeClass('active');
+            switch (id) {
                 case 'news':
                     this.content.show(new NewsView());
+                    this._setPageActive(id);
                     break;
                 default :
                     this.showNotFound();
-                    console.log('unknown page ' + name);
+                    console.log('unknown page ' + id);
             }
         },
         showNotFound: function () {
             this.content.show(new NotFoundView());
+        },
+        _setPageActive: function (id) {
+            $('.nav li[data-id="' + id + '"').addClass('active');
         }
     });
 

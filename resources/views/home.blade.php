@@ -32,22 +32,22 @@
                 </div>
                 <div class="collapse navbar-collapse hidden-sm hidden-md hidden-lg" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-                        <li class="">
+                        <li data-id="news">
                             <a href="#aktuelles">Aktuelles</a>
                         </li>
-                        <li class="">
+                        <li data-id="about">
                             <a href="#betrieb">Unser Betrieb</a>
                         </li>
-                        <li class="">
+                        <li data-id="rooms">
                             <a href="#gaestezimmer">G&auml;stezimmer</a>
                         </li>
-                        <li class="">
+                        <li data-id="wines">
                             <a href="#weinkarte">Weinkarte</a>
                         </li>
-                        <li class="">
+                        <li data-id="tidbits">
                             <a href="#schmankerl">Schmankerl</a>
                         </li>
-                        <li class="">
+                        <li data-id="contact">
                             <a href="#kontakt">Kontakt</a>
                         </li>
                     </ul>
@@ -61,22 +61,22 @@
                         <div class="sidebar-image"></div>
                     </a>
                     <ul class="nav nav-sidebar" role="navigation">
-                        <li class="">
+                        <li data-id="news">
                             <a href="#aktuelles">Aktuelles</a>
                         </li>
-                        <li class="">
+                        <li data-id="about">
                             <a href="#betrieb">Unser Betrieb</a>
                         </li>
-                        <li class="">
+                        <li data-id="rooms">
                             <a href="#gaestezimmer">G&auml;stezimmer</a>
                         </li>
-                        <li class="">
+                        <li data-id="wines">
                             <a href="#weinkarte">Weinkarte</a>
                         </li>
-                        <li class="">
+                        <li data-id="tidbits">
                             <a href="#schmankerl">Schmankerl</a>
                         </li>
-                        <li class="">
+                        <li data-id="contact">
                             <a href="#kontakt">Kontakt</a>
                         </li>
                     </ul>
