@@ -45,7 +45,7 @@ define(function (require) {
             this._appView.showPage('default');
         },
         notFound: function () {
-            this._appView.showNotFound();
+            this._appView.showPage('notfound');
         },
         news: function () {
             this._appView.showPage('news');

@@ -88,6 +88,7 @@ define(function (require) {
                 case 'contact':
                     this._showContentView(new ContactView());
                     break;
+                case 'notfound':
                 default:
                     console.warn('unknown page ' + id);
                     this._showContentView(new NotFoundView());
