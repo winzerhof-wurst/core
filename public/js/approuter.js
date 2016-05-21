@@ -20,6 +20,7 @@ define(function (require) {
         appRoutes: {},
         initialize: function (options) {
             var _this = this;
+            _this.appRoute('*page', 'notFound');
             options.pages.forEach(function (page) {
                 _this.appRoute(page.get('url'), page.get('id'));
             });

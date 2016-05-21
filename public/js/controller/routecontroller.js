@@ -25,30 +25,33 @@ define(function () {
         /**
          * @type AppView
          */
-        appView: undefined,
+        _appView: undefined,
         initialize: function (options) {
-            this.appView = options.appView;
+            this._appView = options.appView;
         },
         default: function () {
-            this.appView.showPage('default');
+            this._appView.showPage('default');
+        },
+        notFound: function () {
+            this._appView.showNotFound();
         },
         news: function () {
-            this.appView.showPage('news');
+            this._appView.showPage('news');
         },
         about: function () {
-            this.appView.showPage('about');
+            this._appView.showPage('about');
         },
         contact: function () {
-            this.appView.showPage('contact');
+            this._appView.showPage('contact');
         },
         rooms: function () {
-            this.appView.showPage('rooms');
+            this._appView.showPage('rooms');
         },
         tidbits: function () {
-            this.appView.showPage('tidbits');
+            this._appView.showPage('tidbits');
         },
         wines: function () {
-            this.appView.showPage('wines');
+            this._appView.showPage('wines');
         }
     };
 

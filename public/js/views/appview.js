@@ -49,9 +49,12 @@ define(function (require) {
                     this.content.show(new NewsView());
                     break;
                 default :
-                    this.content.show(new NotFoundView());
+                    this.showNotFound();
                     console.log('unknown page ' + name);
             }
+        },
+        showNotFound: function () {
+            this.content.show(new NotFoundView());
         }
     });
 
