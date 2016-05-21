@@ -8,8 +8,13 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function () {
+define(function (require) {
     'use strict';
+
+    var _ = require('underscore');
+    var Backbone = require('backbone');
+
+    var Radio = require('radio');
 
     /**
      * @class RouteController
@@ -26,8 +31,15 @@ define(function () {
          * @type AppView
          */
         _appView: undefined,
+        /**
+         * @type Pages
+         */
+        _pages: undefined,
         initialize: function (options) {
             this._appView = options.appView;
+            this._pages = options.pages;
+
+            Radio.navigation.on('navigate', _.bind(this._onNavigate, this));
         },
         default: function () {
             this._appView.showPage('default');
@@ -52,6 +64,13 @@ define(function () {
         },
         wines: function () {
             this._appView.showPage('wines');
+        },
+        _onNavigate: function (pageId) {
+            this._appView.showPage(pageId);
+            var page = this._pages.get(pageId);
+            if (page) {
+                Backbone.history.navigate(page.get('url'));
+            }
         }
     };
 

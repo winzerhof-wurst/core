@@ -44,7 +44,8 @@ define({
             module: 'controller/routecontroller',
             args: [
                 {
-                    appView: {$ref: 'AppView'}
+                    appView: {$ref: 'AppView'},
+                    pages: {$ref: 'Pages'}
                 }
             ]
         }

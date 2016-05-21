@@ -15,6 +15,7 @@ define(function (require) {
     var Marionette = require('marionette');
 
     var ContentTemplate = require('text!templates/content.html');
+    var Radio = require('radio');
 
     /**
      * @class ContentView
@@ -24,9 +25,21 @@ define(function (require) {
         regions: {
             content: '#wiwu-content'
         },
-        showContent: function(view) {
+        events: {
+            'click .nav li a': '_onNavClick'
+        },
+        showContent: function (view) {
             this.content.show(view);
             window.scrollTo(0, 0);
+        },
+        _onNavClick: function (event) {
+            event.preventDefault();
+            var $target = $(event.target);
+            var pageId = $target.closest('li').data('id');
+            if (!pageId) {
+                return;
+            }
+            Radio.navigation.trigger('navigate', pageId);
         }
     });
 

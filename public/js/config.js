@@ -11,6 +11,7 @@
 require.config({
     paths: {
         backbone: '../vendor/backbone/backbone-min',
+        'backbone.radio': '../vendor/backbone.radio/build/backbone.radio.min',
         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
         handlebars: '../vendor/handlebars/handlebars.amd.min',
         jquery: '../vendor/jquery/dist/jquery.min',
