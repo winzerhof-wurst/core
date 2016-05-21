@@ -85,6 +85,6 @@
                 </div>
             </div>
         </div>
-        <script src="vendor/requirejs/require.js" data-main="js/init.js"></script>
+        <script src="vendor/requirejs/require.js" data-main="js/config.js"></script>
     </body>
 </html>

@@ -22,6 +22,9 @@ define(function () {
     };
 
     RouteController.prototype = {
+        /**
+         * @type AppView
+         */
         appView: undefined,
         initialize: function (options) {
             this.appView = options.appView;

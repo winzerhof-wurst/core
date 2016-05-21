@@ -17,14 +17,16 @@ require.config({
         marionette: '../vendor/backbone.marionette/lib/backbone.marionette.min',
         text: '../vendor/text/text',
         underscore: '../vendor/underscore/underscore-min'
-    }
+    },
+    packages: [
+        {name: 'wire', location: '../vendor/wire', main: 'wire'},
+        {name: 'when', location: '../vendor/when', main: 'when'},
+        {name: 'meld', location: '../vendor/meld', main: 'meld'}
+    ]
 });
 
 require([
     'jquery',
     'bootstrap',
-    'app'
-], function ($, bs, App) {
-    var app = new App();
-    app.start();
-});
+    'wire!main'
+]);
