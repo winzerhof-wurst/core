@@ -14,6 +14,7 @@ define(function (require) {
     var $ = require('jquery');
     var Marionette = require('marionette');
 
+    var AboutView = require('views/aboutview');
     var LoadingView = require('views/loadingview');
     var NewsView = require('views/newsview');
     var NotFoundView = require('views/notfoundview');
@@ -44,16 +45,30 @@ define(function (require) {
                 document.title = 'Winzerhof Wurst';
             }
         },
-        showPage: function (id, options) {
+        showPage: function (id) {
             $('.nav li').removeClass('active');
+
+            // Update title
+            var page = this._pages.get(id);
+            if (page) {
+                this.updateTitle(page.get('name'));
+            } else {
+                this.updateTitle();
+            }
+
+            // Show page content
             switch (id) {
                 case 'news':
                     this.content.show(new NewsView());
                     this._setPageActive(id);
                     break;
-                default :
+                case 'about':
+                    this.content.show(new AboutView());
+                    this._setPageActive(id);
+                    break;
+                default:
                     this.showNotFound();
-                    console.log('unknown page ' + id);
+                    console.warn('unknown page ' + id);
             }
         },
         showNotFound: function () {
