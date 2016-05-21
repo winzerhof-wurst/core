@@ -36,6 +36,7 @@ define(function (require) {
         _onStart: function () {
             console.log('WiWu started');
 
+            this._view.render();
             this._view.show();
             this._view.updateTitle('Test');
 

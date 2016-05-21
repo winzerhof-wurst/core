@@ -12,9 +12,11 @@ define(function (require) {
     'use strict';
 
     var $ = require('jquery');
+    var Handlebars = require('handlebars');
     var Marionette = require('marionette');
 
     var AboutView = require('views/aboutview');
+    var ContentTemplate = require('text!templates/content.html');
     var LoadingView = require('views/loadingview');
     var NewsView = require('views/newsview');
     var NotFoundView = require('views/notfoundview');
@@ -23,10 +25,12 @@ define(function (require) {
      * @class AppView
      */
     var AppView = Marionette.LayoutView.extend({
+        template: Handlebars.compile(ContentTemplate),
         /**
          * @type Pages
          */
         _pages: undefined,
+        _overlay: undefined,
         regions: {
             content: '#wiwu-content',
             navigation: '#navigation',
@@ -34,9 +38,11 @@ define(function (require) {
         },
         initialize: function (options) {
             this._pages = options.pages;
+            this._overlay = $('#overlay');
         },
         show: function () {
             this.content.show(new LoadingView());
+            this._overlay.fadeOut();
         },
         updateTitle: function (title) {
             if (title) {
@@ -46,7 +52,7 @@ define(function (require) {
             }
         },
         showPage: function (id) {
-            $('.nav li').removeClass('active');
+            this._setPageActive();
 
             // Update title
             var page = this._pages.get(id);
@@ -75,7 +81,10 @@ define(function (require) {
             this.content.show(new NotFoundView());
         },
         _setPageActive: function (id) {
-            $('.nav li[data-id="' + id + '"').addClass('active');
+            $('.nav li').removeClass('active');
+            if (id) {
+                $('.nav li[data-id="' + id + '"').addClass('active');
+            }
         }
     });
 

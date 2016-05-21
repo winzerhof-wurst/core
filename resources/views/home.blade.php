@@ -11,80 +11,14 @@
         <!-- css -->
         <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/wiwu.css" rel="stylesheet">
+        <script src="vendor/requirejs/require.js" data-main="js/config.js"></script>
     </head>
-    <body id="#app">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid ">
-                <div class="col-sm-3 col-md-2 header-logo hidden-xs">
-                    <img src="/images/logo_head_aktuelles.jpg">
-                </div>
-                <div class="col-sm-9 col-md-10 header hidden-xs">
-                    <div class="header-title">Winzerhof Wurst</div>
-                </div>
-                <div class="navbar-header visible-xs-block">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Winzerhof Wurst</a>
-                </div>
-                <div class="collapse navbar-collapse hidden-sm hidden-md hidden-lg" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-                        <li data-id="news">
-                            <a href="#aktuelles">Aktuelles</a>
-                        </li>
-                        <li data-id="about">
-                            <a href="#betrieb">Unser Betrieb</a>
-                        </li>
-                        <li data-id="rooms">
-                            <a href="#gaestezimmer">G&auml;stezimmer</a>
-                        </li>
-                        <li data-id="wines">
-                            <a href="#weinkarte">Weinkarte</a>
-                        </li>
-                        <li data-id="tidbits">
-                            <a href="#schmankerl">Schmankerl</a>
-                        </li>
-                        <li data-id="contact">
-                            <a href="#kontakt">Kontakt</a>
-                        </li>
-                    </ul>
-                </div>
-            </div><!-- container-fluid -->
-        </nav>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <a href="#">
-                        <div class="sidebar-image"></div>
-                    </a>
-                    <ul class="nav nav-sidebar" role="navigation">
-                        <li data-id="news">
-                            <a href="#aktuelles">Aktuelles</a>
-                        </li>
-                        <li data-id="about">
-                            <a href="#betrieb">Unser Betrieb</a>
-                        </li>
-                        <li data-id="rooms">
-                            <a href="#gaestezimmer">G&auml;stezimmer</a>
-                        </li>
-                        <li data-id="wines">
-                            <a href="#weinkarte">Weinkarte</a>
-                        </li>
-                        <li data-id="tidbits">
-                            <a href="#schmankerl">Schmankerl</a>
-                        </li>
-                        <li data-id="contact">
-                            <a href="#kontakt">Kontakt</a>
-                        </li>
-                    </ul>
-                </div>
-                <div id="wiwu-content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                </div>
+    <body>
+        <div id="overlay">
+            <div id="loader-container">
+                <div class="loader">Lade</div>
             </div>
         </div>
-        <script src="vendor/requirejs/require.js" data-main="js/config.js"></script>
+        <div id="app"></div>
     </body>
 </html>
