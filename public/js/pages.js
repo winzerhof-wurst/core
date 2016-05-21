@@ -23,38 +23,30 @@ define(function (require) {
         initialize: function () {
             this.add({
                 id: 'default',
-                name: '',
-                url: '',
-                hidden: true
+                url: ''
             });
             this.add({
                 id: 'news',
-                name: 'Aktuelles',
                 url: 'aktuelles'
             });
             this.add({
                 id: 'about',
-                name: 'Betrieb',
                 url: 'betrieb'
             });
             this.add({
                 id: 'rooms',
-                name: 'Gästezimmer',
                 url: 'zimmer'
             });
             this.add({
                 id: 'wines',
-                name: 'Weinkarte',
                 url: 'weinkarte'
             });
             this.add({
                 id: 'tidbits',
-                name: 'Schmankerl',
                 url: 'schmankerl'
             });
             this.add({
                 id: 'contact',
-                name: 'Kontakt',
                 url: 'kontakt'
             });
         }
