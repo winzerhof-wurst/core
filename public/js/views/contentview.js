@@ -26,6 +26,7 @@ define(function (require) {
         },
         showContent: function(view) {
             this.content.show(view);
+            window.scrollTo(0, 0);
         }
     });
 
