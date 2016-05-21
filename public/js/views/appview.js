@@ -12,11 +12,11 @@ define(function (require) {
     'use strict';
 
     var $ = require('jquery');
-    var Handlebars = require('handlebars');
     var Marionette = require('marionette');
 
     var AboutView = require('views/aboutview');
-    var ContentTemplate = require('text!templates/content.html');
+    var ContentView = require('views/contentview');
+    var HomeView = require('views/homeview');
     var LoadingView = require('views/loadingview');
     var NewsView = require('views/newsview');
     var NotFoundView = require('views/notfoundview');
@@ -25,20 +25,21 @@ define(function (require) {
      * @class AppView
      */
     var AppView = Marionette.LayoutView.extend({
-        template: Handlebars.compile(ContentTemplate),
         /**
          * @type Pages
          */
         _pages: undefined,
         _overlay: undefined,
+        _contentView: undefined,
         regions: {
-            content: '#wiwu-content',
+            content: '#content',
             navigation: '#navigation',
             navigationMobile: '#navigation-mobile'
         },
         initialize: function (options) {
             this._pages = options.pages;
             this._overlay = $('#overlay');
+            this._home = $('#home');
         },
         show: function () {
             this.content.show(new LoadingView());
@@ -64,21 +65,33 @@ define(function (require) {
 
             // Show page content
             switch (id) {
+                case 'default':
+                    this._showHome();
+                    break;
                 case 'news':
-                    this.content.show(new NewsView());
+                    this._showContent();
+                    this.content.currentView.showContent(new NewsView());
                     this._setPageActive(id);
                     break;
                 case 'about':
-                    this.content.show(new AboutView());
+                    this._showContent();
+                    this.content.currentView.showContent(new AboutView());
                     this._setPageActive(id);
                     break;
                 default:
+                    this._showContent();
                     this.showNotFound();
                     console.warn('unknown page ' + id);
             }
         },
         showNotFound: function () {
-            this.content.show(new NotFoundView());
+            this.content.currentView.showContent(new NotFoundView());
+        },
+        _showHome: function () {
+            this.content.show(new HomeView());
+        },
+        _showContent: function () {
+            this.content.show(new ContentView());
         },
         _setPageActive: function (id) {
             $('.nav li').removeClass('active');

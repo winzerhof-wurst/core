@@ -13,12 +13,12 @@
         <link href="css/wiwu.css" rel="stylesheet">
         <script src="vendor/requirejs/require.js" data-main="js/config.js"></script>
     </head>
-    <body>
+    <body id="app">
         <div id="overlay">
             <div id="loader-container">
                 <div class="loader">Lade</div>
             </div>
         </div>
-        <div id="app"></div>
+        <div id="content"></div>
     </body>
 </html>

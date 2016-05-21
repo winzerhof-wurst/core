@@ -14,13 +14,12 @@
 /*
  * Base
  */
-
-#app {
+#content-wrapper {
     padding-top: 50px;
 }
 
 @media (min-width: 768px) {
-    #app {
+    #content-wrapper {
         padding-top: 113px;
     }
 }
