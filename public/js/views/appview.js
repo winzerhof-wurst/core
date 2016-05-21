@@ -15,11 +15,15 @@ define(function (require) {
     var Marionette = require('marionette');
 
     var AboutView = require('views/aboutview');
+    var ContactView = require('views/contactview');
     var ContentView = require('views/contentview');
     var HomeView = require('views/homeview');
     var LoadingView = require('views/loadingview');
     var NewsView = require('views/newsview');
     var NotFoundView = require('views/notfoundview');
+    var RoomsView = require('views/roomsview');
+    var TidbitsView = require('views/tidbitsview');
+    var WinesView = require('views/winesview');
 
     /**
      * @class AppView
@@ -53,8 +57,6 @@ define(function (require) {
             }
         },
         showPage: function (id) {
-            this._setPageActive();
-
             // Update title
             var page = this._pages.get(id);
             if (page) {
@@ -69,27 +71,36 @@ define(function (require) {
                     this._showHome();
                     break;
                 case 'news':
-                    this._showContent();
-                    this.content.currentView.showContent(new NewsView());
-                    this._setPageActive(id);
+                    this._showContentView(new NewsView());
                     break;
                 case 'about':
-                    this._showContent();
-                    this.content.currentView.showContent(new AboutView());
-                    this._setPageActive(id);
+                    this._showContentView(new AboutView());
+                    break;
+                case 'rooms':
+                    this._showContentView(new RoomsView());
+                    break;
+                case 'wines':
+                    this._showContentView(new WinesView());
+                    break;
+                case 'tidbits':
+                    this._showContentView(new TidbitsView());
+                    break;
+                case 'contact':
+                    this._showContentView(new ContactView());
                     break;
                 default:
-                    this._showContent();
-                    this.showNotFound();
                     console.warn('unknown page ' + id);
+                    this._showContentView(new NotFoundView());
             }
-        },
-        showNotFound: function () {
-            this._showContent();
-            this.content.currentView.showContent(new NotFoundView());
+
+            this._setPageActive(id);
         },
         _showHome: function () {
             this.content.show(new HomeView());
+        },
+        _showContentView: function (view) {
+            this._showContent();
+            this.content.currentView.showContent(view);
         },
         _showContent: function () {
             this.content.show(new ContentView());
