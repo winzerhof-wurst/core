@@ -11,15 +11,19 @@
 define(function (require) {
     'use strict';
 
-    var Handlebars = require('handlebars');
     var Marionette = require('marionette');
 
     /**
-     * @class LoadingView
+     * @class Router
      */
-    var LoadingView = Marionette.ItemView.extend({
-        template: Handlebars.compile('<div>loading…</div>')
+    var Router = Marionette.AppRouter.extend({
+        appRoutes: {
+            '': 'default',
+            'aktuelles': 'news',
+            'betrieb': 'about',
+            'kontakt': 'contact'
+        }
     });
 
-    return LoadingView;
+    return Router;
 });

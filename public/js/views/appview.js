@@ -14,6 +14,11 @@ define(function (require) {
     var Marionette = require('marionette');
     var LoadingView = require('views/loadingview');
 
+    var NewsView = require('views/newsview');
+
+    /**
+     * @class AppView
+     */
     var AppView = Marionette.LayoutView.extend({
         regions: {
             content: '#wiwu-content'
@@ -29,6 +34,15 @@ define(function (require) {
                 document.title = title + ' – Winzerhof Wurst';
             } else {
                 document.title = 'Winzerhof Wurst';
+            }
+        },
+        showPage: function (name, options) {
+            switch (name) {
+                case 'news':
+                    this.content.show(new NewsView());
+                    break;
+                default :
+                    console.log('unknown page ' + name);
             }
         }
     });

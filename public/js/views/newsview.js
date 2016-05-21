@@ -14,12 +14,14 @@ define(function (require) {
     var Handlebars = require('handlebars');
     var Marionette = require('marionette');
 
+    var NewsTemplate = require('text!templates/news.html');
+
     /**
-     * @class LoadingView
+     * @class NewsView
      */
-    var LoadingView = Marionette.ItemView.extend({
-        template: Handlebars.compile('<div>loading…</div>')
+    var NewsView = Marionette.CompositeView.extend({
+        template: Handlebars.compile(NewsTemplate)
     });
 
-    return LoadingView;
+    return NewsView;
 });

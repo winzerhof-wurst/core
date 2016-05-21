@@ -33,22 +33,22 @@
                 <div class="collapse navbar-collapse hidden-sm hidden-md hidden-lg" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
                         <li class="">
-                            <a href="#">Aktuelles</a>
+                            <a href="#aktuelles">Aktuelles</a>
                         </li>
                         <li class="">
-                            <a href="#">Unser Betrieb</a>
+                            <a href="#betrieb">Unser Betrieb</a>
                         </li>
                         <li class="">
-                            <a href="#">G&auml;stezimmer</a>
+                            <a href="#gästezimmer">G&auml;stezimmer</a>
                         </li>
                         <li class="">
-                            <a href="#">Weinkarte</a>
+                            <a href="#weinkarte">Weinkarte</a>
                         </li>
                         <li class="">
-                            <a href="#">Schmankerl</a>
+                            <a href="#schmankerl">Schmankerl</a>
                         </li>
                         <li class="">
-                            <a href="#">Kontakt</a>
+                            <a href="#kontakt">Kontakt</a>
                         </li>
                     </ul>
                 </div>
@@ -62,22 +62,22 @@
                     </a>
                     <ul class="nav nav-sidebar" role="navigation">
                         <li class="">
-                            <a href="#">Aktuelles</a>
+                            <a href="#aktuelles">Aktuelles</a>
                         </li>
                         <li class="">
-                            <a href="#">Unser Betrieb</a>
+                            <a href="#betrieb">Unser Betrieb</a>
                         </li>
                         <li class="">
-                            <a href="#">G&auml;stezimmer</a>
+                            <a href="#gästezimmer">G&auml;stezimmer</a>
                         </li>
                         <li class="">
-                            <a href="#">Weinkarte</a>
+                            <a href="#weinkarte">Weinkarte</a>
                         </li>
                         <li class="">
-                            <a href="#">Schmankerl</a>
+                            <a href="#schmankerl">Schmankerl</a>
                         </li>
                         <li class="">
-                            <a href="#">Kontakt</a>
+                            <a href="#kontakt">Kontakt</a>
                         </li>
                     </ul>
                 </div>

@@ -11,11 +11,19 @@
 define(function (require) {
     'use strict';
 
+    var Backbone = require('backbone');
     var Marionette = require('marionette');
-    var AppView = require('views/appview');
 
+    var AppRouter = require('approuter');
+    var AppView = require('views/appview');
+    var RouteController = require('controller/routecontroller');
+
+    /**
+     * @class App
+     */
     var App = Marionette.Application.extend({
         view: undefined,
+        router: undefined,
         initialize: function () {
             this.on('start', this._onStart);
         },
@@ -27,6 +35,13 @@ define(function (require) {
             });
             this.view.show();
             this.view.updateTitle('Test');
+
+            this.router = new AppRouter({
+                controller: new RouteController({
+                    appView: this.view
+                })
+            });
+            Backbone.history.start();
         }
     });
 

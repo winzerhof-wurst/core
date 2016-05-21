@@ -15,6 +15,7 @@ require.config({
         handlebars: '../vendor/handlebars/handlebars.amd.min',
         jquery: '../vendor/jquery/dist/jquery.min',
         marionette: '../vendor/backbone.marionette/lib/backbone.marionette.min',
+        text: '../vendor/text/text',
         underscore: '../vendor/underscore/underscore-min'
     }
 });
