@@ -41,7 +41,7 @@ define({
     },
     RouteController: {
         create: {
-            module: 'controller/routecontroller',
+            module: 'controllers/routecontroller',
             args: [
                 {
                     appView: {$ref: 'AppView'},
