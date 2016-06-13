@@ -11,18 +11,13 @@
 define(function (require) {
     'use strict';
 
-    var _ = require('underscore');
-    var Radio = require('backbone.radio');
+    var Backbone = require('backbone');
 
-    var channels = [];
-    var channelNames = [
-        'navigation',
-        'wine'
-    ];
-
-    _.each(channelNames, function (name) {
-        channels[name] = Radio.channel(name);
+    /**
+     * @class Wine
+     */
+    var Wine = Backbone.Model.extend({
     });
 
-    return channels;
+    return Wine;
 });

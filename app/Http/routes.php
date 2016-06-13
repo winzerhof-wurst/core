@@ -11,10 +11,10 @@
   |
  */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [
+    'uses' => 'PageController@index',
+]);
 
-Route::resource('wines', 'WineController', ['only' => [
+Route::resource('api/wines', 'WineController', ['only' => [
         'index', 'show'
 ]]);

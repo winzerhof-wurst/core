@@ -14,13 +14,17 @@ define(function (require) {
     var Handlebars = require('handlebars');
     var Marionette = require('marionette');
 
-    var AboutTemplate = require('text!templates/wines.html');
+    var aboutTemplate = require('text!templates/wines.html');
+    var radio = require('radio');
 
     /**
      * @class WinesView
      */
     var WinesView = Marionette.ItemView.extend({
-        template: Handlebars.compile(AboutTemplate)
+        template: Handlebars.compile(aboutTemplate),
+        onShow: function() {
+            var loadingWines = radio.wine.request('entities');
+        }
     });
 
     return WinesView;

@@ -15,7 +15,8 @@ define({
             args: [
                 {
                     view: {$ref: 'AppView'},
-                    router: {$ref: 'AppRouter'}
+                    router: {$ref: 'AppRouter'},
+                    wineService: {$ref: 'WineService'}
                 }
             ]
         },
@@ -51,6 +52,19 @@ define({
         }
     },
     /**
+     * Collections
+     */
+    WineCollection: {
+        create: {
+            module: 'collections/winecollection',
+            args: [
+                {
+                    url: 'api/wines'
+                }
+            ]
+        }
+    },
+    /**
      * Views
      */
     AppView: {
@@ -60,6 +74,19 @@ define({
                 {
                     el: '#app',
                     pages: {$ref: 'Pages'}
+                }
+            ]
+        }
+    },
+    /**
+     * Services
+     */
+    WineService: {
+        create: {
+            module: 'services/wineservice',
+            args: [
+                {
+                    collection: {$ref: 'WineCollection'}
                 }
             ]
         }

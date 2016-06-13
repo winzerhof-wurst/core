@@ -14,6 +14,8 @@ define(function (require) {
     var Backbone = require('backbone');
     var Marionette = require('marionette');
 
+    var Radio = require('radio');
+
     /**
      * @class App
      */
@@ -26,20 +28,26 @@ define(function (require) {
          * @type AppRouter
          */
         _router: undefined,
+        /**
+         * @type WineService
+         */
+        _wineService: undefined,
         initialize: function (options) {
             this._view = options.view;
             this._router = options.router;
-            console.log(this._view);
-            console.log(this._router);
+            this._wineService = options.wineService;
+
+            this._registerRequestReplyHandlers();
+
             this.on('start', this._onStart);
         },
         _onStart: function () {
-            console.log('WiWu started');
-
             this._view.show();
-            this._view.updateTitle('Test');
 
             Backbone.history.start();
+        },
+        _registerRequestReplyHandlers: function () {
+            Radio.wine.reply('entities', this._wineService.getAll);
         }
     });
 
