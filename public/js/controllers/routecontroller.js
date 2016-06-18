@@ -18,9 +18,6 @@ define(function (require) {
 
     /**
      * @class RouteController
-     *
-     * @param {type} options
-     * @returns {routecontroller_L11.RouteController}
      */
     var RouteController = function (options) {
         this.initialize(options);

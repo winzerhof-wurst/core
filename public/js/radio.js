@@ -16,6 +16,7 @@ define(function (require) {
 
     var channels = [];
     var channelNames = [
+        'cart',
         'navigation',
         'wine'
     ];

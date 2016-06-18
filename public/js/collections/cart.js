@@ -13,13 +13,18 @@ define(function (require) {
 
     var Backbone = require('backbone');
 
-    var Item = require('models/item');
+    var CartItem = require('models/cartitem');
 
     /**
      * @class Cart
      */
     var Cart = Backbone.Collection.extend({
-        model: Item,
+        model: CartItem,
+        findItem: function (item) {
+            return this.findWhere({
+                item: item
+            });
+        }
     });
 
     return Cart;

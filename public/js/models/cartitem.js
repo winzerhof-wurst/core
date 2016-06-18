@@ -11,13 +11,17 @@
 define(function (require) {
     'use strict';
 
-    var Item = require('models/item');
+    var Backbone = require('backbone');
 
     /**
-     * @class Wine
+     * @class CartItem
      */
-    var Wine = Item.extend({
+    var CartItem = Backbone.Model.extend({
+        defaults: {
+            item: null,
+            quantity: 0
+        }
     });
 
-    return Wine;
+    return CartItem;
 });

@@ -259,7 +259,7 @@ hr {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 0px 14px 0px;
+    padding: 20px 0px 20px 0px;
 }
 .item:hover {
     background-color: #fafafa;
@@ -271,6 +271,10 @@ hr {
 
 .item > div.description {
     flex-grow: 3;
+}
+
+.item > div.add-to-cart {
+    max-width: 15em;
 }
 
 /*

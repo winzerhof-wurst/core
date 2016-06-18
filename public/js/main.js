@@ -40,6 +40,16 @@ define({
             module: 'pages'
         }
     },
+    CartController: {
+        create: {
+            module: 'controllers/cartcontroller',
+            args: [
+                {
+                    cart: {$ref: 'Cart'}
+                }
+            ]
+        }
+    },
     RouteController: {
         create: {
             module: 'controllers/routecontroller',
