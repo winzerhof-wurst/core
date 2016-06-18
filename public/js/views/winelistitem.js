@@ -34,9 +34,6 @@ define(function (require) {
         },
         _onQuantityChange: function(e) {
             // Strip non-numeric values
-            console.log('#######');
-            console.log(this.ui.quantityInput.val());
-            console.log(this.ui.quantityInput.val().replace(/\D/g, ''));
             this.ui.quantityInput.val(this.ui.quantityInput.val().replace(/\D/g, ''));
         },
         _onAddToCart: function(e) {
