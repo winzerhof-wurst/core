@@ -252,11 +252,25 @@ hr {
 }
 
 /*
- * Wine
+ * Wines/tidits
  */
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0px 14px 0px;
+}
+.item:hover {
+    background-color: #fafafa;
+}
 
-.wine-table > tbody > tr:hover {
-    background-color: #fffff0;
+.item > div {
+    flex-grow: 1;
+}
+
+.item > div.description {
+    flex-grow: 3;
 }
 
 /*

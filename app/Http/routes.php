@@ -15,6 +15,12 @@ Route::get('/', [
     'uses' => 'PageController@index',
 ]);
 
+Route::resource('api/orders', 'OrderController', ['only' => [
+        'store'
+]]);
+Route::resource('api/tidbits', 'TidbitController', ['only' => [
+        'index'
+]]);
 Route::resource('api/wines', 'WineController', ['only' => [
-        'index', 'show'
+        'index'
 ]]);

@@ -54,6 +54,11 @@ define({
     /**
      * Collections
      */
+    Cart: {
+        create: {
+            module: 'collections/cart'
+        }
+    },
     WineCollection: {
         create: {
             module: 'collections/winecollection',

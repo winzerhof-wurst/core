@@ -1,5 +1,6 @@
 <?php
 
+use App\Wine;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder {
@@ -10,7 +11,7 @@ class DatabaseSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        // $this->call(UsersTableSeeder::class);
+        factory(Wine::class, 15)->create();
     }
 
 }

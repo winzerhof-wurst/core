@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Wine;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Tidbit;
+use Illuminate\Http\JsonResponse;
 
-class WineController extends Controller {
+class TidbitController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class WineController extends Controller {
      * @return JsonResponse
      */
     public function index() {
-        return Wine::all();
+        return Tidbit::all();
     }
 
 }

@@ -11,19 +11,31 @@
 define(function (require) {
     'use strict';
 
+    var $ = require('jquery');
     var Handlebars = require('handlebars');
     var Marionette = require('marionette');
 
     var aboutTemplate = require('text!templates/wines.html');
     var radio = require('radio');
+    var WineList = require('views/winelist');
 
     /**
      * @class WinesView
      */
-    var WinesView = Marionette.ItemView.extend({
+    var WinesView = Marionette.LayoutView.extend({
         template: Handlebars.compile(aboutTemplate),
-        onShow: function() {
+        regions: {
+            list: '#wine-list'
+        },
+        onShow: function () {
             var loadingWines = radio.wine.request('entities');
+
+            var _this = this;
+            $.when(loadingWines).done(function (wines) {
+                _this.list.show(new WineList({
+                    collection: wines
+                }));
+            });
         }
     });
 
