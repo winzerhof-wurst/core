@@ -27,6 +27,8 @@ define(function (require) {
         events: {
             'change @ui.quantityInput': '_onQuantityChange',
             'keyup @ui.quantityInput': '_onQuantityChange',
+            'keydown @ui.quantityInput': '_onQuantityChange',
+            'focus @ui.quantityInput': '_onQuantityChange',
             'paste @ui.quantityInput': '_onQuantityChange',
             'click @ui.addToCartBtn': '_onAddToCart'
         },
