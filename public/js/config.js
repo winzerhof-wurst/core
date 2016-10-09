@@ -27,7 +27,5 @@ require.config({
 });
 
 require([
-	'jquery',
-	'bootstrap',
 	'wire!main'
 ]);

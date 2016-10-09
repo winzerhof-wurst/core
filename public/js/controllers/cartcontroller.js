@@ -35,6 +35,7 @@ define(function(require) {
 			this._cart = options.cart;
 
 			this.listenTo(Radio.cart, 'wine:add', this._onAddWineToCart);
+			Radio.cart.reply('submit:wines', this._onSubmitWines);
 		},
 		_onAddWineToCart: function(wine, quantity) {
 			if (!quantity || quantity <= 0) {
@@ -52,6 +53,12 @@ define(function(require) {
 				});
 				this._cart.add(cartItem);
 			}
+		},
+		_onSubmitWines: function(data) {
+			var defer = $.Deferred();
+			console.log(data);
+			setTimeout(defer.resolve, 2000);
+			return defer.promise();
 		}
 	};
 

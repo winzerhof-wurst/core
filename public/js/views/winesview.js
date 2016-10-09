@@ -24,6 +24,22 @@ define(function(require) {
 	 */
 	var WinesView = Marionette.LayoutView.extend({
 		template: Handlebars.compile(aboutTemplate),
+		ui: {
+			firstname: '#firstname',
+			lastname: '#lastname',
+			street: '#street',
+			nr: '#nr',
+			zipcode: '#zipcode',
+			city: '#city',
+			telephone: '#telephone',
+			fax: '#fax',
+			email: '#email',
+			comment: '#comment',
+			submit: '#submit-wines'
+		},
+		events: {
+			'click @ui.submit': '_onSubmit'
+		},
 		regions: {
 			list: '#wine-list'
 		},
@@ -35,6 +51,30 @@ define(function(require) {
 				_this.list.show(new WineList({
 					collection: wines
 				}));
+			});
+		},
+		_onSubmit: function() {
+			var data = {
+				firstname: this.ui.firstname.val(),
+				lastname: this.ui.lastname.val(),
+				street: this.ui.street.val(),
+				nr: this.ui.nr.val(),
+				zipcode: this.ui.zipcode.val(),
+				city: this.ui.city.val(),
+				email: this.ui.email.val(),
+				comment: this.ui.comment.val(),
+				wines: this.collection
+			};
+			// TODO: disable +6,+12 buttons too
+			this.$('input,textarea').prop('disabled', true);
+			this.ui.submit.button('loading');
+
+			var saving = radio.cart.request('submit:wines', data);
+
+			var _this = this;
+			saving.always(function() {
+				_this.$('input,textarea').prop('disabled', false);
+				_this.ui.submit.button('reset');
 			});
 		}
 	});

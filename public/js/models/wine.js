@@ -17,6 +17,9 @@ define(function(require) {
 	 * @class Wine
 	 */
 	var Wine = Item.extend({
+		defaults: {
+			quantity: 0
+		}
 	});
 
 	return Wine;

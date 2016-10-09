@@ -29,23 +29,30 @@ define(function(require) {
 			'change @ui.quantityInput': '_onQuantityChange',
 			'keyup @ui.quantityInput': '_onQuantityChange',
 			'keydown @ui.quantityInput': '_onQuantityChange',
-			'focus @ui.quantityInput': '_onQuantityChange',
 			'paste @ui.quantityInput': '_onQuantityChange',
 			'click @ui.add6BottlesBtn': '_onAdd6Bottles',
 			'click @ui.add12BottlesBtn': '_onAdd12Bottles'
 		},
+		modelEvents: {
+			'change': '_onModelQuantityChanged'
+		},
+		_onModelQuantityChanged: function() {
+			this.ui.quantityInput.val(this.model.get('quantity'));
+		},
 		_onQuantityChange: function(e) {
 			// Strip non-numeric values
 			var quantity = this._getQuantity();
-			this.ui.quantityInput.val(quantity);
+			this.model.set('quantity', quantity);
+			this.ui.quantityInput.val(this.model.get('quantity'));
 		},
-		_onAdd6Bottles: function(e) {
-			this._setQuantity(this._getQuantity() + 6);
+		_onAdd6Bottles: function() {
+			this.model.set('quantity', this._getQuantity() + 6);
 		},
-		_onAdd12Bottles: function(e) {
-			this._setQuantity(this._getQuantity() + 12);
+		_onAdd12Bottles: function() {
+			this.model.set('quantity', this._getQuantity() + 12);
 		},
 		/**
+		 * @private
 		 * @returns {Number}
 		 */
 		_getQuantity: function() {
@@ -56,11 +63,10 @@ define(function(require) {
 			return quantity;
 		},
 		/**
-		 * @param {Number} quantity
+		 * @private
+		 * @argument {String} val
+		 * @returns {Number} 
 		 */
-		_setQuantity: function(quantity) {
-			this.ui.quantityInput.val(quantity);
-		},
 		_sanitizeQuantity(val) {
 			return val.replace(/\D/g, '');
 		}

@@ -12,6 +12,8 @@
         <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/wiwu.css" rel="stylesheet">
         <script src="vendor/requirejs/require.js" data-main="js/config.js"></script>
+	<script src="vendor/jquery/dist/jquery.min.js"></script>
+	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     </head>
     <body id="app">
         <div id="overlay">
