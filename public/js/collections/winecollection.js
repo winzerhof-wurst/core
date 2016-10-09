@@ -8,23 +8,23 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Backbone = require('backbone');
+	var Backbone = require('backbone');
 
-    var Wine = require('models/wine');
+	var Wine = require('models/wine');
 
-    /**
-     * @class WineController
-     */
-    var WineCollection = Backbone.Collection.extend({
-        model: Wine,
-        url: undefined,
-        initialize: function (options) {
-            this.url = options.url;
-        }
-    });
+	/**
+	 * @class WineController
+	 */
+	var WineCollection = Backbone.Collection.extend({
+		model: Wine,
+		url: undefined,
+		initialize: function(options) {
+			this.url = options.url;
+		}
+	});
 
-    return WineCollection;
+	return WineCollection;
 });

@@ -8,16 +8,16 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Marionette = require('marionette');
+	var Marionette = require('marionette');
 
-    var WineListItem = require('views/winelistitem');
+	var WineListItem = require('views/winelistitem');
 
-    var WineList = Marionette.CollectionView.extend({
-        childView: WineListItem,
-    });
+	var WineList = Marionette.CollectionView.extend({
+		childView: WineListItem,
+	});
 
-    return WineList;
+	return WineList;
 });

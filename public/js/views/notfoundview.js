@@ -8,17 +8,17 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    var NotFoundTemplate = require('text!templates/notfound.html');
+	var NotFoundTemplate = require('text!templates/notfound.html');
 
-    var NotFoundView = Marionette.ItemView.extend({
-        template: Handlebars.compile(NotFoundTemplate)
-    });
+	var NotFoundView = Marionette.ItemView.extend({
+		template: Handlebars.compile(NotFoundTemplate)
+	});
 
-    return NotFoundView;
+	return NotFoundView;
 });

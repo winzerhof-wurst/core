@@ -8,17 +8,17 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    var HomeTemplate = require('text!templates/home.html');
+	var HomeTemplate = require('text!templates/home.html');
 
-    var HomeView = Marionette.ItemView.extend({
-        template: Handlebars.compile(HomeTemplate)
-    });
+	var HomeView = Marionette.ItemView.extend({
+		template: Handlebars.compile(HomeTemplate)
+	});
 
-    return HomeView;
+	return HomeView;
 });

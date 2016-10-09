@@ -8,22 +8,22 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var _ = require('underscore');
-    var Radio = require('backbone.radio');
+	var _ = require('underscore');
+	var Radio = require('backbone.radio');
 
-    var channels = [];
-    var channelNames = [
-        'cart',
-        'navigation',
-        'wine'
-    ];
+	var channels = [];
+	var channelNames = [
+		'cart',
+		'navigation',
+		'wine'
+	];
 
-    _.each(channelNames, function (name) {
-        channels[name] = Radio.channel(name);
-    });
+	_.each(channelNames, function(name) {
+		channels[name] = Radio.channel(name);
+	});
 
-    return channels;
+	return channels;
 });

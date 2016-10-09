@@ -8,44 +8,44 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var $ = require('jquery');
-    var _ = require('underscore');
+	var $ = require('jquery');
+	var _ = require('underscore');
 
-    /**
-     * @class WineService
-     */
-    var WineService = function (options) {
-        this.initialize(options);
-    };
+	/**
+	 * @class WineService
+	 */
+	var WineService = function(options) {
+		this.initialize(options);
+	};
 
-    WineService.prototype = {
-        /**
-         * @type WineCollection
-         */
-        _collection: undefined,
-        initialize: function (options) {
-            this._collection = options.collection;
+	WineService.prototype = {
+		/**
+		 * @type WineCollection
+		 */
+		_collection: undefined,
+		initialize: function(options) {
+			this._collection = options.collection;
 
-            _.bindAll(this, 'getAll');
-        },
-        getAll: function () {
-            var defer = $.Deferred();
+			_.bindAll(this, 'getAll');
+		},
+		getAll: function() {
+			var defer = $.Deferred();
 
-            this._collection.fetch({
-                success: function (data) {
-                    defer.resolve(data);
-                },
-                error: function () {
-                    defer.reject();
-                }
-            });
+			this._collection.fetch({
+				success: function(data) {
+					defer.resolve(data);
+				},
+				error: function() {
+					defer.reject();
+				}
+			});
 
-            return defer.promise();
-        }
-    };
+			return defer.promise();
+		}
+	};
 
-    return WineService;
+	return WineService;
 });

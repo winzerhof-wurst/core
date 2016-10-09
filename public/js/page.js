@@ -8,19 +8,19 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Backbone = require('backbone');
+	var Backbone = require('backbone');
 
-    /**
-     * @class Page
-     */
-    var Page = Backbone.Model.extend({
-        default: {
-            hidden: false
-        }
-    });
+	/**
+	 * @class Page
+	 */
+	var Page = Backbone.Model.extend({
+		default: {
+			hidden: false
+		}
+	});
 
-    return Page;
+	return Page;
 });

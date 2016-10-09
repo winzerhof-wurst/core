@@ -8,20 +8,20 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    var AboutTemplate = require('text!templates/rooms.html');
+	var AboutTemplate = require('text!templates/rooms.html');
 
-    /**
-     * @class RoomsView
-     */
-    var RoomsView = Marionette.ItemView.extend({
-        template: Handlebars.compile(AboutTemplate)
-    });
+	/**
+	 * @class RoomsView
+	 */
+	var RoomsView = Marionette.ItemView.extend({
+		template: Handlebars.compile(AboutTemplate)
+	});
 
-    return RoomsView;
+	return RoomsView;
 });

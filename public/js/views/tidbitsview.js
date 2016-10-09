@@ -8,20 +8,20 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    var AboutTemplate = require('text!templates/tidbits.html');
+	var AboutTemplate = require('text!templates/tidbits.html');
 
-    /**
-     * @class TidbitsView
-     */
-    var TidbitsView = Marionette.ItemView.extend({
-        template: Handlebars.compile(AboutTemplate)
-    });
+	/**
+	 * @class TidbitsView
+	 */
+	var TidbitsView = Marionette.ItemView.extend({
+		template: Handlebars.compile(AboutTemplate)
+	});
 
-    return TidbitsView;
+	return TidbitsView;
 });

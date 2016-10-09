@@ -8,38 +8,63 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var _ = require('underscore');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    var Radio = require('radio');
-    var WineListItemTemplate = require('text!templates/winelistitem.html');
+	var WineListItemTemplate = require('text!templates/winelistitem.html');
 
-    var WineListItem = Marionette.ItemView.extend({
-        className: 'item',
-        template: Handlebars.compile(WineListItemTemplate),
-        ui: {
-            addToCartBtn: '.add-to-cart button',
-            quantityInput: '.add-to-cart input'
-        },
-        events: {
-            'change @ui.quantityInput': '_onQuantityChange',
-            'keyup @ui.quantityInput': '_onQuantityChange',
-            'keydown @ui.quantityInput': '_onQuantityChange',
-            'focus @ui.quantityInput': '_onQuantityChange',
-            'paste @ui.quantityInput': '_onQuantityChange',
-            'click @ui.addToCartBtn': '_onAddToCart'
-        },
-        _onQuantityChange: function(e) {
-            // Strip non-numeric values
-            this.ui.quantityInput.val(this.ui.quantityInput.val().replace(/\D/g, ''));
-        },
-        _onAddToCart: function(e) {
-            Radio.cart.trigger('wine:add', this.model, parseInt(this.ui.quantityInput.val()));
-        }
-    });
+	var WineListItem = Marionette.ItemView.extend({
+		className: 'item',
+		template: Handlebars.compile(WineListItemTemplate),
+		ui: {
+			add6BottlesBtn: '.add-to-cart button.add-6',
+			add12BottlesBtn: '.add-to-cart button.add-12',
+			quantityInput: '.add-to-cart input'
+		},
+		events: {
+			'change @ui.quantityInput': '_onQuantityChange',
+			'keyup @ui.quantityInput': '_onQuantityChange',
+			'keydown @ui.quantityInput': '_onQuantityChange',
+			'focus @ui.quantityInput': '_onQuantityChange',
+			'paste @ui.quantityInput': '_onQuantityChange',
+			'click @ui.add6BottlesBtn': '_onAdd6Bottles',
+			'click @ui.add12BottlesBtn': '_onAdd12Bottles'
+		},
+		_onQuantityChange: function(e) {
+			// Strip non-numeric values
+			var quantity = this._getQuantity();
+			this.ui.quantityInput.val(quantity);
+		},
+		_onAdd6Bottles: function(e) {
+			this._setQuantity(this._getQuantity() + 6);
+		},
+		_onAdd12Bottles: function(e) {
+			this._setQuantity(this._getQuantity() + 12);
+		},
+		/**
+		 * @returns {Number}
+		 */
+		_getQuantity: function() {
+			var quantity = parseInt(this._sanitizeQuantity(this.ui.quantityInput.val()), 10);
+			if (_.isNaN(quantity)) {
+				return 0;
+			}
+			return quantity;
+		},
+		/**
+		 * @param {Number} quantity
+		 */
+		_setQuantity: function(quantity) {
+			this.ui.quantityInput.val(quantity);
+		},
+		_sanitizeQuantity(val) {
+			return val.replace(/\D/g, '');
+		}
+	});
 
-    return WineListItem;
+	return WineListItem;
 });

@@ -8,12 +8,12 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Backbone = require('backbone');
+	var Backbone = require('backbone');
 
-    var Item = Backbone.Model.extend({});
+	var Item = Backbone.Model.extend({});
 
-    return Item;
+	return Item;
 });

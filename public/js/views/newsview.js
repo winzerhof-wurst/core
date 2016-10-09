@@ -8,20 +8,20 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    var NewsTemplate = require('text!templates/news.html');
+	var NewsTemplate = require('text!templates/news.html');
 
-    /**
-     * @class NewsView
-     */
-    var NewsView = Marionette.CompositeView.extend({
-        template: Handlebars.compile(NewsTemplate)
-    });
+	/**
+	 * @class NewsView
+	 */
+	var NewsView = Marionette.CompositeView.extend({
+		template: Handlebars.compile(NewsTemplate)
+	});
 
-    return NewsView;
+	return NewsView;
 });

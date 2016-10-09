@@ -8,18 +8,18 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Handlebars = require('handlebars');
-    var Marionette = require('marionette');
+	var Handlebars = require('handlebars');
+	var Marionette = require('marionette');
 
-    /**
-     * @class LoadingView
-     */
-    var LoadingView = Marionette.ItemView.extend({
-        template: Handlebars.compile('<div>loading…</div>')
-    });
+	/**
+	 * @class LoadingView
+	 */
+	var LoadingView = Marionette.ItemView.extend({
+		template: Handlebars.compile('<div>loading…</div>')
+	});
 
-    return LoadingView;
+	return LoadingView;
 });

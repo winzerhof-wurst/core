@@ -8,20 +8,20 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Backbone = require('backbone');
+	var Backbone = require('backbone');
 
-    /**
-     * @class CartItem
-     */
-    var CartItem = Backbone.Model.extend({
-        defaults: {
-            item: null,
-            quantity: 0
-        }
-    });
+	/**
+	 * @class CartItem
+	 */
+	var CartItem = Backbone.Model.extend({
+		defaults: {
+			item: null,
+			quantity: 0
+		}
+	});
 
-    return CartItem;
+	return CartItem;
 });

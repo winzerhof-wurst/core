@@ -8,24 +8,24 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Backbone = require('backbone');
+	var Backbone = require('backbone');
 
-    var CartItem = require('models/cartitem');
+	var CartItem = require('models/cartitem');
 
-    /**
-     * @class Cart
-     */
-    var Cart = Backbone.Collection.extend({
-        model: CartItem,
-        findItem: function (item) {
-            return this.findWhere({
-                item: item
-            });
-        }
-    });
+	/**
+	 * @class Cart
+	 */
+	var Cart = Backbone.Collection.extend({
+		model: CartItem,
+		findItem: function(item) {
+			return this.findWhere({
+				item: item
+			});
+		}
+	});
 
-    return Cart;
+	return Cart;
 });

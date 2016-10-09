@@ -8,16 +8,16 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Item = require('models/item');
+	var Item = require('models/item');
 
-    /**
-     * @class Wine
-     */
-    var Wine = Item.extend({
-    });
+	/**
+	 * @class Wine
+	 */
+	var Wine = Item.extend({
+	});
 
-    return Wine;
+	return Wine;
 });

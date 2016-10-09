@@ -8,24 +8,24 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function (require) {
-    'use strict';
+define(function(require) {
+	'use strict';
 
-    var Marionette = require('marionette');
+	var Marionette = require('marionette');
 
-    /**
-     * @class Router
-     */
-    var Router = Marionette.AppRouter.extend({
-        appRoutes: {},
-        initialize: function (options) {
-            var _this = this;
-            _this.appRoute('*page', 'notFound');
-            options.pages.forEach(function (page) {
-                _this.appRoute(page.get('url'), page.get('id'));
-            });
-        }
-    });
+	/**
+	 * @class Router
+	 */
+	var Router = Marionette.AppRouter.extend({
+		appRoutes: {},
+		initialize: function(options) {
+			var _this = this;
+			_this.appRoute('*page', 'notFound');
+			options.pages.forEach(function(page) {
+				_this.appRoute(page.get('url'), page.get('id'));
+			});
+		}
+	});
 
-    return Router;
+	return Router;
 });
