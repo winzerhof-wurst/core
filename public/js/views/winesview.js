@@ -35,7 +35,9 @@ define(function(require) {
 			fax: '#fax',
 			email: '#email',
 			comment: '#comment',
-			submit: '#submit-wines'
+			submit: '#submit-wines',
+			successAlert: '#alert-success',
+			errorAlert: '#alert-error'
 		},
 		events: {
 			'click @ui.submit': '_onSubmit'
@@ -48,6 +50,7 @@ define(function(require) {
 
 			var _this = this;
 			$.when(loadingWines).done(function(wines) {
+				_this.wines = wines;
 				_this.list.show(new WineList({
 					collection: wines
 				}));
@@ -63,15 +66,24 @@ define(function(require) {
 				city: this.ui.city.val(),
 				email: this.ui.email.val(),
 				comment: this.ui.comment.val(),
-				wines: this.collection
+				wines: this.wines.toJSON()
 			};
 			// TODO: disable +6,+12 buttons too
 			this.$('input,textarea').prop('disabled', true);
 			this.ui.submit.button('loading');
+			this.ui.successAlert.hide();
+			this.ui.errorAlert.hide();
 
 			var saving = radio.cart.request('submit:wines', data);
 
 			var _this = this;
+			saving.done(function() {
+				_this.ui.successAlert.show();
+			});
+			saving.fail(function() {
+				_this.ui.errorAlert.show();
+				console.log(_this.ui.errorAlert);
+			});
 			saving.always(function() {
 				_this.$('input,textarea').prop('disabled', false);
 				_this.ui.submit.button('reset');

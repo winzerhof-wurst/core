@@ -56,8 +56,16 @@ define(function(require) {
 		},
 		_onSubmitWines: function(data) {
 			var defer = $.Deferred();
-			console.log(data);
-			setTimeout(defer.resolve, 2000);
+			$.ajax('api/orders', {
+				method: 'POST',
+				data: data,
+				success: function() {
+					defer.resolve();
+				},
+				error: function() {
+					defer.reject();
+				}
+			});
 			return defer.promise();
 		}
 	};
