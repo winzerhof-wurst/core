@@ -43,18 +43,45 @@ define(function(require) {
 			'click @ui.submit': '_onSubmit'
 		},
 		regions: {
-			list: '#wine-list'
+			listWhite: '#white-wine-list',
+			listRed: '#red-wine-list',
+			listSpecialQuality: '#special-quality-wine-list',
+			list1l: '#wine-1l-list'
 		},
 		onShow: function() {
 			var loadingWines = radio.wine.request('entities');
 
-			var _this = this;
 			$.when(loadingWines).done(function(wines) {
-				_this.wines = wines;
-				_this.list.show(new WineList({
-					collection: wines
+				this.wines = wines;
+				this.listWhite.show(new WineList({
+					title: 'Weißweine',
+					collection: wines,
+					filter: function(wine) {
+						return wine.get('type') === 'W';
+					}
 				}));
-			});
+				this.listRed.show(new WineList({
+					title: 'Rotweine',
+					collection: wines,
+					filter: function(wine) {
+						return wine.get('type') === 'R';
+					}
+				}));
+				this.listSpecialQuality.show(new WineList({
+					title: 'Prädikatsweine',
+					collection: wines,
+					filter: function(wine) {
+						return wine.get('type') === 'Q';
+					}
+				}));
+				this.list1l.show(new WineList({
+					title: 'Landweine - 1l',
+					collection: wines,
+					filter: function(wine) {
+						return wine.get('type') === '1L';
+					}
+				}));
+			}.bind(this));
 		},
 		_onSubmit: function() {
 			var data = {
