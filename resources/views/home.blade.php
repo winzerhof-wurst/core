@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+
+$versionHash = md5(config('app.version'));
+
+?><!DOCTYPE html>
 <html lang="de">
 	<head>
 		<meta charset="utf-8">
@@ -9,11 +13,8 @@
 		<title>Winzerhof Wurst</title>
 
 		<!-- css -->
-		<link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/wiwu.css" rel="stylesheet">
-		<script src="vendor/requirejs/require.js" data-main="js/config.js"></script>
-		<script src="vendor/jquery/dist/jquery.min.js"></script>
-		<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+		<link href="vendor/bootstrap/dist/css/bootstrap.min.css?v=<?php echo $versionHash; ?>" rel="stylesheet">
+		<link href="css/wiwu.css?v=<?php echo $versionHash; ?>" rel="stylesheet">
 	</head>
 	<body id="app">
 		<div id="overlay">
@@ -22,13 +23,16 @@
 			</div>
 		</div>
 		<div id="content"></div>
+		<script src="vendor/requirejs/require.js?v=<?php echo $versionHash; ?>" data-main="js/config.js?v=<?php echo $versionHash; ?>"></script>
+		<script src="vendor/jquery/dist/jquery.min.js?v=<?php echo $versionHash; ?>"></script>
+		<script src="vendor/bootstrap/dist/js/bootstrap.min.js?v=<?php echo $versionHash; ?>"></script>
 		<script>
 			$(function(){
-			$.ajaxSetup({
-			headers: {'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'}
+				$.ajaxSetup({
+				headers: {'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'}
+				});
 			});
-			});
-				@yield('script')
+			@yield('script')
 		</script>
 	</body>
 </html>
