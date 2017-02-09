@@ -54,28 +54,24 @@ define(function(require) {
 			$.when(loadingWines).done(function(wines) {
 				this.wines = wines;
 				this.listWhite.show(new WineList({
-					title: 'Weißweine',
 					collection: wines,
 					filter: function(wine) {
 						return wine.get('type') === 'W';
 					}
 				}));
 				this.listRed.show(new WineList({
-					title: 'Rotweine',
 					collection: wines,
 					filter: function(wine) {
 						return wine.get('type') === 'R';
 					}
 				}));
 				this.listSpecialQuality.show(new WineList({
-					title: 'Prädikatsweine',
 					collection: wines,
 					filter: function(wine) {
 						return wine.get('type') === 'Q';
 					}
 				}));
 				this.list1l.show(new WineList({
-					title: 'Landweine - 1l',
 					collection: wines,
 					filter: function(wine) {
 						return wine.get('type') === '1L';
