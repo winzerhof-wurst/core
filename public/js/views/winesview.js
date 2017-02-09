@@ -15,7 +15,7 @@ define(function(require) {
 	var Handlebars = require('handlebars');
 	var Marionette = require('marionette');
 
-	var aboutTemplate = require('text!templates/wines.html');
+	var winesTemplate = require('text!templates/wines.html');
 	var radio = require('radio');
 	var WineList = require('views/winelist');
 
@@ -23,7 +23,7 @@ define(function(require) {
 	 * @class WinesView
 	 */
 	var WinesView = Marionette.LayoutView.extend({
-		template: Handlebars.compile(aboutTemplate),
+		template: Handlebars.compile(winesTemplate),
 		ui: {
 			firstname: '#firstname',
 			lastname: '#lastname',
