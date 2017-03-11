@@ -5,10 +5,10 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2016-2017
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
 	var $ = require('jquery');
@@ -48,38 +48,38 @@ define(function(require) {
 			listSpecialQuality: '#special-quality-wine-list',
 			list1l: '#wine-1l-list'
 		},
-		onShow: function() {
+		onShow: function () {
 			var loadingWines = radio.wine.request('entities');
 
-			$.when(loadingWines).done(function(wines) {
+			$.when(loadingWines).done(function (wines) {
 				this.wines = wines;
 				this.listWhite.show(new WineList({
 					collection: wines,
-					filter: function(wine) {
+					filter: function (wine) {
 						return wine.get('type') === 'W';
 					}
 				}));
 				this.listRed.show(new WineList({
 					collection: wines,
-					filter: function(wine) {
+					filter: function (wine) {
 						return wine.get('type') === 'R';
 					}
 				}));
 				this.listSpecialQuality.show(new WineList({
 					collection: wines,
-					filter: function(wine) {
+					filter: function (wine) {
 						return wine.get('type') === 'Q';
 					}
 				}));
 				this.list1l.show(new WineList({
 					collection: wines,
-					filter: function(wine) {
+					filter: function (wine) {
 						return wine.get('type') === '1L';
 					}
 				}));
 			}.bind(this));
 		},
-		_onSubmit: function() {
+		_onSubmit: function () {
 			var data = {
 				firstname: this.ui.firstname.val(),
 				lastname: this.ui.lastname.val(),
@@ -99,14 +99,14 @@ define(function(require) {
 			var saving = radio.cart.request('submit:wines', data);
 
 			var _this = this;
-			saving.done(function() {
+			saving.done(function () {
 				_this.ui.successAlert.show();
 			});
-			saving.fail(function() {
+			saving.fail(function () {
 				_this.ui.errorAlert.show();
 				console.log(_this.ui.errorAlert);
 			});
-			saving.always(function() {
+			saving.always(function () {
 				_this.$('input,textarea,.add-6,.add-12').prop('disabled', false);
 				_this.ui.submit.button('reset');
 			});
