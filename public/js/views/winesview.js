@@ -12,15 +12,26 @@ define(function (require) {
 	'use strict';
 
 	var $ = require('jquery');
+	var Handlebars = require('handlebars');
 
 	var ShopView = require('views/shopview');
 	var WineList = require('views/winelist');
 	var radio = require('radio');
+	var winesTemplate = require('text!templates/wines.html');
 
 	/**
 	 * @class WinesView
 	 */
 	var WinesView = ShopView.extend({
+
+		template: Handlebars.compile(winesTemplate),
+
+		regions: {
+			listWhite: '#white-wine-list',
+			listRed: '#red-wine-list',
+			listSpecialQuality: '#special-quality-wine-list',
+			list1l: '#wine-1l-list'
+		},
 
 		/**
 		 * @type {WineCollection}

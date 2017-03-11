@@ -11,18 +11,14 @@
 define(function (require) {
 	'use strict';
 
-	var Handlebars = require('handlebars');
 	var Marionette = require('marionette');
 
-	var winesTemplate = require('text!templates/wines.html');
 	var radio = require('radio');
 
 	/**
 	 * @class WinesView
 	 */
 	var WinesView = Marionette.LayoutView.extend({
-
-		template: Handlebars.compile(winesTemplate),
 
 		ui: {
 			firstname: '#firstname',
@@ -42,13 +38,6 @@ define(function (require) {
 
 		events: {
 			'click @ui.submit': '_onSubmit'
-		},
-
-		regions: {
-			listWhite: '#white-wine-list',
-			listRed: '#red-wine-list',
-			listSpecialQuality: '#special-quality-wine-list',
-			list1l: '#wine-1l-list'
 		},
 
 		/**
