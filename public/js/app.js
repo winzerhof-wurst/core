@@ -8,7 +8,7 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
 	var Backbone = require('backbone');
@@ -20,33 +20,56 @@ define(function(require) {
 	 * @class App
 	 */
 	var App = Marionette.Application.extend({
+
 		/**
 		 * @type AppView
 		 */
 		_view: undefined,
+
 		/**
 		 * @type AppRouter
 		 */
 		_router: undefined,
+
+		/**
+		 * @type TidbitService
+		 */
+		_tidbitService: undefined,
+
 		/**
 		 * @type WineService
 		 */
 		_wineService: undefined,
-		initialize: function(options) {
+
+		/**
+		 * @param {Object} options
+		 * @returns {undefined}
+		 */
+		initialize: function (options) {
 			this._view = options.view;
 			this._router = options.router;
+			this._tidbitService = options.tidbitService;
 			this._wineService = options.wineService;
 
 			this._registerRequestReplyHandlers();
 
 			this.on('start', this._onStart);
 		},
-		_onStart: function() {
+
+		/**
+		 * @returns {undefined}
+		 */
+		_onStart: function () {
 			this._view.show();
 
 			Backbone.history.start();
 		},
-		_registerRequestReplyHandlers: function() {
+
+		/**
+		 * @returns {undefined}
+		 */
+		_registerRequestReplyHandlers: function () {
+			Radio.tidbit.reply('entities', this._tidbitService.getAll);
 			Radio.wine.reply('entities', this._wineService.getAll);
 		}
 	});

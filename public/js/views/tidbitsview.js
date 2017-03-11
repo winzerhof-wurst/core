@@ -5,22 +5,72 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2016-2017
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
+	var $ = require('jquery');
 	var Handlebars = require('handlebars');
-	var Marionette = require('marionette');
 
-	var AboutTemplate = require('text!templates/tidbits.html');
+	var ShopView = require('views/shopview');
+	var TidbitListView = require('views/tidbitlistview');
+	var radio = require('radio');
+	var tidbitsTemplate = require('text!templates/tidbits.html');
 
 	/**
 	 * @class TidbitsView
 	 */
-	var TidbitsView = Marionette.ItemView.extend({
-		template: Handlebars.compile(AboutTemplate)
+	var TidbitsView = ShopView.extend({
+
+		template: Handlebars.compile(tidbitsTemplate),
+
+		regions: {
+			tidbits: '#tidbits'
+		},
+
+		/**
+		 * @type {TidbitCollection}
+		 */
+		_tidbits: undefined,
+
+		/**
+		 * @override
+		 * @returns {undefined}
+		 */
+		_loadData: function () {
+			var loadingTidbits = radio.tidbit.request('entities');
+
+			$.when(loadingTidbits).done(function (tidbits) {
+				this._tidbits = tidbits;
+
+				this.tidbits.show(new TidbitListView({
+					collection: tidbits
+				}));
+			}.bind(this));
+			$.when(loadingTidbits).fail(function () {
+				console.error('could not load tidbits');
+			});
+		},
+
+		/**
+		 * @override
+		 * @param {Object} data
+		 * @returns {undefined}
+		 */
+		_onBeforeSubmit: function (data) {
+			data.tidbits = this._tidbits.toJSON();
+		},
+
+		/**
+		 * @override
+		 * @returns {undefined}
+		 */
+		_resetForm: function () {
+			this._tidbits.trigger('clear');
+		}
+
 	});
 
 	return TidbitsView;

@@ -1,1 +1,74 @@
 <h1>Schmankerl</h1>
+<div id="tidbits"></div>
+<p>
+	Die Preise sind in Euro und verstehen sich ab-Hof und inklusive Steuern.<br>
+	<br>
+	Die Versandkosten sind gewichts- und entfernungsabhängig und werden Ihnen vor der Auslieferung bekanntgegeben. 
+</p>
+<div class="container-fluid col-lg-6 col-md-8 col-sm-12">
+	<div class="container-fluid">
+		<div class="form-group col-md-6">
+			<label for="firstname">Vorname</label>
+			<input type="text" class="form-control" id="firstname" placeholder="Vorname">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="lastname">Nachname</label>
+			<input type="text" class="form-control" id="lastname" placeholder="Nachname">
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="form-group col-md-9">
+			<label for="street">Straße</label>
+			<input type="text" class="form-control" id="street" placeholder="Straße">
+		</div>
+		<div class="form-group col-md-3">
+			<label for="nr">Nr.</label>
+			<input type="text" class="form-control" id="nr" placeholder="Nr.">
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="form-group col-md-3">
+			<label for="zipcode">PLZ</label>
+			<input type="text" class="form-control" id="zipcode" placeholder="PLZ">
+		</div>
+		<div class="form-group col-md-9">
+			<label for="city">Ort</label>
+			<input type="text" class="form-control" id="city" placeholder="Ort">
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="form-group col-md-6">
+			<label for="telephone">Telefon</label>
+			<input type="text" class="form-control" id="telephone" placeholder="Telefon">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="fax">Fax</label>
+			<input type="text" class="form-control" id="fax" placeholder="Fax">
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="form-group col-md-6">
+			<label for="email">E-Mail</label>
+			<input type="email" class="form-control" id="email" placeholder="E-Mail">
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="form-group col-md-12">
+			<label for="comment">Anmerkungen</label>
+			<textarea id="comment" class="form-control" rows="3" placeholder="Anmerkungen"></textarea>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div id="alert-error"
+		     class="alert alert-danger"
+		     role="alert"
+		     style="display: none">Fehler beim Speichern der Bestellung</div>
+		<div id="alert-success"
+		     class="alert alert-success"
+		     role="alert"
+		     style="display: none">Ihre Bestellung wurde gespeichert. Vielen Dank!</div>
+		<button id="submit-wines"
+			class="btn btn-default center-block"
+			data-loading-text="Bitte warten...">Bestellung absenden</button>
+	</div>
+</div>

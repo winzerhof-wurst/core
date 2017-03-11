@@ -16,6 +16,7 @@ define({
 				{
 					view: {$ref: 'AppView'},
 					router: {$ref: 'AppRouter'},
+					tidbitService: {$ref: 'TidbitService'},
 					wineService: {$ref: 'WineService'}
 				}
 			]
@@ -69,6 +70,16 @@ define({
 			module: 'collections/cart'
 		}
 	},
+	TidbitCollection: {
+		create: {
+			module: 'collections/tidbitcollection',
+			args: [
+				{
+					url: 'api/tidbits'
+				}
+			]
+		}
+	},
 	WineCollection: {
 		create: {
 			module: 'collections/winecollection',
@@ -96,6 +107,16 @@ define({
 	/**
 	 * Services
 	 */
+	TidbitService: {
+		create: {
+			module: 'services/tidbitservice',
+			args: [
+				{
+					collection: {$ref: 'TidbitCollection'}
+				}
+			]
+		}
+	},
 	WineService: {
 		create: {
 			module: 'services/wineservice',

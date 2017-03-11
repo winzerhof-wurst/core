@@ -36,8 +36,9 @@ class OrderController extends Controller {
 			'email'
 		]);
 		$wines = $request->get('wines', []);
+		$tidbits = $request->get('tidbits', []);
 		$comment = $request->get('comment', '');
-		$shop->saveOrder($customerData, $wines, $comment);
+		$shop->saveOrder($customerData, $wines, $tidbits, $comment);
 	}
 
 }
