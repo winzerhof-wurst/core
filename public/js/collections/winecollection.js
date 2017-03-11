@@ -5,25 +5,49 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2016-2017
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
 	var Backbone = require('backbone');
-
 	var Wine = require('models/wine');
 
 	/**
 	 * @class WineController
 	 */
 	var WineCollection = Backbone.Collection.extend({
+
+		/**
+		 * @type {Wine}
+		 */
 		model: Wine,
+
+		/**
+		 * @type {string}
+		 */
 		url: undefined,
-		initialize: function(options) {
+
+		/**
+		 * @param {Object} options
+		 * @returns {undefined}
+		 */
+		initialize: function (options) {
 			this.url = options.url;
+			this.on('clear', this._onClear);
+		},
+
+		/**
+		 * @private
+		 * @returns {undefined}
+		 */
+		_onClear: function () {
+			this.forEach(function(wine) {
+				wine.set('quantity', 0);
+			});
 		}
+
 	});
 
 	return WineCollection;

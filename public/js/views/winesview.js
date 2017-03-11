@@ -98,18 +98,17 @@ define(function (require) {
 
 			var saving = radio.cart.request('submit:wines', data);
 
-			var _this = this;
 			saving.done(function () {
-				_this.ui.successAlert.show();
-			});
+				this.wines.trigger('clear');
+				this.ui.successAlert.show();
+			}.bind(this));
 			saving.fail(function () {
-				_this.ui.errorAlert.show();
-				console.log(_this.ui.errorAlert);
-			});
+				this.ui.errorAlert.show();
+			}.bind(this));
 			saving.always(function () {
-				_this.$('input,textarea,.add-6,.add-12').prop('disabled', false);
-				_this.ui.submit.button('reset');
-			});
+				this.$('input,textarea,.add-6,.add-12').prop('disabled', false);
+				this.ui.submit.button('reset');
+			}.bind(this));
 		}
 	});
 
