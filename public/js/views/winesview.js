@@ -91,8 +91,7 @@ define(function(require) {
 				comment: this.ui.comment.val(),
 				wines: this.wines.toJSON()
 			};
-			// TODO: disable +6,+12 buttons too
-			this.$('input,textarea').prop('disabled', true);
+			this.$('input,textarea,.add-6,.add-12').prop('disabled', true);
 			this.ui.submit.button('loading');
 			this.ui.successAlert.hide();
 			this.ui.errorAlert.hide();
@@ -108,7 +107,7 @@ define(function(require) {
 				console.log(_this.ui.errorAlert);
 			});
 			saving.always(function() {
-				_this.$('input,textarea').prop('disabled', false);
+				_this.$('input,textarea,.add-6,.add-12').prop('disabled', false);
 				_this.ui.submit.button('reset');
 			});
 		}
