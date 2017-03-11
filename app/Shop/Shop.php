@@ -13,13 +13,25 @@
 namespace App\Shop;
 
 use App\Customer;
+use App\Events\OrderEvent;
 use App\Item;
 use App\Order;
 use App\Tidbit;
 use App\Wine;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\DB;
 
 class Shop {
+
+	/** @var Dispatcher */
+	private $eventDispatcher;
+
+	/**
+	 * @param Dispatcher $eventDispatcher
+	 */
+	public function __construct(Dispatcher $eventDispatcher) {
+		$this->eventDispatcher = $eventDispatcher;
+	}
 
 	/**
 	 * @param array $customerData
@@ -66,6 +78,7 @@ class Shop {
 				$order->items()->save($item);
 				$tidbit->items()->save($item);
 			}
+			$this->eventDispatcher->fire(new OrderEvent($customerData, $order->items));
 		});
 	}
 

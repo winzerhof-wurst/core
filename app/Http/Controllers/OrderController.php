@@ -33,7 +33,10 @@ class OrderController extends Controller {
 			'nr',
 			'zipcode',
 			'city',
-			'email'
+			'email',
+			'telephone',
+			'fax',
+			'comment',
 		]);
 		$wines = $request->get('wines', []);
 		$tidbits = $request->get('tidbits', []);

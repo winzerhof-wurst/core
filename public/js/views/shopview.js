@@ -83,6 +83,8 @@ define(function (require) {
 				zipcode: this.ui.zipcode.val(),
 				city: this.ui.city.val(),
 				email: this.ui.email.val(),
+				telephone: this.ui.telephone.val(),
+				fax: this.ui.fax.val(),
 				comment: this.ui.comment.val()
 			};
 			this._onBeforeSubmit(data);
