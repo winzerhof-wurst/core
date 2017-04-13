@@ -54,7 +54,7 @@ class Shop {
 				$wine = Wine::find($wineData['id']);
 
 				$item = new Item();
-				$item->name = $wine->name;
+				$item->name = $wine->name . ' - ' . $wine->description . ' - ' . $wine->year;
 				$item->price = $wine->price;
 				$item->tax_rate = $wine->tax_rate;
 				$item->qty = $wineData['quantity'];
