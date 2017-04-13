@@ -10,4 +10,8 @@ class Wine extends Model {
 		return $this->morphMany(Item::class, 'product');
 	}
 
+	public function getTextAttribute($value) {
+		return nl2br($value);
+	}
+
 }
