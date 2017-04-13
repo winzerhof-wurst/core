@@ -46,8 +46,8 @@ before_script:
     # Set up DB
     - mysql -u root -e 'create database wiwu_test;'
     - mysql -u root -e "CREATE USER 'wiwu'@'localhost' IDENTIFIED BY 'test';"
-    - mysql -u root -e "GRANT SUPER on *.* to 'wiwu_test'@'localhost';"
-    - mysql -u root -e "GRANT ALL PRIVILEGES ON wiwu_test.* TO 'wiwu_test'@'localhost';"
+    - mysql -u root -e "GRANT SUPER on *.* to 'wiwu'@'localhost';"
+    - mysql -u root -e "GRANT ALL PRIVILEGES ON wiwu_test.* TO 'wiwu'@'localhost';"
 
     # Copy environment file
     - cp tests/test.env .env
