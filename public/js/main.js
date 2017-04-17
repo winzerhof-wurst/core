@@ -39,11 +39,6 @@ define({
 			module: 'pages'
 		}
 	},
-	CartController: {
-		create: {
-			module: 'controllers/cartcontroller'
-		}
-	},
 	RouteController: {
 		create: {
 			module: 'controllers/routecontroller',

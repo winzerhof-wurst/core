@@ -14,9 +14,12 @@ define(function(require) {
 	var Backbone = require('backbone');
 	var Marionette = require('marionette');
 
+	var CartController = require('controllers/cartcontroller');
 	var Radio = require('radio');
 	var TidbitService = require('services/tidbitservice');
 	var WineService = require('services/wineservice');
+
+	var cartController = new CartController();
 
 	/**
 	 * @class App
