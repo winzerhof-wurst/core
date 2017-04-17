@@ -15,9 +15,7 @@ define({
 			args: [
 				{
 					view: {$ref: 'AppView'},
-					router: {$ref: 'AppRouter'},
-					tidbitService: {$ref: 'TidbitService'},
-					wineService: {$ref: 'WineService'}
+					router: {$ref: 'AppRouter'}
 				}
 			]
 		},
@@ -100,29 +98,6 @@ define({
 				{
 					el: '#app',
 					pages: {$ref: 'Pages'}
-				}
-			]
-		}
-	},
-	/**
-	 * Services
-	 */
-	TidbitService: {
-		create: {
-			module: 'services/tidbitservice',
-			args: [
-				{
-					collection: {$ref: 'TidbitCollection'}
-				}
-			]
-		}
-	},
-	WineService: {
-		create: {
-			module: 'services/wineservice',
-			args: [
-				{
-					collection: {$ref: 'WineCollection'}
 				}
 			]
 		}

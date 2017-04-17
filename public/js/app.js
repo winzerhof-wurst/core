@@ -5,16 +5,18 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2017
  */
 
-define(function (require) {
+define(function(require) {
 	'use strict';
 
 	var Backbone = require('backbone');
 	var Marionette = require('marionette');
 
 	var Radio = require('radio');
+	var TidbitService = require('services/tidbitservice');
+	var WineService = require('services/wineservice');
 
 	/**
 	 * @class App
@@ -32,24 +34,12 @@ define(function (require) {
 		_router: undefined,
 
 		/**
-		 * @type TidbitService
-		 */
-		_tidbitService: undefined,
-
-		/**
-		 * @type WineService
-		 */
-		_wineService: undefined,
-
-		/**
 		 * @param {Object} options
 		 * @returns {undefined}
 		 */
-		initialize: function (options) {
+		initialize: function(options) {
 			this._view = options.view;
 			this._router = options.router;
-			this._tidbitService = options.tidbitService;
-			this._wineService = options.wineService;
 
 			this._registerRequestReplyHandlers();
 
@@ -59,7 +49,7 @@ define(function (require) {
 		/**
 		 * @returns {undefined}
 		 */
-		_onStart: function () {
+		_onStart: function() {
 			this._view.show();
 
 			Backbone.history.start();
@@ -68,9 +58,9 @@ define(function (require) {
 		/**
 		 * @returns {undefined}
 		 */
-		_registerRequestReplyHandlers: function () {
-			Radio.tidbit.reply('entities', this._tidbitService.getAll);
-			Radio.wine.reply('entities', this._wineService.getAll);
+		_registerRequestReplyHandlers: function() {
+			Radio.tidbit.reply('entities', TidbitService.getAll);
+			Radio.wine.reply('entities', WineService.getAll);
 		}
 	});
 
