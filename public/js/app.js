@@ -15,6 +15,7 @@ define(function(require) {
 	var Marionette = require('marionette');
 
 	var CartController = require('controllers/cartcontroller');
+	var Pages = require('pages');
 	var Radio = require('radio');
 	var TidbitService = require('services/tidbitservice');
 	var WineService = require('services/wineservice');
@@ -37,12 +38,18 @@ define(function(require) {
 		_router: undefined,
 
 		/**
+		 * @type Pages
+		 */
+		_pages: undefined,
+
+		/**
 		 * @param {Object} options
 		 * @returns {undefined}
 		 */
 		initialize: function(options) {
 			this._view = options.view;
 			this._router = options.router;
+			this._pages = new Pages();
 
 			this._registerRequestReplyHandlers();
 
@@ -64,6 +71,13 @@ define(function(require) {
 		_registerRequestReplyHandlers: function() {
 			Radio.tidbit.reply('entities', TidbitService.getAll);
 			Radio.wine.reply('entities', WineService.getAll);
+		},
+
+		/**
+		 * @returns {Pages}
+		 */
+		_getPages: function() {
+			return this._pages;
 		}
 	});
 

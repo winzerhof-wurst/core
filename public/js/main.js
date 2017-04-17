@@ -25,18 +25,7 @@ define({
 	},
 	AppRouter: {
 		create: {
-			module: 'approuter',
-			args: [
-				{
-					controller: {$ref: 'RouteController'},
-					pages: {$ref: 'Pages'}
-				}
-			]
-		}
-	},
-	Pages: {
-		create: {
-			module: 'pages'
+			module: 'approuter'
 		}
 	},
 	RouteController: {
@@ -44,8 +33,7 @@ define({
 			module: 'controllers/routecontroller',
 			args: [
 				{
-					appView: {$ref: 'AppView'},
-					pages: {$ref: 'Pages'}
+					appView: {$ref: 'AppView'}
 				}
 			]
 		}
@@ -78,13 +66,7 @@ define({
 	 */
 	AppView: {
 		create: {
-			module: 'views/appview',
-			args: [
-				{
-					el: '#app',
-					pages: {$ref: 'Pages'}
-				}
-			]
+			module: 'views/appview'
 		}
 	},
 	/**

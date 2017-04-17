@@ -29,26 +29,29 @@ define(function(require) {
 	 * @class AppView
 	 */
 	var AppView = Marionette.LayoutView.extend({
-		/**
-		 * @type Pages
-		 */
-		_pages: undefined,
+
+		el: '#app',
+
 		_overlay: undefined,
+
 		_contentView: undefined,
+
 		regions: {
 			content: '#content',
 			navigation: '#navigation',
 			navigationMobile: '#navigation-mobile'
 		},
+
 		initialize: function(options) {
-			this._pages = options.pages;
 			this._overlay = $('#overlay');
 			this._home = $('#home');
 		},
+
 		show: function() {
 			this.content.show(new LoadingView());
 			this._overlay.fadeOut();
 		},
+
 		updateTitle: function(title) {
 			if (title) {
 				document.title = title + ' – Winzerhof Wurst';
@@ -56,9 +59,10 @@ define(function(require) {
 				document.title = 'Winzerhof Wurst';
 			}
 		},
+
 		showPage: function(id) {
 			// Update title
-			var page = this._pages.get(id);
+			var page = require('app').getPages().get(id);
 			if (page) {
 				this.updateTitle(page.get('name'));
 			} else {
@@ -96,22 +100,27 @@ define(function(require) {
 
 			this._setPageActive(id);
 		},
+
 		_showHome: function() {
 			this.content.show(new HomeView());
 		},
+
 		_showContentView: function(view) {
 			this._showContent();
 			this.content.currentView.showContent(view);
 		},
+
 		_showContent: function() {
 			this.content.show(new ContentView());
 		},
+
 		_setPageActive: function(id) {
 			$('.nav li').removeClass('active');
 			if (id) {
 				$('.nav li[data-id="' + id + '"').addClass('active');
 			}
 		}
+
 	});
 
 	return AppView;

@@ -17,14 +17,17 @@ define(function(require) {
 	 * @class Router
 	 */
 	var Router = Marionette.AppRouter.extend({
+
 		appRoutes: {},
-		initialize: function(options) {
+
+		initialize: function() {
 			var _this = this;
 			_this.appRoute('*page', 'notFound');
-			options.pages.forEach(function(page) {
+			require('app').getPages().forEach(function(page) {
 				_this.appRoute(page.get('url'), page.get('id'));
 			});
 		}
+
 	});
 
 	return Router;
