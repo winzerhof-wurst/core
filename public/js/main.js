@@ -41,12 +41,7 @@ define({
 	},
 	CartController: {
 		create: {
-			module: 'controllers/cartcontroller',
-			args: [
-				{
-					cart: {$ref: 'Cart'}
-				}
-			]
+			module: 'controllers/cartcontroller'
 		}
 	},
 	RouteController: {
@@ -63,11 +58,6 @@ define({
 	/**
 	 * Collections
 	 */
-	Cart: {
-		create: {
-			module: 'collections/cart'
-		}
-	},
 	TidbitCollection: {
 		create: {
 			module: 'collections/tidbitcollection',

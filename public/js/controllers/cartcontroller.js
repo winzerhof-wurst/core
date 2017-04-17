@@ -5,7 +5,7 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2017
  */
 
 define(function(require) {
@@ -14,25 +14,24 @@ define(function(require) {
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 
+	var Cart = require('collections/cart');
 	var CartItem = require('models/cartitem');
-	var Item = require('models/item');
 	var Radio = require('radio');
-	var Wine = require('models/wine');
 
 	/**
 	 * @class CartController
 	 */
 	var CartController = function(options) {
 		this.initialize(options);
-	}
+	};
 
 	CartController.prototype = {
 		_cart: null,
-		initialize: function(options) {
+		initialize: function() {
 			// Mix in Backbone.Event
 			_.extend(this, Backbone.Events);
 
-			this._cart = options.cart;
+			this._cart = new Cart();
 
 			this.listenTo(Radio.cart, 'wine:add', this._onAddWineToCart);
 			Radio.cart.reply('submit:wines', this._onSubmitWines);
