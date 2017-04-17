@@ -5,7 +5,7 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2017
  */
 
 define(function(require) {
@@ -20,10 +20,10 @@ define(function(require) {
 
 		appRoutes: {},
 
-		initialize: function() {
+		registerRoutes: function(pages) {
 			var _this = this;
 			_this.appRoute('*page', 'notFound');
-			require('app').getPages().forEach(function(page) {
+			pages.forEach(function(page) {
 				_this.appRoute(page.get('url'), page.get('id'));
 			});
 		}

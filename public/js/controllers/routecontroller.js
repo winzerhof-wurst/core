@@ -19,19 +19,29 @@ define(function(require) {
 	/**
 	 * @class RouteController
 	 */
-	var RouteController = function(options) {
-		this.initialize(options);
+	var RouteController = function(appView) {
+		this.initialize(appView);
 	};
 
 	RouteController.prototype = {
 
 		/**
-		 * @type AppView
+		 * @type {AppView}
 		 */
 		_appView: undefined,
 
+		/**
+		 * @type {Pages}
+		 */
+		_pages: undefined,
+
+		/**
+		 * @param {object} options
+		 * @returns {undefined}
+		 */
 		initialize: function(options) {
 			this._appView = options.appView;
+			this._pages = options.pages;
 
 			Radio.navigation.on('navigate', _.bind(this._onNavigate, this));
 		},
@@ -70,7 +80,7 @@ define(function(require) {
 
 		_onNavigate: function(pageId) {
 			this._appView.showPage(pageId);
-			var page = require('app').getPages().get(pageId);
+			var page = this._pages.get(pageId);
 			if (page) {
 				Backbone.history.navigate(page.get('url'));
 			}

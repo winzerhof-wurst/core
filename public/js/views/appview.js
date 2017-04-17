@@ -32,6 +32,11 @@ define(function(require) {
 
 		el: '#app',
 
+		/**
+		 * @type {Pages}
+		 */
+		_pages: undefined,
+
 		_overlay: undefined,
 
 		_contentView: undefined,
@@ -42,7 +47,9 @@ define(function(require) {
 			navigationMobile: '#navigation-mobile'
 		},
 
-		initialize: function(options) {
+		initialize: function(pages) {
+			this._pages = pages;
+
 			this._overlay = $('#overlay');
 			this._home = $('#home');
 		},
@@ -62,7 +69,7 @@ define(function(require) {
 
 		showPage: function(id) {
 			// Update title
-			var page = require('app').getPages().get(id);
+			var page = this._pages.get(id);
 			if (page) {
 				this.updateTitle(page.get('name'));
 			} else {

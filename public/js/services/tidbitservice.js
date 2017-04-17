@@ -8,16 +8,18 @@
  * @copyright Christoph Wurst 2017
  */
 
-define(function (require) {
+define(function(require) {
 	'use strict';
 
 	var $ = require('jquery');
 	var _ = require('underscore');
 
+	var TidbitCollection = require('collections/tidbitcollection');
+
 	/**
 	 * @class TidbitService
 	 */
-	var TidbitService = function (options) {
+	var TidbitService = function(options) {
 		this.initialize(options);
 	};
 
@@ -28,11 +30,10 @@ define(function (require) {
 		_collection: undefined,
 
 		/**
-		 * @param {Object} options
 		 * @returns {undefined}
 		 */
-		initialize: function (options) {
-			this._collection = options.collection;
+		initialize: function() {
+			this._collection = new TidbitCollection();
 
 			_.bindAll(this, 'getAll');
 		},
@@ -40,14 +41,14 @@ define(function (require) {
 		/**
 		 * @returns {unresolved}
 		 */
-		getAll: function () {
+		getAll: function() {
 			var defer = $.Deferred();
 
 			this._collection.fetch({
-				success: function (data) {
+				success: function(data) {
 					defer.resolve(data);
 				},
-				error: function () {
+				error: function() {
 					defer.reject();
 				}
 			});

@@ -14,9 +14,12 @@ define(function(require) {
 	var Backbone = require('backbone');
 	var Marionette = require('marionette');
 
+	var AppRouter = require('approuter');
+	var AppView = require('views/appview');
 	var CartController = require('controllers/cartcontroller');
 	var Pages = require('pages');
 	var Radio = require('radio');
+	var RouteController = require('controllers/routecontroller');
 	var TidbitService = require('services/tidbitservice');
 	var WineService = require('services/wineservice');
 
@@ -43,13 +46,23 @@ define(function(require) {
 		_pages: undefined,
 
 		/**
-		 * @param {Object} options
+		 * @type RouteController
+		 */
+		_routeController: undefined,
+
+		/**
 		 * @returns {undefined}
 		 */
-		initialize: function(options) {
-			this._view = options.view;
-			this._router = options.router;
+		initialize: function() {
 			this._pages = new Pages();
+			this._view = new AppView(this._pages);
+			this._routeController = new RouteController({
+				appView: this._view,
+				pages: this._pages
+			});
+			this._router = new AppRouter({
+				controller: this._routeController
+			});
 
 			this._registerRequestReplyHandlers();
 
@@ -60,6 +73,7 @@ define(function(require) {
 		 * @returns {undefined}
 		 */
 		_onStart: function() {
+			this._router.registerRoutes(this._pages);
 			this._view.show();
 
 			Backbone.history.start();
@@ -69,16 +83,13 @@ define(function(require) {
 		 * @returns {undefined}
 		 */
 		_registerRequestReplyHandlers: function() {
-			Radio.tidbit.reply('entities', TidbitService.getAll);
-			Radio.wine.reply('entities', WineService.getAll);
-		},
+			var tidbitService = new TidbitService();
+			var wineService = new WineService();
 
-		/**
-		 * @returns {Pages}
-		 */
-		_getPages: function() {
-			return this._pages;
+			Radio.tidbit.reply('entities', tidbitService.getAll);
+			Radio.wine.reply('entities', wineService.getAll);
 		}
+
 	});
 
 	return App;

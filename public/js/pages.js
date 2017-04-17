@@ -19,7 +19,9 @@ define(function(require) {
 	 * @class Pages
 	 */
 	var Pages = Backbone.Collection.extend({
+
 		model: Page,
+
 		initialize: function() {
 			this.add({
 				id: 'default',
@@ -57,6 +59,7 @@ define(function(require) {
 				url: 'kontakt'
 			});
 		}
+
 	});
 
 	return Pages;

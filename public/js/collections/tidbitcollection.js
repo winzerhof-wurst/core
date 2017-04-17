@@ -8,7 +8,7 @@
  * @copyright Christoph Wurst 2017
  */
 
-define(function (require) {
+define(function(require) {
 	'use strict';
 
 	var Backbone = require('backbone');
@@ -27,14 +27,12 @@ define(function (require) {
 		/**
 		 * @type {string}
 		 */
-		url: undefined,
+		url: 'api/tidbits',
 
 		/**
-		 * @param {Object} options
 		 * @returns {undefined}
 		 */
-		initialize: function (options) {
-			this.url = options.url;
+		initialize: function() {
 			this.on('clear', this._onClear);
 		},
 
@@ -42,8 +40,8 @@ define(function (require) {
 		 * @private
 		 * @returns {undefined}
 		 */
-		_onClear: function () {
-			this.forEach(function (tidbit) {
+		_onClear: function() {
+			this.forEach(function(tidbit) {
 				tidbit.set('quantity', 0);
 			});
 		}

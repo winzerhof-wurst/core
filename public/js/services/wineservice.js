@@ -14,6 +14,8 @@ define(function(require) {
 	var $ = require('jquery');
 	var _ = require('underscore');
 
+	var WineCollection = require('collections/winecollection');
+
 	/**
 	 * @class WineService
 	 */
@@ -22,15 +24,21 @@ define(function(require) {
 	};
 
 	WineService.prototype = {
+
 		/**
 		 * @type WineCollection
 		 */
 		_collection: undefined,
-		initialize: function(options) {
-			this._collection = options.collection;
+
+		/**
+		 * @returns {undefined}
+		 */
+		initialize: function() {
+			this._collection = new WineCollection();
 
 			_.bindAll(this, 'getAll');
 		},
+
 		getAll: function() {
 			var defer = $.Deferred();
 
@@ -45,6 +53,7 @@ define(function(require) {
 
 			return defer.promise();
 		}
+
 	};
 
 	return WineService;
