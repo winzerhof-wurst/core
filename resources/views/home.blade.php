@@ -21,14 +21,16 @@ $versionHash = md5(config('app.version'));
 			</div>
 		</div>
 		<div id="content"></div>
+
+		<script src="vendor/jquery/dist/jquery.min.js?v=<?php echo $versionHash; ?>"></script>
+		<script src="vendor/bootstrap/dist/js/bootstrap.min.js?v=<?php echo $versionHash; ?>"></script>
+
 		@if (App::environment('production'))
 		<script src="vendor/requirejs/require.js?v=<?php echo $versionHash; ?>"></script>
 		<script src="js/wiwu.min.js?v=<?php echo $versionHash; ?>" data-main="js/config.js?v=<?php echo $versionHash; ?>"></script>
 		@else
 		<script src="vendor/requirejs/require.js?v=<?php echo $versionHash; ?>" data-main="js/config.js?v=<?php echo $versionHash; ?>"></script>
 		@endif
-		<script src="vendor/jquery/dist/jquery.min.js?v=<?php echo $versionHash; ?>"></script>
-		<script src="vendor/bootstrap/dist/js/bootstrap.min.js?v=<?php echo $versionHash; ?>"></script>
 		<script>
 			$(function() {
 				$.ajaxSetup({
