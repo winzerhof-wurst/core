@@ -67,7 +67,7 @@ define(function(require) {
 		 * @argument {String} val
 		 * @returns {Number} 
 		 */
-		_sanitizeQuantity(val) {
+		_sanitizeQuantity: function(val) {
 			return val.replace(/\D/g, '');
 		}
 	});
