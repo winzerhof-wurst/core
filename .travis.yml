@@ -56,6 +56,9 @@ before_script:
 script:
     - echo "test suite $WIWU_TEST"
 
+    # Optimize/bundle js
+    - ./node_modules/requirejs/bin/r.js -o build.js
+
     # PHP
     - if [[ "$WIWU_TEST" = "php" ]]; then ./build/test_php.sh; fi
 

@@ -10,3 +10,5 @@ Homestead.json
 
 # Bower
 /public/vendor/
+
+public/js/wiwu.min.js
