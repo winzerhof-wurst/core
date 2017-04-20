@@ -1,3 +1,5 @@
+/* global _paq */
+
 /**
  * Winzerhof Wurst – www.winzerhof-wurst.at
  *
@@ -83,6 +85,12 @@ define(function(require) {
 			var page = this._pages.get(pageId);
 			if (page) {
 				Backbone.history.navigate(page.get('url'));
+				// Track page views
+				if (_paq) {
+					_paq.push(['setCustomUrl', '/' + page.url]);
+					_paq.push(['setDocumentTitle', page.name]);
+					_paq.push(['trackPageView']);
+				}
 			}
 		}
 	};
