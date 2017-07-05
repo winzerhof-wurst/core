@@ -21,6 +21,7 @@ define(function(require) {
 	var LoadingView = require('views/loadingview');
 	var NewsView = require('views/newsview');
 	var NotFoundView = require('views/notfoundview');
+	var Radio = require('radio');
 	var RoomsView = require('views/roomsview');
 	var TidbitsView = require('views/tidbitsview');
 	var WinesView = require('views/winesview');

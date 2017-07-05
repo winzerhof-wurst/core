@@ -76,7 +76,9 @@ define(function(require) {
 			this._router.registerRoutes(this._pages);
 			this._view.show();
 
-			Backbone.history.start();
+			Backbone.history.start({
+				pushState: true
+			});
 		},
 
 		/**

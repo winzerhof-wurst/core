@@ -5,7 +5,7 @@
  * later. See the COPYING file.
  *
  * @author Christoph Wurst <christoph@winzerhof-wurst.at>
- * @copyright Christoph Wurst 2016
+ * @copyright Christoph Wurst 2017
  */
 
 define(function(require) {
@@ -22,16 +22,21 @@ define(function(require) {
 	 */
 	var ContentView = Marionette.LayoutView.extend({
 		template: Handlebars.compile(ContentTemplate),
+
 		regions: {
 			content: '#wiwu-content'
 		},
+
 		events: {
-			'click .nav li a': '_onNavClick'
+			'click .nav li a': '_onNavClick',
+			'click .sidebar-image': '_onClickLogo'
 		},
+
 		showContent: function(view) {
 			this.content.show(view);
 			window.scrollTo(0, 0);
 		},
+
 		_onNavClick: function(event) {
 			event.preventDefault();
 			var $target = $(event.target);
@@ -40,7 +45,13 @@ define(function(require) {
 				return;
 			}
 			Radio.navigation.trigger('navigate', pageId);
+		},
+
+		_onClickLogo: function(e) {
+			e.preventDefault();
+			Radio.navigation.trigger('navigate', 'default');
 		}
+
 	});
 
 	return ContentView;
