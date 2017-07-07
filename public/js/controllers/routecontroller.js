@@ -87,7 +87,7 @@ define(function(require) {
 				Backbone.history.navigate(page.get('url'));
 				// Track page views
 				if (_paq) {
-					_paq.push(['setCustomUrl', '/#' + page.get('url')]);
+					_paq.push(['setCustomUrl', '/' + page.get('url')]);
 					_paq.push(['setDocumentTitle', page.get('name')]);
 					_paq.push(['trackPageView']);
 				}
