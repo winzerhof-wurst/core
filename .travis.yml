@@ -24,8 +24,6 @@ matrix:
       env: WIWU_TEST=lint_php
     - php: 7.1
       env: WIWU_TEST=lint_php
-    - php: 7.1
-      env: WIWU_TEST=docker
     fast_finish: true
 
 branches:
@@ -64,9 +62,6 @@ script:
 
     # Check PHP syntax
     - if [[ "$WIWU_TEST" = "php_lint" ]]; then find . -name \*.php -not -path './vendor/*' -exec php -l "{}" \;; fi
-
-    # Docker
-    - if [[ "$WIWU_TEST" = "docker" ]]; then ./build/docker-images.sh; fi
 
 after_script:
     - if [[ "$WIWU_TEST" = "php" ]]; then cat storage/logs/laravel.log; fi
