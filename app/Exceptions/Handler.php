@@ -39,7 +39,6 @@ class Handler extends ExceptionHandler {
 			app('sentry')->setRelease(config('app.version', 'unknown'));
 			app('sentry')->set_user_data('anonymous');
 			app('sentry')->captureException($e);
-			\Illuminate\Support\Facades\Log::info('hello');
 		}
 		parent::report($e);
 	}
