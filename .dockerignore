@@ -1,6 +1,8 @@
 *.git/*
 .env
 coverage
+public/js/wiwu.min.js
+public/vendor
 Makefile
 nbproject
 node_modules
@@ -10,3 +12,4 @@ storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/*
 tests
+vendor
