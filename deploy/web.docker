@@ -1,3 +1,0 @@
-FROM winzerhofwurst/nginx:latest
-
-COPY ./ /var/www

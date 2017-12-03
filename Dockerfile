@@ -10,15 +10,7 @@ FROM composer:latest as php-builder
 COPY . /app
 RUN composer install --no-dev -o
 
-FROM php:7.1-apache-jessie
-COPY deploy/apache.conf /etc/apache2/sites-available/wiwu.conf
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libmcrypt-dev \
-    mysql-client \
-    && docker-php-ext-install mcrypt pdo_mysql \
-    && a2enmod rewrite \
-    && a2dissite 000-default.conf \
-    && a2ensite wiwu.conf
+FROM winzerhofwurst/webserver:latest
 COPY . /var/www
 COPY --from=js-builder /app/public/js/wiwu.min.js /var/www/public/js/wiwu.min.js
 COPY --from=js-builder /app/public/vendor /var/www/public/vendor

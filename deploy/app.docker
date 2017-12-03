@@ -1,4 +1,0 @@
-FROM winzerhofwurst/phpfpm:latest
-
-COPY ./ /var/www
-RUN chown -R www-data:www-data /var/www && chmod u+rw /var/www/storage
