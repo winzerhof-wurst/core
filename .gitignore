@@ -8,7 +8,4 @@ Homestead.json
 # Netbeans
 /nbproject/private/
 
-# Bower
-/public/vendor/
-
-public/js/wiwu.min.js
+public/assets

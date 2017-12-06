@@ -9,12 +9,11 @@ $versionHash = md5(config('app.version'));
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<title>Winzerhof Wurst</title>
-
-		<!-- css -->
-		<link href="vendor/bootstrap/dist/css/bootstrap.min.css?v=<?php echo $versionHash; ?>" rel="stylesheet">
-		<link href="css/wiwu.css?v=<?php echo $versionHash; ?>" rel="stylesheet">
 	</head>
 	<body id="app">
+		<input type="hidden" 
+			   id="csrf-token"
+			   value="<?php echo csrf_token(); ?>">
 		<div id="overlay">
 			<div id="loader-container">
 				<div class="loader">Lade</div>
@@ -22,21 +21,9 @@ $versionHash = md5(config('app.version'));
 		</div>
 		<div id="content"></div>
 
-		<script src="vendor/jquery/dist/jquery.min.js?v=<?php echo $versionHash; ?>"></script>
-		<script src="vendor/bootstrap/dist/js/bootstrap.min.js?v=<?php echo $versionHash; ?>"></script>
-
-		@if (App::environment('production'))
-		<script src="vendor/requirejs/require.js?v=<?php echo $versionHash; ?>"></script>
-		<script src="js/wiwu.min.js?v=<?php echo $versionHash; ?>" data-main="js/config.js?v=<?php echo $versionHash; ?>"></script>
-		@else
-		<script src="vendor/requirejs/require.js?v=<?php echo $versionHash; ?>" data-main="js/config.js?v=<?php echo $versionHash; ?>"></script>
-		@endif
+		<script src="assets/wiwu.min.js?v=<?php echo $versionHash; ?>"></script>
+		<link href="css/wiwu.css?v=<?php echo $versionHash; ?>" rel="stylesheet">
 		<script>
-			$(function() {
-				$.ajaxSetup({
-					headers: {'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'}
-				});
-			});
 			@yield('script')
 		</script>
 
