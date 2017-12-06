@@ -15,5 +15,7 @@ COPY . /var/www
 COPY --from=js-builder /app/public/js/wiwu.min.js /var/www/public/js/wiwu.min.js
 COPY --from=js-builder /app/public/vendor /var/www/public/vendor
 COPY --from=php-builder /app/vendor /var/www/vendor
+USER root
 RUN chown -R www-data:www-data /var/www && chmod u+rw /var/www/storage
+USER www-data
 WORKDIR /var/www
