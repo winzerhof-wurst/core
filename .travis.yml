@@ -12,7 +12,6 @@ cache:
     directories:
     - "$HOME/.composer/cache/files"
     - "$HOME/.npm"
-    - "$HOME/.cache/bower"
 
 env:
     global:
@@ -36,7 +35,6 @@ before_script:
 
     # Install js deps
     - npm install
-    - ./node_modules/bower/bin/bower install
 
     # Install php deps
     - composer install
@@ -54,8 +52,8 @@ before_script:
 script:
     - echo "test suite $WIWU_TEST"
 
-    # Optimize/bundle js
-    - ./node_modules/requirejs/bin/r.js -o build.js
+    # Optimize/bundle assets
+    - ./node_modules/webpack/bin/webpack.js --config webpack.prod.config.js
 
     # PHP
     - if [[ "$WIWU_TEST" = "php" ]]; then ./build/test_php.sh; fi
