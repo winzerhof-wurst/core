@@ -14,6 +14,7 @@ COPY . /var/www
 COPY --from=js-builder /app/public/assets /var/www/public/assets
 COPY --from=php-builder /app/vendor /var/www/vendor
 USER root
-RUN chown -R www-data:www-data /var/www && chmod u+rw /var/www/storage
-USER www-data
+RUN chgrp -R 0 /var/www && \
+    chmod g+rw /var/www/storage
+USER 1001
 WORKDIR /var/www
