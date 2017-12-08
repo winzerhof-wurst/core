@@ -15,6 +15,6 @@ COPY --from=js-builder /app/public/assets /var/www/public/assets
 COPY --from=php-builder /app/vendor /var/www/vendor
 USER root
 RUN chgrp -R 0 /var/www && \
-    chmod g+rw /var/www/storage
+    chmod -R g+rw /var/www/storage
 USER 1001
 WORKDIR /var/www
