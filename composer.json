@@ -9,7 +9,7 @@
         "laravel/framework": "5.2.*",
         "doctrine/dbal": "^2.5",
         "predis/predis": "^1.1",
-        "sentry/sentry-laravel": "^0.6.1"
+        "sentry/sentry-laravel": "^0.7.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
