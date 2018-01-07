@@ -2,8 +2,8 @@ sudo: required
 dist: trusty
 language: php
 php:
-    - 7
     - 7.1
+    - 7.2
 
 addons:
     mariadb: "10.0"
@@ -19,9 +19,9 @@ env:
 
 matrix:
     include:
-    - php: 7
-      env: WIWU_TEST=lint_php
     - php: 7.1
+      env: WIWU_TEST=lint_php
+    - php: 7.2
       env: WIWU_TEST=lint_php
     fast_finish: true
 
