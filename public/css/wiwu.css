@@ -287,6 +287,10 @@ hr {
 	max-width: 15em;
 }
 
+.item .out-of-stock {
+	color: #AD1430
+}
+
 /*
  * Loader
  */
