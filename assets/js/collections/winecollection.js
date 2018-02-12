@@ -30,6 +30,11 @@ define(function(require) {
 		url: 'api/wines',
 
 		/**
+		 * @type {string}
+		 */
+		comparator: 'order',
+
+		/**
 		 * @returns {undefined}
 		 */
 		initialize: function() {
