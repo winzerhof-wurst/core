@@ -13,7 +13,7 @@ class WineController extends Controller {
      * @return JsonResponse
      */
     public function index() {
-        return Wine::all();
+        return Wine::where('available', true)->get();
     }
 
 }
