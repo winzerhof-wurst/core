@@ -53,7 +53,7 @@ script:
     - echo "test suite $WIWU_TEST"
 
     # Optimize/bundle assets
-    - ./node_modules/webpack/bin/webpack.js --config webpack.prod.config.js
+    - ./node_modules/webpack-cli/bin/webpack.js --config webpack.prod.config.js
 
     # PHP
     - if [[ "$WIWU_TEST" = "php" ]]; then ./build/test_php.sh; fi
