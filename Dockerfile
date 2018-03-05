@@ -3,7 +3,7 @@ RUN pwd
 COPY . /app
 WORKDIR /app
 RUN npm install
-RUN ./node_modules/webpack/bin/webpack.js --config webpack.prod.config.js
+RUN ./node_modules/webpack-cli/bin/webpack.js --config webpack.prod.config.js
 
 FROM composer:latest as php-builder
 COPY . /app

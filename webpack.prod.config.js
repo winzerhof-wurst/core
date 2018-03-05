@@ -10,8 +10,10 @@ module.exports = merge(baseConfig, {
 				'NODE_ENV': JSON.stringify('production')
 			}
 		}),
-		new webpack.optimize.UglifyJsPlugin(), // Minify everything
-		new webpack.optimize.AggressiveMergingPlugin()// Merge chunks
+		new webpack.optimize.AggressiveMergingPlugin(), // Merge chunks
+		new webpack.LoaderOptionsPlugin({
+			minimize: true
+		})
 	]
 
 });
