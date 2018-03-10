@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "./node_modules/webpack/bin/webpack.js --config webpack.dev.config.js --watch"
+    "dev": "./node_modules/webpack/bin/webpack.js --mode development --config webpack.dev.config.js --watch"
   },
   "devDependencies": {
     "bootstrap-loader": "^2.2.0",
