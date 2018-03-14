@@ -30,7 +30,7 @@ class OrderEventListener {
 			'items' => $event->getItems(),
 			], function(Message $message) use ($event) {
 			$message->from('noreply@winzerhof-wurst.at', 'Winzerhof Wurst');
-			//$message->bcc('office@winzerhof-wurst.at');
+			$message->bcc('office@winzerhof-wurst.at');
 			$message->to($event->getCustomerData()['email']);
 			$message->subject('Bestätigung Ihrer Bestellung auf www.winzerhof-wurst.at');
 		});
