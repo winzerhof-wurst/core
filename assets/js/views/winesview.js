@@ -83,13 +83,15 @@ define(function (require) {
 		_onBeforeSubmit: function (data) {
 			data.wines = this._wines.toJSON();
 			data.revenue = this._wines.reduce(function(memo, wine) {
-				_paq.push(['addEcommerceItem',
-					'W' + wine.get('id'),
-					wine.get('name'),
-					'Wine',
-					wine.get('price'),
-					wine.get('quantity')
-				]);
+				if (wine.get('quantity') > 0) {
+					_paq.push(['addEcommerceItem',
+						'W' + wine.get('id'),
+						wine.get('name'),
+						'Wine',
+						wine.get('price'),
+						wine.get('quantity')
+					]);
+				}
 				return memo + parseFloat(wine.get('price'));
 			}, 0);
 		},
