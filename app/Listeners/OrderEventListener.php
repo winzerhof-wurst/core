@@ -6,7 +6,7 @@ use App\Events\OrderEvent;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Mail\Message;
 
-class EventListener {
+class OrderEventListener {
 
 	/** @var Mailer */
 	private $mailer;

@@ -16,14 +16,12 @@ define(function(require) {
 
 	var AppRouter = require('./approuter');
 	var AppView = require('./views/appview');
-	var CartController = require('./controllers/cartcontroller');
 	var Pages = require('./pages');
 	var Radio = require('./radio');
 	var RouteController = require('./controllers/routecontroller');
+	var RoomService = require('./services/roomservice');
 	var TidbitService = require('./services/tidbitservice');
 	var WineService = require('./services/wineservice');
-
-	var cartController = new CartController();
 
 	/**
 	 * @class App
@@ -85,9 +83,11 @@ define(function(require) {
 		 * @returns {undefined}
 		 */
 		_registerRequestReplyHandlers: function() {
+			var roomService = new RoomService();
 			var tidbitService = new TidbitService();
 			var wineService = new WineService();
 
+			Radio.room.reply('request:send', roomService.sendRoomRequest);
 			Radio.tidbit.reply('entities', tidbitService.getAll);
 			Radio.wine.reply('entities', wineService.getAll);
 		}
