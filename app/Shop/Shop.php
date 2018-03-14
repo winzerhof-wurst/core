@@ -40,7 +40,9 @@ class Shop {
 	 * @param string $comment
 	 */
 	public function saveOrder($customerData, array $wines, array $tidbits, $comment) {
-		DB::transaction(function () use ($customerData, $wines, $tidbits, $comment) {
+		$order = null;
+
+		DB::transaction(function () use (&$order, $customerData, $wines, $tidbits, $comment) {
 			$customer = Customer::create($customerData);
 			$order = new Order();
 			$order->comment = $comment;
@@ -80,6 +82,8 @@ class Shop {
 			}
 			$this->eventDispatcher->fire(new OrderEvent($customerData, $order->items));
 		});
+
+		return $order;
 	}
 
 }

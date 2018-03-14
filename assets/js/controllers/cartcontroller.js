@@ -60,10 +60,13 @@ define(function(require) {
 			$.ajax('api/orders', {
 				method: 'POST',
 				data: data,
-				success: function() {
+				success: function(orderData) {
 					defer.resolve();
 					console.info('conversion finished, revenue=' + data.revenue);
-					_paq.push(['trackGoal', 3, data.revenue]);
+					_paq.push(['trackEcommerceOrder',
+						orderData.id,
+						data.revenue,
+					]);
 				},
 				error: function() {
 					defer.reject();

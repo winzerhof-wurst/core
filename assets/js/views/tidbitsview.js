@@ -1,3 +1,5 @@
+/* global _paq */
+
 /**
  * Winzerhof Wurst – www.winzerhof-wurst.at
  *
@@ -61,6 +63,13 @@ define(function (require) {
 		_onBeforeSubmit: function (data) {
 			data.tidbits = this._tidbits.toJSON();
 			data.revenue = this._tidbits.reduce(function(memo, tidbit) {
+				_paq.push(['addEcommerceItem',
+					'T' + tidbit.get('id'),
+					tidbit.get('name'),
+					'Tidbit',
+					tidbit.get('price'),
+					tidbit.get('quantity')
+				]);
 				return memo + parseFloat(tidbit.get('price'));
 			}, 0);
 		},
