@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\BookingEvent;
 use App\Events\OrderEvent;
-use App\Listeners\EventListener;
+use App\Listeners\BookingEventListener;
+use App\Listeners\OrderEventListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ESP;
 
 class EventServiceProvider extends ESP {
@@ -14,8 +16,11 @@ class EventServiceProvider extends ESP {
 	 * @var array
 	 */
 	protected $listen = [
+		BookingEvent::class => [
+			BookingEventListener::class,
+		],
 		OrderEvent::class => [
-			EventListener::class,
+			OrderEventListener::class,
 		],
 	];
 

@@ -18,6 +18,7 @@ define(function(require) {
 	var channelNames = [
 		'cart',
 		'navigation',
+		'room',
 		'tidbit',
 		'wine'
 	];

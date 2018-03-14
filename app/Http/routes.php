@@ -36,6 +36,9 @@ Route::get('/kontakt', [
 Route::resource('api/orders', 'OrderController', ['only' => [
         'store'
 ]]);
+Route::resource('api/rooms/book', 'RoomController', ['only' => [
+        'store'
+]]);
 Route::resource('api/tidbits', 'TidbitController', ['only' => [
         'index'
 ]]);
