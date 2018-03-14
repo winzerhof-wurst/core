@@ -12,7 +12,6 @@ define(function(require) {
 	'use strict';
 
 	var $ = require('jquery');
-	var Handlebars = require('handlebars');
 	var Marionette = require('backbone.marionette');
 
 	var Radio = require('../radio');

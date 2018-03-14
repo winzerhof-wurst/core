@@ -12,7 +12,6 @@ define(function (require) {
 	'use strict';
 
 	var $ = require('jquery');
-	var Handlebars = require('handlebars');
 
 	var ShopView = require('./shopview');
 	var WineList = require('./winelist');

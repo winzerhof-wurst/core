@@ -11,7 +11,6 @@
 define(function(require) {
 	'use strict';
 
-	var Handlebars = require('handlebars');
 	var Marionette = require('backbone.marionette');
 
 	var NotFoundTemplate = require('../templates/notfound.html');

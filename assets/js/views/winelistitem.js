@@ -12,7 +12,6 @@ define(function(require) {
 	'use strict';
 
 	var _ = require('underscore');
-	var Handlebars = require('handlebars');
 	var Marionette = require('backbone.marionette');
 
 	var WineListItemTemplate = require('../templates/winelistitem.html');
