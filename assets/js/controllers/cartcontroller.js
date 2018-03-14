@@ -1,3 +1,5 @@
+/* global _paq */
+
 /**
  * Winzerhof Wurst – www.winzerhof-wurst.at
  *
@@ -60,6 +62,8 @@ define(function(require) {
 				data: data,
 				success: function() {
 					defer.resolve();
+					console.info('conversion finished, revenue=' + data.revenue);
+					_paq.push(['trackGoal', 3, data.revenue]);
 				},
 				error: function() {
 					defer.reject();

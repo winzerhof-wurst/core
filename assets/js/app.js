@@ -16,12 +16,16 @@ define(function(require) {
 
 	var AppRouter = require('./approuter');
 	var AppView = require('./views/appview');
+	var CartController = require('./controllers/cartcontroller');
 	var Pages = require('./pages');
 	var Radio = require('./radio');
 	var RouteController = require('./controllers/routecontroller');
 	var RoomService = require('./services/roomservice');
 	var TidbitService = require('./services/tidbitservice');
 	var WineService = require('./services/wineservice');
+
+	// Don't delete -> this registers events
+	var cc = new CartController();
 
 	/**
 	 * @class App

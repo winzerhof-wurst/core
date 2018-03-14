@@ -60,6 +60,9 @@ define(function (require) {
 		 */
 		_onBeforeSubmit: function (data) {
 			data.tidbits = this._tidbits.toJSON();
+			data.revenue = this._tidbits.reduce(function(memo, tidbit) {
+				return memo + parseFloat(tidbit.get('price'));
+			}, 0);
 		},
 
 		/**

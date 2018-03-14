@@ -1,3 +1,5 @@
+/* global _paq */
+
 /**
  * Winzerhof Wurst – www.winzerhof-wurst.at
  *
@@ -51,6 +53,7 @@ define(function (require) {
 		 */
 		_onModelQuantityChanged: function () {
 			this.ui.quantityInput.val(this.model.get('quantity'));
+			_paq.push(['trackGoal', 6]);
 		},
 
 		/**
