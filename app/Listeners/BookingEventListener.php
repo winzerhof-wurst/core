@@ -30,7 +30,7 @@ class BookingEventListener {
 			'data' => $event->getBookingData(),
 			], function(Message $message) use ($event) {
 			$message->from('noreply@winzerhof-wurst.at', 'Winzerhof Wurst');
-			//$message->bcc('office@winzerhof-wurst.at');
+			$message->bcc('office@winzerhof-wurst.at');
 			$message->to($event->getBookingData()['email']);
 			$message->subject('Bestätigung Ihrer Zimmeranfrage auf www.winzerhof-wurst.at');
 		});
