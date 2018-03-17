@@ -35,7 +35,7 @@ define(function(require) {
 			});
 			this.add({
 				id: 'about',
-				name: 'Betrieb',
+				name: 'Unser Betrieb',
 				url: 'betrieb'
 			});
 			this.add({
