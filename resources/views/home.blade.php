@@ -6,8 +6,8 @@ $versionHash = md5(config('app.version'));
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="description" content="Unser Familienbetrieb befindet sich in Schrattenthal, der kleinsten Weinstadt im Weinviertel. Der Weinbau hat bei uns Tradition, und unsere Wurzeln reichen bis in das Jahr 1836 zurück.">
+		<meta name="author" content="Winzerhof Wurst, Schrattenthal, Österreich">
 		<title>Winzerhof Wurst</title>
 	</head>
 	<body id="app">
