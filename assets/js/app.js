@@ -11,6 +11,9 @@
 define(function(require) {
 	'use strict';
 
+	// Polyfill
+	require('promise-polyfill/src/polyfill');
+
 	var Backbone = require('backbone');
 	var Marionette = require('backbone.marionette');
 
