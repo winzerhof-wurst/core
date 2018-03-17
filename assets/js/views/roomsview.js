@@ -40,8 +40,6 @@ define(function (require) {
 			email: '#email',
 			submit: '#submit-rooms',
 			successAlert: '#alert-success',
-			errorAlert: '#alert-error',
-			successAlert: '#alert-success',
 			errorAlert: '#alert-error'
 		},
 
