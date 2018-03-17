@@ -8,7 +8,7 @@
  * @copyright Christoph Wurst 2017
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
 	var $ = require('jquery');
@@ -22,10 +22,11 @@ define(function(require) {
 		template: HomeTemplate,
 
 		events: {
-			'click #home-navigation a': '_onNavClick'
+			'click #home-navigation a': '_onNavClick',
+			'click #home-rooms': '_onRoomsClick'
 		},
 
-		_onNavClick: function(event) {
+		_onNavClick: function (event) {
 			event.preventDefault();
 			var $target = $(event.target);
 			var pageId = $target.data('id');
@@ -33,6 +34,12 @@ define(function(require) {
 				return;
 			}
 			Radio.navigation.trigger('navigate', pageId);
+		},
+
+		_onRoomsClick: function (event) {
+			event.preventDefault();
+
+			Radio.navigation.trigger('navigate', 'rooms');
 		}
 	});
 
