@@ -3,8 +3,10 @@
 	{{description}}<br>
 	<small>{{{ text }}}</small>
 </div>
-<div>{{unit}}</div>
-<div>{{price}}€</div>
+<div class="unit-price">
+	{{unit}}<br>
+	€{{price}}
+</div>
 <div class="add-to-cart">
 	{{#if out_of_stock}}
 	<span class="out-of-stock">ausgetrunken</span>

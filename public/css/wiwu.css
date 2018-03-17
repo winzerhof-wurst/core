@@ -275,12 +275,13 @@ hr {
 	background-color: #fafafa;
 }
 
-.item > div {
-	flex-grow: 1;
-}
-
 .item > div.description {
 	flex-grow: 3;
+}
+
+.item > div.unit-price {
+	padding-right: 8px;
+	text-align: center;
 }
 
 .item > div.add-to-cart {
