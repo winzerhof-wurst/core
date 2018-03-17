@@ -60,7 +60,9 @@ define(function (require) {
 			};
 		},
 
-		_onSubmit: function () {
+		_onSubmit: function (event) {
+			event.preventDefault();
+
 			this.$('input, select, button').prop('disabled', true);
 			this.ui.successAlert.hide();
 			this.ui.errorAlert.hide();
