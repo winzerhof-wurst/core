@@ -65,7 +65,7 @@ define(function(require) {
 					console.info('conversion finished, revenue=' + data.revenue);
 					_paq.push(['trackEcommerceOrder',
 						orderData.id,
-						data.revenue,
+						Math.round(data.revenue * 100) / 100
 					]);
 				},
 				error: function() {
