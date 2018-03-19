@@ -7,7 +7,7 @@
   "devDependencies": {
     "bootstrap-loader": "^2.2.0",
     "bootstrap-sass": "^3.3.7",
-    "css-loader": "^0.28.10",
+    "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "handlebars-loader": "github:Waavi/handlebars-loader",
     "node-sass": "^4.8.1",
