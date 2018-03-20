@@ -127,7 +127,7 @@ define(function(require) {
 		_setPageActive: function(id) {
 			$('.nav li').removeClass('active');
 			if (id) {
-				$('.nav li[data-id="' + id + '"').addClass('active');
+				$('.nav li[data-id="' + id + '"]').addClass('active');
 			}
 		}
 
