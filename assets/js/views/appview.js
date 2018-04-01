@@ -62,21 +62,26 @@ define(function(require) {
 			this._overlay.fadeOut();
 		},
 
-		updateTitle: function(title) {
+		updateTitleDescription: function(title, description) {
 			if (title) {
 				document.title = title + ' – Winzerhof Wurst';
 			} else {
 				document.title = 'Winzerhof Wurst';
 			}
+			if (description) {
+				$('meta[name=description]').attr('content', description);
+			} else {
+				$('meta[name=description]').attr('content', 'Unser Familienbetrieb befindet sich in Schrattenthal, der kleinsten Weinstadt im Weinviertel. Der Weinbau hat bei uns Tradition, und unsere Wurzeln reichen bis in das Jahr 1836 zurück.');
+			}
 		},
 
 		showPage: function(id) {
-			// Update title
+			// Update title and description
 			var page = this._pages.get(id);
 			if (page) {
-				this.updateTitle(page.get('name'));
+				this.updateTitleDescription(page.get('name'), page.get('description'));
 			} else {
-				this.updateTitle();
+				this.updateTitleDescription();
 			}
 
 			// Show page content
