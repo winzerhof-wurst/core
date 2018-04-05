@@ -13,6 +13,7 @@ define(function (require) {
 
 	var Marionette = require('backbone.marionette');
 
+	var Radio = require('../radio');
 	var NewsTemplate = require('../templates/news.html');
 
 	/**
@@ -44,6 +45,18 @@ define(function (require) {
 						&& date.getMonth() >= today.getMonth();
 				})
 			};
+		},
+
+		events: {
+			'click a.wines': '_onClickWines'
+		},
+
+		_onClickWines: function (e) {
+			if (!e.ctrlKey) {
+				e.preventDefault();
+
+				Radio.navigation.trigger('navigate', 'wines');
+			}
 		}
 	});
 
