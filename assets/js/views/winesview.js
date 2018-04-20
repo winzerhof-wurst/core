@@ -92,7 +92,7 @@ define(function (require) {
 						wine.get('quantity')
 					]);
 				}
-				return memo + parseFloat(wine.get('price'));
+				return memo + parseFloat(wine.get('price')) * wine.get('quantity');
 			}, 0);
 		},
 
