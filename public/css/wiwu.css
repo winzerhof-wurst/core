@@ -44,6 +44,9 @@ body {
 }
 
 
+#home-wrapper > h1 {
+	color: #AD1430;
+}
 #home-wrapper .lead {
 	color: #ffffcd;
 }
@@ -255,12 +258,16 @@ hr {
 }
 
 /*
- * News
+ * Content
  */
 .content-tile {
 	background-color: #ffffff;
 	margin-bottom: 60px;
-	padding: 25px;
+	padding: 20px;
+	box-shadow: 4px 4px 25px black;
+}
+.content-tile > h2 {
+	word-wrap: break-word;
 }
 
 /*
