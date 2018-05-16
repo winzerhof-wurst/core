@@ -1,193 +1,190 @@
 <h1>G&auml;stezimmer</h1>
-<h2>Gastfreundschaft Wurst</h2>
-<p>
-	Getreu unserem Motto <i>"Komm als Gast und geh als Freund"</i> ist es unser 
-	Bestreben, Sie bestm&ouml;glich zu verw&ouml;hnen und Ihren Aufenthalt bei 
-	uns zu einem unvergesslichen Erlebnis zu machen. Genie&szlig;en Sie die Tage
-	in unserem Haus in den 3 Zimmern mit allem Komfort - ausgezeichnet mit 4
-	Blumen - und Blick auf den liebevoll restaurierten Innenhof.
-</p>
-<p>
-	<i>"Was gibt es Sch&ouml;neres, als den Tag mit einem wunderbaren
-		Fr&uuml;hst&uuml;ck zu beginnen?"</i> Wir verw&ouml;hnen Sie mit
-	hausgemachten Schmankerln und k&ouml;stlichen regionalen Produkten.
-</p>
-<p>
-	Im gem&uuml;tlichen Kellerst&uuml;berl mit historisch steingew&ouml;lbtem
-	Degustationskeller haben Sie die M&ouml;glichkeit unsere Qualit&auml;tsweine
-	zu verkosten. Gerne kredenzen wir auch eine schmackhafte Weinviertler
-	Winzerjause.* <br>
-	<br>
-	<small>* Nur mit Voranmeldung. Preis nach Vereinbarung!</small>
-</p>
-<img class="center-block img-responsive img-rounded" src="images/zimmer_1.jpg" alt="Winzerhof Wurst">
-<hr>
-<h2>Lebensqualit&auml;t Wurst</h2>
-<p>
-	Schrattenthal, die kleinste Weinstadt &Ouml;sterreichs, ist eine <strong>Oase der
-		Stille</strong>. Hier k&ouml;nnen Sie ausspannen und Kraft tanken.
-</p>
-<p>
-	Wenn Sie Aktivit&auml;ten suchen, bietet das gut ausgebaute, beschilderte
-	Radnetz des Retzer Landes Gelegenheit dazu.
-	<a target="_blank" href="http://www.openstreetmap.org/?mlat=48.7169&mlon=15.9075#map=12/48.7169/15.9075&layers=C">
-		Open Street Map</a> enth&auml;t einige sch&ouml;ne Strecken zum Radfahren
-	rund um Schrattenthal.
-</p>
-<p>
-	<i>"Erleben"</i> Sie das Werden des Weines von der Rebe bis ins Glas. Das vermitteln wir Ihnen bei Riedenwanderung und Kellerf&uuml;hrung.
-</p>
-<p>
-	F&uuml;r Ausfl&uuml;ge in die Umgebung bieten sich Pulkau, Eggenburg und
-	etwas weiter entfernt die Bezirksst&auml;dte Retz, Horn und Hollabrunn an.
-	Suchen Sie weltbekannte Kulturg&uuml;ter bzw. Sehensw&uuml;rdigkeiten - in
-	knapp einer Autostunde erreichen Sie Krems, die Wachaumetropole. Nur wenig
-	l&auml;nger brauchen Sie nach Wien.
-</p>
-<img class="center-block img-responsive img-rounded" src="images/zimmer_2.jpg" alt="Winzerhof Wurst">
-<hr>
 
-<h2>Anfrage</h2>
-<form>
-	<div class="row">
-		<div class="form-group col-md-6 col-lg-3">
-			<input type="date" class="form-control" id="date" value="{{today}}" min="{{today}}">
-		</div>
-		<div class="form-group col-md-6 col-lg-3">
-			<select class="form-control" id="stays">
-				<option value="1">1 Nacht</option>
-				<option value="2" selected>2 Nächte</option>
-				<option value="3">3 Nächte</option>
-				<option value="4">4 Nächte</option>
-				<option value="5">5 Nächte</option>
-				<option value="6">6 Nächte</option>
-				<option value="7">7 Nächte</option>
-				<option value="8">8 Nächte</option>
-				<option value="9">9 Nächte</option>
-				<option value="10">10 Nächte</option>
-			</select>
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-md-6 col-lg-3">
-			<select class="form-control" id="persons">
-				<option value="1">1 Person</option>
-				<option value="2" selected>2 Personen</option>
-				<option value="3">3 Personen</option>
-				<option value="4">4 Personen</option>
-				<option value="5">5 Personen</option>
-				<option value="6">6 Personen</option>
-				<option value="7">7 Personen</option>
-				<option value="8">8 Personen</option>
-				<option value="9">9 Personen</option>
-				<option value="10">10 Personen</option>
-			</select>
-		</div>
-		<div class="form-group col-md-6 col-lg-3">
-			<select class="form-control" id="rooms">
-				<option value="1" selected>1 Zimmer</option>
-				<option value="2">2 Zimmer</option>
-				<option value="3">3 Zimmer</option>
-			</select>
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-md-12 col-lg-6">
-			<label for="firstname">Vorname</label>
-			<input type="text" class="form-control" id="firstname" placeholder="Vorname" required>
-		</div>
-		<div class="form-group col-md-12 col-lg-6">
-			<label for="lastname">Nachname</label>
-			<input type="text" class="form-control" id="lastname" placeholder="Nachname" required>
-		</div>
-		<div class="form-group col-md-12 col-lg-6">
-			<label for="firstname">Telefonnummer</label>
-			<input type="tel" class="form-control" id="telephone" placeholder="Telefonnummer" required>
-		</div>
-		<div class="form-group col-md-12 col-lg-6">
-			<label for="lastname">E-Mail</label>
-			<input type="email" class="form-control" id="email" placeholder="E-Mail" required>
-		</div>
-		<div class="form-group col-md-12 col-lg-6">
-			<div id="alert-error"
-			     class="alert alert-danger"
-			     role="alert"
-			     style="display: none">Fehler beim Senden der Anfrage</div>
-			<div id="alert-success"
-			     class="alert alert-success"
-			     role="alert"
-			     style="display: none">Ihre Anfrage wurde gesendet. Vielen Dank!</div>
-			<button type="submit" class="btn btn-default" id="submit-rooms">Anfrage senden</button>
-		</div>
-	</div>
-</form>
+<div class="content-tile">
+	<h2>Gastfreundschaft Wurst</h2>
+	<p>
+		Getreu unserem Motto
+		<i>"Komm als Gast und geh als Freund"</i> ist es unser Bestreben, Sie bestm&ouml;glich zu verw&ouml;hnen und Ihren Aufenthalt
+		bei uns zu einem unvergesslichen Erlebnis zu machen. Genie&szlig;en Sie die Tage in unserem Haus in den 3 Zimmern mit allem
+		Komfort - ausgezeichnet mit 4 Blumen - und Blick auf den liebevoll restaurierten Innenhof.
+	</p>
+	<p>
+		<i>"Was gibt es Sch&ouml;neres, als den Tag mit einem wunderbaren Fr&uuml;hst&uuml;ck zu beginnen?"</i> Wir verw&ouml;hnen
+		Sie mit hausgemachten Schmankerln und k&ouml;stlichen regionalen Produkten.
+	</p>
+	<p>
+		Im gem&uuml;tlichen Kellerst&uuml;berl mit historisch steingew&ouml;lbtem Degustationskeller haben Sie die M&ouml;glichkeit
+		unsere Qualit&auml;tsweine zu verkosten. Gerne kredenzen wir auch eine schmackhafte Weinviertler Winzerjause.*
+		<br>
+		<br>
+		<small>* Nur mit Voranmeldung. Preis nach Vereinbarung!</small>
+	</p>
+	<img class="center-block img-responsive img-rounded" src="images/zimmer_1.jpg" alt="Winzerhof Wurst">
+</div>
 
-<hr>
-<h2>Preise</h2>
-<div class="row">
-	<div class="col-md-6 col-sm-12">
-		<table class="table table-hover table-responsive">
-			<thead>
-			<th>
-				&nbsp;
-			</th>
-			<th>
-				Preis*
-			</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Sonntag bis Donnerstag</td>
-					<td>€29,50</td>
-				</tr>
-				<tr>
-					<td>Donnerstag bis Sonntag und Feiertag</td>
-					<td>€32,50</td>
-				</tr>
-				<tr>
-					<td>Einbettzimmer</td>
-					<td>€36,-</td>
-				</tr>
-				<tr>
-					<td>Aufpreis f&uuml;r eine Nacht</td>
-					<td>€8,-</td>
-				</tr>
-				<tr>
-					<td>Kinder im Zimmer der Eltern**</td>
-					<td>€1,-</td>
-				</tr>
-			</tbody>
-		</table>
-		<p>
-			<strong>Haustiere sind nicht erlaubt!</strong>
-		</p>
-		<p>
-			<small>* Preise pro Person und Nacht, inklusive Fr&uuml;hst&uuml;ck und N&auml;chtigungstaxe</small><br>
-			<small>** Preis pro Kind, Lebenjahr und Nacht. Gilt f&uuml;r Kinder bis 15 Jahre</small>
-		</p>
-	</div>
-	<div class="col-md-6 col-sm-12">
-		<h3>Stornogebühren</h3>
-		Für Stornierungen verrechnen wir folgende Gebühren, bezogen auf den Nächtigungspreis.
-		<table class="table table-hover table-responsive">
-			<tbody>
-				<tr>
-					<td>bis drei Monate</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>drei bis ein Monat</td>
-					<td>40%</td>
-				</tr>
-				<tr>
-					<td>ein Monat bis eine Woche</td>
-					<td>70%</td>
-				</tr>
-				<tr>
-					<td>in der letzten Woche</td>
-					<td>90%</td>
-				</tr>
-			</tbody>
-		</table>
+
+<div class="content-tile">
+	<h2>Lebensqualit&auml;t Wurst</h2>
+	<p>
+		Schrattenthal, die kleinste Weinstadt &Ouml;sterreichs, ist eine
+		<strong>Oase der Stille
+		</strong>. Hier k&ouml;nnen Sie ausspannen und Kraft tanken.
+	</p>
+	<p>
+		Wenn Sie Aktivit&auml;ten suchen, bietet das gut ausgebaute, beschilderte Radnetz des Retzer Landes Gelegenheit dazu.
+		<a target="_blank" href="http://www.openstreetmap.org/?mlat=48.7169&mlon=15.9075#map=12/48.7169/15.9075&layers=C">
+			Open Street Map</a> enth&auml;t einige sch&ouml;ne Strecken zum Radfahren rund um Schrattenthal.
+	</p>
+	<p>
+		<i>"Erleben"</i> Sie das Werden des Weines von der Rebe bis ins Glas. Das vermitteln wir Ihnen bei Riedenwanderung und Kellerf&uuml;hrung.
+	</p>
+	<p>
+		F&uuml;r Ausfl&uuml;ge in die Umgebung bieten sich Pulkau, Eggenburg und etwas weiter entfernt die Bezirksst&auml;dte Retz,
+		Horn und Hollabrunn an. Suchen Sie weltbekannte Kulturg&uuml;ter bzw. Sehensw&uuml;rdigkeiten - in knapp einer Autostunde
+		erreichen Sie Krems, die Wachaumetropole. Nur wenig l&auml;nger brauchen Sie nach Wien.
+	</p>
+	<img class="center-block img-responsive img-rounded" src="images/zimmer_2.jpg" alt="Winzerhof Wurst">
+</div>
+
+<div class="content-tile">
+	<h2>Anfrage</h2>
+	<form>
+		<div class="row">
+			<div class="form-group col-md-6 col-lg-3">
+				<input type="date" class="form-control" id="date" value="{{today}}" min="{{today}}">
+			</div>
+			<div class="form-group col-md-6 col-lg-3">
+				<select class="form-control" id="stays">
+					<option value="1">1 Nacht</option>
+					<option value="2" selected>2 Nächte</option>
+					<option value="3">3 Nächte</option>
+					<option value="4">4 Nächte</option>
+					<option value="5">5 Nächte</option>
+					<option value="6">6 Nächte</option>
+					<option value="7">7 Nächte</option>
+					<option value="8">8 Nächte</option>
+					<option value="9">9 Nächte</option>
+					<option value="10">10 Nächte</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6 col-lg-3">
+				<select class="form-control" id="persons">
+					<option value="1">1 Person</option>
+					<option value="2" selected>2 Personen</option>
+					<option value="3">3 Personen</option>
+					<option value="4">4 Personen</option>
+					<option value="5">5 Personen</option>
+					<option value="6">6 Personen</option>
+					<option value="7">7 Personen</option>
+					<option value="8">8 Personen</option>
+					<option value="9">9 Personen</option>
+					<option value="10">10 Personen</option>
+				</select>
+			</div>
+			<div class="form-group col-md-6 col-lg-3">
+				<select class="form-control" id="rooms">
+					<option value="1" selected>1 Zimmer</option>
+					<option value="2">2 Zimmer</option>
+					<option value="3">3 Zimmer</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12 col-lg-6">
+				<label for="firstname">Vorname</label>
+				<input type="text" class="form-control" id="firstname" placeholder="Vorname" required>
+			</div>
+			<div class="form-group col-md-12 col-lg-6">
+				<label for="lastname">Nachname</label>
+				<input type="text" class="form-control" id="lastname" placeholder="Nachname" required>
+			</div>
+			<div class="form-group col-md-12 col-lg-6">
+				<label for="firstname">Telefonnummer</label>
+				<input type="tel" class="form-control" id="telephone" placeholder="Telefonnummer" required>
+			</div>
+			<div class="form-group col-md-12 col-lg-6">
+				<label for="lastname">E-Mail</label>
+				<input type="email" class="form-control" id="email" placeholder="E-Mail" required>
+			</div>
+			<div class="form-group col-md-12 col-lg-6">
+				<div id="alert-error" class="alert alert-danger" role="alert" style="display: none">Fehler beim Senden der Anfrage</div>
+				<div id="alert-success" class="alert alert-success" role="alert" style="display: none">Ihre Anfrage wurde gesendet. Vielen Dank!</div>
+				<button type="submit" class="btn btn-default" id="submit-rooms">Anfrage senden</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="content-tile">
+	<h2>Preise</h2>
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<table class="table table-hover table-responsive">
+				<thead>
+					<th>
+						&nbsp;
+					</th>
+					<th>
+						Preis*
+					</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Sonntag bis Donnerstag</td>
+						<td>€29,50</td>
+					</tr>
+					<tr>
+						<td>Donnerstag bis Sonntag und Feiertag</td>
+						<td>€32,50</td>
+					</tr>
+					<tr>
+						<td>Einbettzimmer</td>
+						<td>€36,-</td>
+					</tr>
+					<tr>
+						<td>Aufpreis f&uuml;r eine Nacht</td>
+						<td>€8,-</td>
+					</tr>
+					<tr>
+						<td>Kinder im Zimmer der Eltern**</td>
+						<td>€1,-</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				<strong>Haustiere sind nicht erlaubt!</strong>
+			</p>
+			<p>
+				<small>* Preise pro Person und Nacht, inklusive Fr&uuml;hst&uuml;ck und N&auml;chtigungstaxe</small>
+				<br>
+				<small>** Preis pro Kind, Lebenjahr und Nacht. Gilt f&uuml;r Kinder bis 15 Jahre</small>
+			</p>
+		</div>
+		<div class="col-md-6 col-sm-12">
+			<h3>Stornogebühren</h3>
+			Für Stornierungen verrechnen wir folgende Gebühren, bezogen auf den Nächtigungspreis.
+			<table class="table table-hover table-responsive">
+				<tbody>
+					<tr>
+						<td>bis drei Monate</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>drei bis ein Monat</td>
+						<td>40%</td>
+					</tr>
+					<tr>
+						<td>ein Monat bis eine Woche</td>
+						<td>70%</td>
+					</tr>
+					<tr>
+						<td>in der letzten Woche</td>
+						<td>90%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

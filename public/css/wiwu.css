@@ -1,5 +1,6 @@
 body {
 	font-size: 16px;
+	background-color: #4C4C3C;
 }
 
 #overlay {
@@ -87,8 +88,8 @@ h1.cover-heading {
 /*
  * Base
  */
-#content-wrapper {
-	padding-top: 50px;
+#wiwu-content {
+	padding-top: 70px;
 }
 
 @media (min-width: 768px) {
@@ -130,24 +131,15 @@ h1.cover-heading {
 
 .navbar-fixed-top {
 	background-color: #ffffcd;
-	border: 0px;
 }
 .navbar-default .navbar-brand {
 	color: #ad1430;
 }
 .navbar-nav > li {
-	margin: 5px;
-	padding: -2px;
-	border: 1px solid #abac44;
 	text-transform: uppercase;
 }
 .navbar-nav > li > a {
 	color: #abac44 !important;
-}
-.navbar-nav > .active,
-.navbar-nav > li:hover,
-.navbar-nav > li:focus {
-	border: 1px solid #ad1430 !important;
 }
 .navbar-nav > .active > a,
 .navbar-nav > li > a:hover,
@@ -157,9 +149,6 @@ h1.cover-heading {
 }
 
 @media (min-width: 768px) {
-	.navbar-fixed-top {
-		height: 113px;
-	}
 	.navbar-fixed-top > .container-fluid {
 		margin: 0;
 		padding: 0;
@@ -248,13 +237,30 @@ h1.cover-heading {
 	margin-top: 0;
 }
 
-h1, h2, h3, h4 {
+h1 {
+	color: #D4D4A8;
+	font-size: 60px;
+}
+h2 {
+	font-size: 40px;
+}
+
+h2, h3, h4 {
 	color: #ad1430;
 }
 
 hr {
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+/*
+ * News
+ */
+.content-tile {
+	background-color: #ffffff;
+	margin-bottom: 60px;
+	padding: 25px;
 }
 
 /*
