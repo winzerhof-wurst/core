@@ -10,7 +10,7 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
 	var _ = require('underscore');
@@ -21,7 +21,7 @@ define(function(require) {
 	/**
 	 * @class RouteController
 	 */
-	var RouteController = function(appView) {
+	var RouteController = function (appView) {
 		this.initialize(appView);
 	};
 
@@ -41,46 +41,50 @@ define(function(require) {
 		 * @param {object} options
 		 * @returns {undefined}
 		 */
-		initialize: function(options) {
+		initialize: function (options) {
 			this._appView = options.appView;
 			this._pages = options.pages;
 
 			Radio.navigation.on('navigate', _.bind(this._onNavigate, this));
 		},
 
-		default: function() {
+		default: function () {
 			this._appView.showPage('default');
 		},
 
-		notFound: function() {
+		notFound: function () {
 			this._appView.showPage('notfound');
 		},
 
-		news: function() {
+		news: function () {
 			this._appView.showPage('news');
 		},
 
-		about: function() {
+		about: function () {
 			this._appView.showPage('about');
 		},
 
-		contact: function() {
+		contact: function () {
 			this._appView.showPage('contact');
 		},
 
-		rooms: function() {
+		imprint: function () {
+			this._appView.showPage('imprint');
+		},
+
+		rooms: function () {
 			this._appView.showPage('rooms');
 		},
 
-		tidbits: function() {
+		tidbits: function () {
 			this._appView.showPage('tidbits');
 		},
 
-		wines: function() {
+		wines: function () {
 			this._appView.showPage('wines');
 		},
 
-		_onNavigate: function(pageId) {
+		_onNavigate: function (pageId) {
 			this._appView.showPage(pageId);
 			var page = this._pages.get(pageId);
 			if (page) {

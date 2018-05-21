@@ -68,6 +68,12 @@ define(function (require) {
 				description: 'Hier finden Sie unsere Kontaktdaten und die Anreise nach Schrattenthal.',
 				url: 'kontakt'
 			});
+			this.add({
+				id: 'imprint',
+				name: 'Impressum',
+				description: 'Unser Impressum und unsere allgemeinen Geschäftsbedingungen',
+				url: 'impressum'
+			});
 		}
 
 	});

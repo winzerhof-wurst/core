@@ -32,6 +32,9 @@ Route::get('/schmankerl', [
 Route::get('/kontakt', [
     'uses' => 'PageController@index',
 ]);
+Route::get('/impressum', [
+    'uses' => 'PageController@index',
+]);
 
 Route::resource('api/orders', 'OrderController', ['only' => [
         'store'

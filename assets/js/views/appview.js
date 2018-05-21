@@ -8,7 +8,7 @@
  * @copyright Christoph Wurst 2016
  */
 
-define(function(require) {
+define(function (require) {
 	'use strict';
 
 	var $ = require('jquery');
@@ -20,6 +20,7 @@ define(function(require) {
 	var ContactView = require('./contactview');
 	var ContentView = require('./contentview');
 	var HomeView = require('./homeview');
+	var ImprintView = require('./imprintview');
 	var LoadingView = require('./loadingview');
 	var NewsView = require('./newsview');
 	var NotFoundView = require('./notfoundview');
@@ -50,19 +51,19 @@ define(function(require) {
 			navigationMobile: '#navigation-mobile'
 		},
 
-		initialize: function(pages) {
+		initialize: function (pages) {
 			this._pages = pages;
 
 			this._overlay = $('#overlay');
 			this._home = $('#home');
 		},
 
-		show: function() {
+		show: function () {
 			this.content.show(new LoadingView());
 			this._overlay.fadeOut();
 		},
 
-		updateTitleDescription: function(title, description) {
+		updateTitleDescription: function (title, description) {
 			if (title) {
 				document.title = title + ' – Winzerhof Wurst';
 			} else {
@@ -75,7 +76,7 @@ define(function(require) {
 			}
 		},
 
-		showPage: function(id) {
+		showPage: function (id) {
 			// Update title and description
 			var page = this._pages.get(id);
 			if (page) {
@@ -107,6 +108,9 @@ define(function(require) {
 				case 'contact':
 					this._showContentView(new ContactView());
 					break;
+				case 'imprint':
+					this._showContentView(new ImprintView());
+					break;
 				case 'notfound':
 				default:
 					console.warn('unknown page ' + id);
@@ -116,20 +120,20 @@ define(function(require) {
 			this._setPageActive(id);
 		},
 
-		_showHome: function() {
+		_showHome: function () {
 			this.content.show(new HomeView());
 		},
 
-		_showContentView: function(view) {
+		_showContentView: function (view) {
 			this._showContent();
 			this.content.currentView.showContent(view);
 		},
 
-		_showContent: function() {
+		_showContent: function () {
 			this.content.show(new ContentView());
 		},
 
-		_setPageActive: function(id) {
+		_setPageActive: function (id) {
 			$('.nav li').removeClass('active');
 			if (id) {
 				$('.nav li[data-id="' + id + '"]').addClass('active');

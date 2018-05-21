@@ -226,11 +226,18 @@ h1.cover-heading {
  * Main content
  */
 
-.main {
+.main, .footer {
 	padding: 20px;
 }
+.footer {
+	margin-bottom: 60px;
+	text-align: center;
+}
+.footer, .footer a {
+	color: #D4D4A8;
+}
 @media (min-width: 768px) {
-	.main {
+	.main, .footer {
 		padding-right: 40px;
 		padding-left: 40px;
 		max-width: 1000px;
