@@ -24,6 +24,7 @@ define(function (require) {
 	var LoadingView = require('./loadingview');
 	var NewsView = require('./newsview');
 	var NotFoundView = require('./notfoundview');
+	var PrivacyView = require('./privacyview');
 	var RoomsView = require('./roomsview');
 	var TidbitsView = require('./tidbitsview');
 	var WinesView = require('./winesview');
@@ -110,6 +111,9 @@ define(function (require) {
 					break;
 				case 'imprint':
 					this._showContentView(new ImprintView());
+					break;
+				case 'privacy':
+					this._showContentView(new PrivacyView());
 					break;
 				case 'notfound':
 				default:

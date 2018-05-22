@@ -72,6 +72,10 @@ define(function (require) {
 			this._appView.showPage('imprint');
 		},
 
+		privacy: function () {
+			this._appView.showPage('privacy');
+		},
+
 		rooms: function () {
 			this._appView.showPage('rooms');
 		},

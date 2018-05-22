@@ -17,6 +17,9 @@ Route::get('/', [
 Route::get('/aktuelles', [
     'uses' => 'PageController@index',
 ]);
+Route::get('/datenschutz', [
+    'uses' => 'PageController@index',
+]);
 Route::get('/betrieb', [
     'uses' => 'PageController@index',
 ]);

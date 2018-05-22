@@ -74,6 +74,12 @@ define(function (require) {
 				description: 'Unser Impressum und unsere allgemeinen Geschäftsbedingungen',
 				url: 'impressum'
 			});
+			this.add({
+				id: 'privacy',
+				name: 'Datenschutz',
+				description: 'Unsere Datenschutzbestimmungen',
+				url: 'datenschutz'
+			});
 		}
 
 	});
