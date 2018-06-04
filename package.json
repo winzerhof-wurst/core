@@ -29,6 +29,6 @@
     "handlebars": "^4.0.11",
     "jquery": "^3.3.1",
     "promise-polyfill": "^7.1.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.9.1"
   }
 }
