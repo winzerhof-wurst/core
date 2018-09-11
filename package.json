@@ -25,7 +25,7 @@
     "backbone.marionette": "^2.4.7",
     "backbone.radio": "^2.0.0",
     "backbone.wreqr": "^1.4.0",
-    "es6-promise": "^4.2.4",
+    "es6-promise": "^4.2.5",
     "handlebars": "^4.0.12",
     "jquery": "^3.3.1",
     "promise-polyfill": "^7.1.2",
