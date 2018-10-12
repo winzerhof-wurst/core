@@ -1,4 +1,4 @@
-FROM node:10.11.0 as js-builder
+FROM node:10.12.0 as js-builder
 RUN pwd
 COPY . /app
 WORKDIR /app
