@@ -11,34 +11,6 @@
   |
  */
 
-Route::get('/', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/aktuelles', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/datenschutz', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/betrieb', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/gaestezimmer', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/weinkarte', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/schmankerl', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/kontakt', [
-    'uses' => 'PageController@index',
-]);
-Route::get('/impressum', [
-    'uses' => 'PageController@index',
-]);
-
 Route::resource('api/orders', 'OrderController', ['only' => [
         'store'
 ]]);
