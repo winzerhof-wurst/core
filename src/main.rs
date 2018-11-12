@@ -26,7 +26,7 @@ use listenfd::ListenFd;
 mod database;
 mod services;
 
-use services::shop::{FetchWines, WinesActor};
+use services::shop::{FetchTidbits, FetchWines, WinesActor};
 
 pub fn establish_db_connection() -> PgConnection {
     dotenv().ok();
@@ -35,7 +35,18 @@ pub fn establish_db_connection() -> PgConnection {
     PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
 }
 
-fn index(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Error = Error>> {
+fn fetch_tidbits(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Error = Error>> {
+    req.state()
+        .wines
+        .send(FetchTidbits {})
+        .from_err()
+        .and_then(|res| match res {
+            Ok(user) => Ok(HttpResponse::Ok().json(user)),
+            Err(_) => Ok(HttpResponse::InternalServerError().into()),
+        }).responder()
+}
+
+fn fetch_wines(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Error = Error>> {
     req.state()
         .wines
         .send(FetchWines {})
@@ -57,7 +68,8 @@ fn main() {
 
         App::with_state(State {
             wines: addr.clone(),
-        }).resource("/wines", |r| r.method(Method::GET).a(index))
+        }).resource("/tidbits", |r| r.method(Method::GET).a(fetch_tidbits))
+        .resource("/wines", |r| r.method(Method::GET).a(fetch_wines))
     });
 
     server = if let Some(l) = listenfd.take_tcp_listener(0).unwrap() {
