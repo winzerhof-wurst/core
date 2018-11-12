@@ -3,7 +3,6 @@ extern crate actix_web;
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
-#[macro_use]
 extern crate failure;
 extern crate futures;
 extern crate http;
@@ -15,7 +14,7 @@ extern crate serde_derive;
 use std::env;
 
 use actix::prelude::*;
-use actix_web::{server, App, AsyncResponder, HttpRequest, HttpResponse, Responder};
+use actix_web::{server, App, AsyncResponder, HttpRequest, HttpResponse};
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
 use dotenv::dotenv;
