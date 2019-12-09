@@ -117,7 +117,7 @@ fn create_customer(msg: &PostOrder, conn: &PgConnection) -> Result<Customer, Err
 }
 
 fn save_order(msg: &PostOrder, customer: &Customer, conn: &PgConnection) -> Result<(), Error> {
-    for id in msg.wine_ids {
+    for _ in &msg.wine_ids {
         use database::schema::orders::dsl::*;
 
         let order = insert_into(orders)
