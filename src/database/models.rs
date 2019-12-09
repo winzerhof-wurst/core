@@ -16,6 +16,14 @@ pub struct Customer {
 }
 
 #[derive(Queryable, Serialize)]
+pub struct Order {
+    pub id: i32,
+    pub customer_id: String,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime,
+}
+
+#[derive(Queryable, Serialize)]
 pub struct Tidbit {
     pub id: i32,
     pub name: String,

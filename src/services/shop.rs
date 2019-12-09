@@ -111,8 +111,21 @@ fn create_customer(msg: &PostOrder, conn: &PgConnection) -> Result<Customer, Err
             telephone.eq(&msg.telephone),
             fax.eq(&msg.fax),
             email.eq(&msg.email),
-        )).get_result(conn)?;
+        ))
+        .get_result(conn)?;
     Ok(customer)
+}
+
+fn save_order(msg: &PostOrder, customer: &Customer, conn: &PgConnection) -> Result<(), Error> {
+    for id in msg.wine_ids {
+        use database::schema::orders::dsl::*;
+
+        let order = insert_into(orders)
+            .values((customer_id.eq(customer.id),))
+            .execute(conn)?;
+    }
+
+    Ok(())
 }
 
 impl Handler<PostOrder> for WinesActor {
@@ -120,6 +133,8 @@ impl Handler<PostOrder> for WinesActor {
 
     fn handle(&mut self, msg: PostOrder, _: &mut Self::Context) -> Self::Result {
         let customer = create_customer(&msg, &self.0)?;
+
+        save_order(&msg, &customer, &self.0)?;
 
         Ok(())
     }

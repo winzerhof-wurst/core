@@ -15,6 +15,15 @@ table! {
 }
 
 table! {
+    orders (id) {
+        id -> Int4,
+        customer_id -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
     tidbits (id) {
         id -> Int4,
         name -> Varchar,
@@ -28,8 +37,11 @@ table! {
     }
 }
 
+joinable!(orders -> customers (customer_id));
+
 allow_tables_to_appear_in_same_query!(
     customers,
+    orders,
     tidbits,
     wines,
 );

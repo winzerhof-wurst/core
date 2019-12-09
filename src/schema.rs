@@ -5,6 +5,7 @@ table! {
         lastname -> Varchar,
         street -> Varchar,
         nr -> Varchar,
+        zipcode -> Int4,
         city -> Varchar,
         telephone -> Varchar,
         fax -> Varchar,
