@@ -42,9 +42,10 @@ fn fetch_tidbits(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Er
         .send(FetchTidbits {})
         .from_err()
         .and_then(|res| match res {
-            Ok(user) => Ok(HttpResponse::Ok().json(user)),
-            Err(_) => Ok(HttpResponse::InternalServerError().into()),
-        }).responder()
+                      Ok(user) => Ok(HttpResponse::Ok().json(user)),
+                      Err(_) => Ok(HttpResponse::InternalServerError().into()),
+                  })
+        .responder()
 }
 
 fn fetch_wines(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Error = Error>> {
@@ -53,9 +54,10 @@ fn fetch_wines(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Erro
         .send(FetchWines {})
         .from_err()
         .and_then(|res| match res {
-            Ok(user) => Ok(HttpResponse::Ok().json(user)),
-            Err(_) => Ok(HttpResponse::InternalServerError().into()),
-        }).responder()
+                      Ok(user) => Ok(HttpResponse::Ok().json(user)),
+                      Err(_) => Ok(HttpResponse::InternalServerError().into()),
+                  })
+        .responder()
 }
 
 #[derive(Deserialize)]
@@ -81,32 +83,33 @@ fn post_order(req: &HttpRequest<State>) -> Box<Future<Item = HttpResponse, Error
         .and_then(move |order: Order| {
             req.state()
                 .wines
-                .send(PostOrder::new(
-                    order.firstname.to_owned(),
-                    order.lastname.to_owned(),
-                    order.street.to_owned(),
-                    order.nr.to_owned(),
-                    order.zipcode.to_owned(),
-                    order.city.to_owned(),
-                    order.email.to_owned(),
-                    order.telephone.to_owned(),
-                    order.fax.to_owned(),
-                    order.comment.to_owned(),
-                    order
-                        .tidbit_ids
-                        .clone()
-                        .map(|ids| ids.clone())
-                        .unwrap_or(vec![]),
-                    order
-                        .wine_ids
-                        .clone()
-                        .map(|ids| ids.clone())
-                        .unwrap_or(vec![]),
-                )).from_err()
-        }).and_then(|res| match res {
-            Ok(user) => Ok(HttpResponse::Ok().json(user)),
-            Err(_) => Ok(HttpResponse::InternalServerError().into()),
-        }).responder()
+                .send(PostOrder::new(order.firstname.to_owned(),
+                                     order.lastname.to_owned(),
+                                     order.street.to_owned(),
+                                     order.nr.to_owned(),
+                                     order.zipcode.to_owned(),
+                                     order.city.to_owned(),
+                                     order.email.to_owned(),
+                                     order.telephone.to_owned(),
+                                     order.fax.to_owned(),
+                                     order.comment.to_owned(),
+                                     order
+                                         .tidbit_ids
+                                         .clone()
+                                         .map(|ids| ids.clone())
+                                         .unwrap_or(vec![]),
+                                     order
+                                         .wine_ids
+                                         .clone()
+                                         .map(|ids| ids.clone())
+                                         .unwrap_or(vec![])))
+                .from_err()
+        })
+        .and_then(|res| match res {
+                      Ok(user) => Ok(HttpResponse::Ok().json(user)),
+                      Err(_) => Ok(HttpResponse::InternalServerError().into()),
+                  })
+        .responder()
 }
 
 struct State {
@@ -118,11 +121,10 @@ fn main() {
     let mut server = server::new(|| {
         let addr = SyncArbiter::start(3, || WinesActor::new(establish_db_connection()));
 
-        App::with_state(State {
-            wines: addr.clone(),
-        }).resource("/tidbits", |r| r.method(Method::GET).a(fetch_tidbits))
-        .resource("/wines", |r| r.method(Method::GET).a(fetch_wines))
-        .resource("/api/orders", |r| r.method(Method::POST).a(post_order))
+        App::with_state(State { wines: addr.clone() })
+            .resource("/tidbits", |r| r.method(Method::GET).a(fetch_tidbits))
+            .resource("/wines", |r| r.method(Method::GET).a(fetch_wines))
+            .resource("/api/orders", |r| r.method(Method::POST).a(post_order))
     });
 
     server = if let Some(l) = listenfd.take_tcp_listener(0).unwrap() {

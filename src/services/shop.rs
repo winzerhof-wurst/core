@@ -43,20 +43,19 @@ impl Message for FetchWines {
 }
 
 impl PostOrder {
-    pub fn new(
-        firstname: String,
-        lastname: String,
-        street: String,
-        nr: String,
-        zipcode: usize,
-        city: String,
-        email: String,
-        telephone: String,
-        fax: String,
-        comment: Option<String>,
-        tidbit_ids: Vec<i32>,
-        wine_ids: Vec<i32>,
-    ) -> Self {
+    pub fn new(firstname: String,
+               lastname: String,
+               street: String,
+               nr: String,
+               zipcode: usize,
+               city: String,
+               email: String,
+               telephone: String,
+               fax: String,
+               comment: Option<String>,
+               tidbit_ids: Vec<i32>,
+               wine_ids: Vec<i32>)
+               -> Self {
         PostOrder {
             firstname: firstname,
             lastname: lastname,
@@ -102,16 +101,14 @@ fn create_customer(msg: &PostOrder, conn: &PgConnection) -> Result<Customer, Err
     use database::schema::customers::dsl::*;
 
     let customer = insert_into(customers)
-        .values((
-            firstname.eq(&msg.firstname),
-            lastname.eq(&msg.lastname),
-            street.eq(&msg.street),
-            nr.eq(&msg.nr),
-            city.eq(&msg.city),
-            telephone.eq(&msg.telephone),
-            fax.eq(&msg.fax),
-            email.eq(&msg.email),
-        ))
+        .values((firstname.eq(&msg.firstname),
+                 lastname.eq(&msg.lastname),
+                 street.eq(&msg.street),
+                 nr.eq(&msg.nr),
+                 city.eq(&msg.city),
+                 telephone.eq(&msg.telephone),
+                 fax.eq(&msg.fax),
+                 email.eq(&msg.email)))
         .get_result(conn)?;
     Ok(customer)
 }
