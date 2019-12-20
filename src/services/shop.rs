@@ -1,25 +1,12 @@
-use actix::prelude::*;
 use diesel::dsl::insert_into;
 use diesel::prelude::*;
 use failure::Error;
 
-use database::models::{Customer, Tidbit, Wine};
+use crate::database;
+use crate::database::models::{Customer, Tidbit, Wine};
 
-pub struct WinesActor(PgConnection);
-
-impl WinesActor {
-    pub fn new(conn: PgConnection) -> Self {
-        WinesActor(conn)
-    }
-}
-
-impl Actor for WinesActor {
-    type Context = SyncContext<Self>;
-}
-
-pub struct FetchTidbits {}
-pub struct FetchWines {}
-pub struct PostOrder {
+#[derive(Deserialize)]
+pub struct Order {
     firstname: String,
     lastname: String,
     street: String,
@@ -30,92 +17,43 @@ pub struct PostOrder {
     telephone: String,
     fax: String,
     comment: Option<String>,
-    tidbit_ids: Vec<i32>,
-    wine_ids: Vec<i32>,
+    tidbit_ids: Option<Vec<i32>>,
+    wine_ids: Option<Vec<i32>>,
 }
 
-impl Message for FetchTidbits {
-    type Result = Result<Vec<Tidbit>, Error>;
+pub fn fetch_tidbits(conn: &database::Connection) -> Result<Vec<Tidbit>, Error> {
+    use crate::database::schema::tidbits::dsl::*;
+
+    tidbits.load(conn).map_err(Error::from)
 }
 
-impl Message for FetchWines {
-    type Result = Result<Vec<Wine>, Error>;
+pub fn fetch_wines(conn: &database::Connection) -> Result<Vec<Tidbit>, Error> {
+    use crate::database::schema::wines::dsl::*;
+
+    wines.load(conn).map_err(Error::from)
 }
 
-impl PostOrder {
-    pub fn new(firstname: String,
-               lastname: String,
-               street: String,
-               nr: String,
-               zipcode: usize,
-               city: String,
-               email: String,
-               telephone: String,
-               fax: String,
-               comment: Option<String>,
-               tidbit_ids: Vec<i32>,
-               wine_ids: Vec<i32>)
-               -> Self {
-        PostOrder {
-            firstname: firstname,
-            lastname: lastname,
-            street: street,
-            nr: nr,
-            zipcode: zipcode,
-            city: city,
-            email: email,
-            telephone: telephone,
-            fax: fax,
-            comment: comment,
-            tidbit_ids: tidbit_ids,
-            wine_ids: wine_ids,
-        }
-    }
-}
-
-impl Message for PostOrder {
-    type Result = Result<(), Error>;
-}
-
-impl Handler<FetchTidbits> for WinesActor {
-    type Result = Result<Vec<Tidbit>, Error>;
-
-    fn handle(&mut self, _msg: FetchTidbits, _: &mut Self::Context) -> Self::Result {
-        use database::schema::tidbits::dsl::*;
-
-        tidbits.load(&self.0).map_err(Error::from)
-    }
-}
-
-impl Handler<FetchWines> for WinesActor {
-    type Result = Result<Vec<Wine>, Error>;
-
-    fn handle(&mut self, _msg: FetchWines, _: &mut Self::Context) -> Self::Result {
-        use database::schema::wines::dsl::*;
-
-        wines.load(&self.0).map_err(Error::from)
-    }
-}
-
-fn create_customer(msg: &PostOrder, conn: &PgConnection) -> Result<Customer, Error> {
-    use database::schema::customers::dsl::*;
+fn create_customer(order: &Order, conn: &database::Connection) -> Result<Customer, Error> {
+    use crate::database::schema::customers::dsl::*;
 
     let customer = insert_into(customers)
-        .values((firstname.eq(&msg.firstname),
-                 lastname.eq(&msg.lastname),
-                 street.eq(&msg.street),
-                 nr.eq(&msg.nr),
-                 city.eq(&msg.city),
-                 telephone.eq(&msg.telephone),
-                 fax.eq(&msg.fax),
-                 email.eq(&msg.email)))
+        .values((
+            firstname.eq(&order.firstname),
+            lastname.eq(&order.lastname),
+            street.eq(&order.street),
+            nr.eq(&order.nr),
+            city.eq(&order.city),
+            telephone.eq(&order.telephone),
+            fax.eq(&order.fax),
+            email.eq(&order.email),
+        ))
         .get_result(conn)?;
     Ok(customer)
 }
 
-fn save_order(msg: &PostOrder, customer: &Customer, conn: &PgConnection) -> Result<(), Error> {
+fn save_order(msg: &Order, customer: &Customer, conn: &database::Connection) -> Result<(), Error> {
     for _ in &msg.wine_ids {
-        use database::schema::orders::dsl::*;
+        use crate::database::schema::orders::dsl::*;
 
         let order = insert_into(orders)
             .values((customer_id.eq(customer.id),))
@@ -125,14 +63,10 @@ fn save_order(msg: &PostOrder, customer: &Customer, conn: &PgConnection) -> Resu
     Ok(())
 }
 
-impl Handler<PostOrder> for WinesActor {
-    type Result = Result<(), Error>;
+pub fn post_order(order: Order, conn: &database::Connection) -> Result<(), Error> {
+    let customer = create_customer(&order, conn)?;
 
-    fn handle(&mut self, msg: PostOrder, _: &mut Self::Context) -> Self::Result {
-        let customer = create_customer(&msg, &self.0)?;
+    save_order(&order, &customer, conn)?;
 
-        save_order(&msg, &customer, &self.0)?;
-
-        Ok(())
-    }
+    Ok(())
 }
