@@ -48,8 +48,8 @@ async fn main() -> io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .data(pool.clone())
-            .service(web::resource("/tidbits").route(web::get().to(fetch_tidbits)))
-            .service(web::resource("/wines").route(web::get().to(fetch_wines)))
+            .service(web::resource("/api/tidbits").route(web::get().to(fetch_tidbits)))
+            .service(web::resource("/api/wines").route(web::get().to(fetch_wines)))
             .service(web::resource("/api/orders").route(web::post().to(post_order)))
     })
     .bind("127.0.0.1:3000")?
