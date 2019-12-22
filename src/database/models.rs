@@ -7,8 +7,9 @@ pub struct Customer {
     pub lastname: String,
     pub street: String,
     pub nr: String,
-    pub zip_core: i32,
     pub city: String,
+    pub zip_core: i32,
+    pub country_code: String,
     pub telephone: String,
     pub fax: String,
     pub email: String,
@@ -20,6 +21,7 @@ pub struct Customer {
 pub struct Order {
     pub id: i32,
     pub customer_id: i32,
+    pub comment: Option<String>,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
 }
@@ -39,10 +41,26 @@ pub struct OrderItem {
 pub struct Tidbit {
     pub id: i32,
     pub name: String,
+    pub price: i32,
+    pub tax_rate: i32,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime,
 }
 
 #[derive(Queryable, Serialize)]
 pub struct Wine {
     pub id: i32,
     pub name: String,
+    pub price: i32,
+    pub year: i32,
+    pub tax_rate: i32,
+    pub r#type: String,
+    pub description: String,
+    pub text: String,
+    pub unit: String,
+    pub available: bool,
+    pub out_of_stock: bool,
+    pub order: i32,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime,
 }

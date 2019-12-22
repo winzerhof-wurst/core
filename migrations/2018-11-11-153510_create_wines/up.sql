@@ -1,4 +1,0 @@
-CREATE TABLE wines (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL
-)

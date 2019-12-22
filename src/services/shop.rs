@@ -11,7 +11,7 @@ pub struct Order {
     lastname: String,
     street: String,
     nr: String,
-    zipcode: usize,
+    zipcode: i32,
     city: String,
     email: String,
     telephone: String,
@@ -27,7 +27,7 @@ pub fn fetch_tidbits(conn: &database::Connection) -> Result<Vec<Tidbit>, Error> 
     tidbits.load(conn).map_err(Error::from)
 }
 
-pub fn fetch_wines(conn: &database::Connection) -> Result<Vec<Tidbit>, Error> {
+pub fn fetch_wines(conn: &database::Connection) -> Result<Vec<Wine>, Error> {
     use crate::database::schema::wines::dsl::*;
 
     wines.load(conn).map_err(Error::from)
@@ -43,6 +43,7 @@ fn create_customer(order: &Order, conn: &database::Connection) -> Result<Custome
             street.eq(&order.street),
             nr.eq(&order.nr),
             city.eq(&order.city),
+            zip_code.eq(&order.zipcode),
             telephone.eq(&order.telephone),
             fax.eq(&order.fax),
             email.eq(&order.email),
@@ -59,7 +60,10 @@ fn save_order(
     use crate::database::schema::orders::dsl::*;
 
     let db_order: database::models::Order = insert_into(orders)
-        .values((customer_id.eq(customer.id),))
+        .values((
+            customer_id.eq(customer.id),
+            comment.eq(order.comment.as_ref()),
+        ))
         .get_result::<database::models::Order>(conn)?;
 
     if let Some(ids) = order.wine_ids.as_ref() {

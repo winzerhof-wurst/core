@@ -1,4 +1,0 @@
-CREATE TABLE tidbits (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL
-)

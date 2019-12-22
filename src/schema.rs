@@ -5,8 +5,9 @@ table! {
         lastname -> Varchar,
         street -> Varchar,
         nr -> Varchar,
-        zipcode -> Int4,
         city -> Varchar,
+        zip_code -> Int4,
+        country_code -> Bpchar,
         telephone -> Varchar,
         fax -> Varchar,
         email -> Varchar,
@@ -31,6 +32,7 @@ table! {
     orders (id) {
         id -> Int4,
         customer_id -> Int4,
+        comment -> Nullable<Text>,
         created_at -> Timestamp,
         updated_at -> Timestamp,
     }
@@ -40,6 +42,10 @@ table! {
     tidbits (id) {
         id -> Int4,
         name -> Varchar,
+        price -> Int4,
+        tax_rate -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
@@ -47,6 +53,19 @@ table! {
     wines (id) {
         id -> Int4,
         name -> Varchar,
+        price -> Int4,
+        year -> Int4,
+        tax_rate -> Int4,
+        #[sql_name = "type"]
+        type_ -> Varchar,
+        description -> Varchar,
+        text -> Varchar,
+        unit -> Varchar,
+        available -> Bool,
+        out_of_stock -> Bool,
+        order -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
