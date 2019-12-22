@@ -51,13 +51,40 @@ fn create_customer(order: &Order, conn: &database::Connection) -> Result<Custome
     Ok(customer)
 }
 
-fn save_order(msg: &Order, customer: &Customer, conn: &database::Connection) -> Result<(), Error> {
-    for _ in &msg.wine_ids {
-        use crate::database::schema::orders::dsl::*;
+fn save_order(
+    order: &Order,
+    customer: &Customer,
+    conn: &database::Connection,
+) -> Result<(), Error> {
+    use crate::database::schema::orders::dsl::*;
 
-        let order = insert_into(orders)
-            .values((customer_id.eq(customer.id),))
-            .execute(conn)?;
+    let db_order: database::models::Order = insert_into(orders)
+        .values((customer_id.eq(customer.id),))
+        .get_result::<database::models::Order>(conn)?;
+
+    if let Some(ids) = order.wine_ids.as_ref() {
+        for order_wine_id in ids {
+            use crate::database::schema::order_items::dsl::*;
+            insert_into(order_items)
+                .values((
+                    order_id.eq(db_order.id),
+                    name.eq("wine"),
+                    wine_id.eq(order_wine_id),
+                ))
+                .execute(conn)?;
+        }
+    }
+    if let Some(ids) = order.tidbit_ids.as_ref() {
+        for order_tidbit_id in ids {
+            use crate::database::schema::order_items::dsl::*;
+            insert_into(order_items)
+                .values((
+                    order_id.eq(db_order.id),
+                    name.eq("tidbit"),
+                    tidbit_id.eq(order_tidbit_id),
+                ))
+                .execute(conn)?;
+        }
     }
 
     Ok(())
