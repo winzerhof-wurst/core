@@ -37,6 +37,14 @@ async fn post_order(
     }
 }
 
+async fn save_booking_request(
+    order: web::Json<services::booking::BookingRequest>,
+) -> Result<HttpResponse, Error> {
+    services::booking::save_booking_request(&order.into_inner())?;
+
+    Ok(HttpResponse::Ok().json(None::<i32>))
+}
+
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
     dotenv().unwrap();
@@ -51,6 +59,7 @@ async fn main() -> io::Result<()> {
             .service(web::resource("/api/tidbits").route(web::get().to(fetch_tidbits)))
             .service(web::resource("/api/wines").route(web::get().to(fetch_wines)))
             .service(web::resource("/api/orders").route(web::post().to(post_order)))
+            .service(web::resource("api/rooms/book").route(web::post().to(save_booking_request)))
     })
     .bind("127.0.0.1:3000")?
     .start()
