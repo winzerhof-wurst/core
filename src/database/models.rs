@@ -31,6 +31,8 @@ pub struct OrderItem {
     pub id: i32,
     pub order_id: i32,
     pub name: String,
+    pub price: i32,
+    pub tax_rate: i32,
     pub wine_id: Option<i32>,
     pub tidbit_id: Option<i32>,
     pub created_at: NaiveDateTime,

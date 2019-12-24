@@ -6,7 +6,7 @@ table! {
         street -> Varchar,
         nr -> Varchar,
         city -> Varchar,
-        zip_code -> Int4,
+        zipcode -> Int4,
         country_code -> Bpchar,
         telephone -> Varchar,
         fax -> Varchar,
@@ -21,6 +21,8 @@ table! {
         id -> Int4,
         order_id -> Int4,
         name -> Varchar,
+        price -> Int4,
+        tax_rate -> Int4,
         wine_id -> Nullable<Int4>,
         tidbit_id -> Nullable<Int4>,
         created_at -> Timestamp,
@@ -54,12 +56,12 @@ table! {
         id -> Int4,
         name -> Varchar,
         price -> Int4,
-        year -> Int4,
+        year -> Nullable<Int4>,
         tax_rate -> Int4,
         #[sql_name = "type"]
         type_ -> Varchar,
         description -> Varchar,
-        text -> Varchar,
+        text -> Nullable<Varchar>,
         unit -> Varchar,
         available -> Bool,
         out_of_stock -> Bool,
@@ -74,10 +76,4 @@ joinable!(order_items -> tidbits (tidbit_id));
 joinable!(order_items -> wines (wine_id));
 joinable!(orders -> customers (customer_id));
 
-allow_tables_to_appear_in_same_query!(
-    customers,
-    order_items,
-    orders,
-    tidbits,
-    wines,
-);
+allow_tables_to_appear_in_same_query!(customers, order_items, orders, tidbits, wines,);

@@ -21,6 +21,8 @@ table! {
         id -> Int4,
         order_id -> Int4,
         name -> Varchar,
+        price -> Int4,
+        tax_rate -> Int4,
         wine_id -> Nullable<Int4>,
         tidbit_id -> Nullable<Int4>,
         created_at -> Timestamp,
@@ -74,10 +76,4 @@ joinable!(order_items -> tidbits (tidbit_id));
 joinable!(order_items -> wines (wine_id));
 joinable!(orders -> customers (customer_id));
 
-allow_tables_to_appear_in_same_query!(
-    customers,
-    order_items,
-    orders,
-    tidbits,
-    wines,
-);
+allow_tables_to_appear_in_same_query!(customers, order_items, orders, tidbits, wines,);

@@ -57,39 +57,35 @@ fn save_order(
     customer: &Customer,
     conn: &database::Connection,
 ) -> Result<(), Error> {
-    use crate::database::schema::orders::dsl::*;
+    let db_order = database::save_order(conn, &customer.id, order.comment.as_ref())?;
 
-    let db_order: database::models::Order = insert_into(orders)
-        .values((
-            customer_id.eq(customer.id),
-            comment.eq(order.comment.as_ref()),
-        ))
-        .get_result::<database::models::Order>(conn)?;
+    order
+        .wine_ids
+        .as_ref()
+        .unwrap_or(&vec![])
+        .iter()
+        .flat_map(|id| database::find_wine(conn, id))
+        .map(|wine| {
+            database::save_order_item(conn, &db_order.id, &wine.name, &wine.price, wine.tax_rate)
+        })
+        .collect::<Result<Vec<_>, Error>>()?;
 
-    if let Some(ids) = order.wine_ids.as_ref() {
-        for order_wine_id in ids {
-            use crate::database::schema::order_items::dsl::*;
-            insert_into(order_items)
-                .values((
-                    order_id.eq(db_order.id),
-                    name.eq("wine"),
-                    wine_id.eq(order_wine_id),
-                ))
-                .execute(conn)?;
-        }
-    }
-    if let Some(ids) = order.tidbit_ids.as_ref() {
-        for order_tidbit_id in ids {
-            use crate::database::schema::order_items::dsl::*;
-            insert_into(order_items)
-                .values((
-                    order_id.eq(db_order.id),
-                    name.eq("tidbit"),
-                    tidbit_id.eq(order_tidbit_id),
-                ))
-                .execute(conn)?;
-        }
-    }
+    order
+        .tidbit_ids
+        .as_ref()
+        .unwrap_or(&vec![])
+        .iter()
+        .flat_map(|id| database::find_tidbit(conn, id))
+        .map(|tidbit| {
+            database::save_order_item(
+                conn,
+                &db_order.id,
+                &tidbit.name,
+                &tidbit.price,
+                tidbit.tax_rate,
+            )
+        })
+        .collect::<Result<Vec<_>, Error>>()?;
 
     Ok(())
 }

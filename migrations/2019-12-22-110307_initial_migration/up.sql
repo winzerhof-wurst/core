@@ -60,6 +60,8 @@ CREATE TABLE order_items (
   id SERIAL PRIMARY KEY,
   order_id INTEGER REFERENCES orders(id) NOT NULL,
   name VARCHAR NOT NULL,
+  price INTEGER NOT NULL,
+  tax_rate INTEGER NOT NULL,
   wine_id INTEGER REFERENCES wines(id) NULL,
   tidbit_id INTEGER REFERENCES tidbits(id) NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
