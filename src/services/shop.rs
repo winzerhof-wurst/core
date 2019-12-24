@@ -43,7 +43,7 @@ fn create_customer(order: &Order, conn: &database::Connection) -> Result<Custome
             street.eq(&order.street),
             nr.eq(&order.nr),
             city.eq(&order.city),
-            zip_code.eq(&order.zipcode),
+            zipcode.eq(&order.zipcode),
             telephone.eq(&order.telephone),
             fax.eq(&order.fax),
             email.eq(&order.email),

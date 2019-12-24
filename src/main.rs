@@ -7,7 +7,6 @@ use std::env;
 use std::io;
 
 use actix_web::{web, App, Error as AWError, HttpResponse, HttpServer};
-use dotenv::dotenv;
 use failure::Error;
 
 mod database;
@@ -47,7 +46,6 @@ async fn save_booking_request(
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
-    dotenv().unwrap();
     let conn_mgr = database::ConnectionManager::new(
         env::var("DATABASE_URL").expect("DATABASE_URL is missing"),
     );
@@ -61,7 +59,7 @@ async fn main() -> io::Result<()> {
             .service(web::resource("/api/orders").route(web::post().to(post_order)))
             .service(web::resource("api/rooms/book").route(web::post().to(save_booking_request)))
     })
-    .bind("127.0.0.1:3000")?
+    .bind("0.0.0.0:3000")?
     .start()
     .await
 }
