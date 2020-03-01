@@ -46,6 +46,8 @@ async fn save_booking_request(
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
+    env_logger::init();
+
     let conn_mgr = database::ConnectionManager::new(
         env::var("DATABASE_URL").expect("DATABASE_URL is missing"),
     );
@@ -57,7 +59,7 @@ async fn main() -> io::Result<()> {
             .service(web::resource("/api/tidbits").route(web::get().to(fetch_tidbits)))
             .service(web::resource("/api/wines").route(web::get().to(fetch_wines)))
             .service(web::resource("/api/orders").route(web::post().to(post_order)))
-            .service(web::resource("api/rooms/book").route(web::post().to(save_booking_request)))
+            .service(web::resource("/api/rooms/book").route(web::post().to(save_booking_request)))
     })
     .bind("0.0.0.0:3000")?
     .start()

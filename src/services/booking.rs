@@ -4,6 +4,7 @@ use chrono::NaiveDate;
 use failure::Error;
 use lettre::Transport;
 use lettre_email::EmailBuilder;
+use log::{info};
 
 use crate::services::email::get_mailer;
 
@@ -20,7 +21,9 @@ pub struct BookingRequest {
 }
 
 pub fn save_booking_request(request: &BookingRequest) -> Result<(), Error> {
+    info!("Received booking request");
     let mut mailer = get_mailer()?;
+    info!("Got mailer");
     let email = EmailBuilder::new()
         .to(request.email.as_ref())
         .from(env::var("MAIL_FROM").unwrap_or("noreply@winzerhof-wurst.at".to_owned()))
@@ -51,7 +54,9 @@ Email: {}<br>
             request.rooms,
         ))
         .build()?;
+    info!("Message build");
     mailer.send(email.into())?;
+    info!("Message sent");
 
     Ok(())
 }
