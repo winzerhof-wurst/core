@@ -7,6 +7,7 @@ use std::env;
 use std::io;
 
 use actix_web::{web, App, Error as AWError, HttpResponse, HttpServer};
+use dotenv::dotenv;
 use failure::Error;
 
 mod database;
@@ -39,6 +40,7 @@ async fn save_booking_request(
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
+    dotenv().ok();
     env_logger::init();
 
     let conn_mgr = database::ConnectionManager::new(
