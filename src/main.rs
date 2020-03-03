@@ -54,6 +54,6 @@ async fn main() -> io::Result<()> {
             .service(web::resource("/api/rooms/book").route(web::post().to(save_booking_request)))
     })
     .bind("0.0.0.0:3000")?
-    .start()
+    .run()
     .await
 }
