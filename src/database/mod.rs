@@ -11,20 +11,11 @@ pub type Connection = PgConnection;
 pub type ConnectionManager = r2d2::ConnectionManager<Connection>;
 pub type Pool = r2d2::Pool<ConnectionManager>;
 
-pub fn find_tidbit(conn: &Connection, tidbit_id: &i32) -> Result<models::Tidbit, Error> {
-    use schema::tidbits::dsl::*;
+pub fn find_product(conn: &Connection, product_id: &i32) -> Result<models::Product, Error> {
+    use schema::products::dsl::*;
 
-    tidbits
-        .filter(id.eq(tidbit_id))
-        .get_result(conn)
-        .map_err(Error::from)
-}
-
-pub fn find_wine(conn: &Connection, wine_id: &i32) -> Result<models::Wine, Error> {
-    use schema::wines::dsl::*;
-
-    wines
-        .filter(id.eq(wine_id))
+    products
+        .filter(id.eq(product_id))
         .get_result(conn)
         .map_err(Error::from)
 }

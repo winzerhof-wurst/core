@@ -1,4 +1,4 @@
-CREATE TABLE wines (
+CREATE TABLE products (
   id SERIAL PRIMARY KEY,
   name VARCHAR NOT NULL,
   price INTEGER NOT NULL,
@@ -15,18 +15,7 @@ CREATE TABLE wines (
   updated_at timestamp NOT NULL
 );
 
-SELECT diesel_manage_updated_at('wines');
-
-CREATE TABLE tidbits (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL,
-  price INTEGER NOT NULL,
-  tax_rate INTEGER NOT NULL,
-  created_at timestamp NOT NULL DEFAULT current_timestamp,
-  updated_at timestamp NOT NULL
-);
-
-SELECT diesel_manage_updated_at('tidbits');
+SELECT diesel_manage_updated_at('products');
 
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
@@ -62,8 +51,7 @@ CREATE TABLE order_items (
   name VARCHAR NOT NULL,
   price INTEGER NOT NULL,
   tax_rate INTEGER NOT NULL,
-  wine_id INTEGER REFERENCES wines(id) NULL,
-  tidbit_id INTEGER REFERENCES tidbits(id) NULL,
+  product_id INTEGER REFERENCES products(id) NOT NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
   updated_at timestamp NOT NULL
 );

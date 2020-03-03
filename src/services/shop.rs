@@ -3,7 +3,7 @@ use diesel::prelude::*;
 use failure::Error;
 
 use crate::database;
-use crate::database::models::{Customer, Tidbit, Wine};
+use crate::database::models::{Customer, Product};
 
 #[derive(Deserialize)]
 pub struct Order {
@@ -17,20 +17,13 @@ pub struct Order {
     telephone: String,
     fax: String,
     comment: Option<String>,
-    tidbit_ids: Option<Vec<i32>>,
-    wine_ids: Option<Vec<i32>>,
+    product_ids: Vec<i32>,
 }
 
-pub fn fetch_tidbits(conn: &database::Connection) -> Result<Vec<Tidbit>, Error> {
-    use crate::database::schema::tidbits::dsl::*;
+pub fn fetch_products(conn: &database::Connection) -> Result<Vec<Product>, Error> {
+    use crate::database::schema::products::dsl::*;
 
-    tidbits.load(conn).map_err(Error::from)
-}
-
-pub fn fetch_wines(conn: &database::Connection) -> Result<Vec<Wine>, Error> {
-    use crate::database::schema::wines::dsl::*;
-
-    wines.load(conn).map_err(Error::from)
+    products.load(conn).map_err(Error::from)
 }
 
 fn create_customer(order: &Order, conn: &database::Connection) -> Result<Customer, Error> {
@@ -60,31 +53,10 @@ fn save_order(
     let db_order = database::save_order(conn, &customer.id, order.comment.as_ref())?;
 
     order
-        .wine_ids
-        .as_ref()
-        .unwrap_or(&vec![])
+        .product_ids
         .iter()
-        .flat_map(|id| database::find_wine(conn, id))
-        .map(|wine| {
-            database::save_order_item(conn, &db_order.id, &wine.name, &wine.price, wine.tax_rate)
-        })
-        .collect::<Result<Vec<_>, Error>>()?;
-
-    order
-        .tidbit_ids
-        .as_ref()
-        .unwrap_or(&vec![])
-        .iter()
-        .flat_map(|id| database::find_tidbit(conn, id))
-        .map(|tidbit| {
-            database::save_order_item(
-                conn,
-                &db_order.id,
-                &tidbit.name,
-                &tidbit.price,
-                tidbit.tax_rate,
-            )
-        })
+        .flat_map(|id| database::find_product(conn, id))
+        .map(|p| database::save_order_item(conn, &db_order.id, &p.name, &p.price, p.tax_rate))
         .collect::<Result<Vec<_>, Error>>()?;
 
     Ok(())

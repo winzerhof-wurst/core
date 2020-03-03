@@ -33,24 +33,13 @@ pub struct OrderItem {
     pub name: String,
     pub price: i32,
     pub tax_rate: i32,
-    pub wine_id: Option<i32>,
-    pub tidbit_id: Option<i32>,
+    pub product_id: i32,
     pub created_at: NaiveDateTime,
     pub updated_at: NaiveDateTime,
 }
 
 #[derive(Queryable, Serialize)]
-pub struct Tidbit {
-    pub id: i32,
-    pub name: String,
-    pub price: i32,
-    pub tax_rate: i32,
-    pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime,
-}
-
-#[derive(Queryable, Serialize)]
-pub struct Wine {
+pub struct Product {
     pub id: i32,
     pub name: String,
     pub price: i32,

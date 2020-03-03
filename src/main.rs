@@ -12,16 +12,9 @@ use failure::Error;
 mod database;
 mod services;
 
-async fn fetch_tidbits(db: web::Data<database::Pool>) -> Result<HttpResponse, AWError> {
-    match services::shop::fetch_tidbits(&db.get().unwrap()) {
+async fn fetch_products(db: web::Data<database::Pool>) -> Result<HttpResponse, AWError> {
+    match services::shop::fetch_products(&db.get().unwrap()) {
         Ok(tidbits) => Ok(HttpResponse::Ok().json(tidbits)),
-        Err(_) => Ok(HttpResponse::InternalServerError().into()),
-    }
-}
-
-async fn fetch_wines(db: web::Data<database::Pool>) -> Result<HttpResponse, Error> {
-    match services::shop::fetch_wines(&db.get().unwrap()) {
-        Ok(wines) => Ok(HttpResponse::Ok().json(wines)),
         Err(_) => Ok(HttpResponse::InternalServerError().into()),
     }
 }
@@ -56,8 +49,7 @@ async fn main() -> io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .data(pool.clone())
-            .service(web::resource("/api/tidbits").route(web::get().to(fetch_tidbits)))
-            .service(web::resource("/api/wines").route(web::get().to(fetch_wines)))
+            .service(web::resource("/api/products").route(web::get().to(fetch_products)))
             .service(web::resource("/api/orders").route(web::post().to(post_order)))
             .service(web::resource("/api/rooms/book").route(web::post().to(save_booking_request)))
     })
