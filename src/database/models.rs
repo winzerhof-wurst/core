@@ -14,7 +14,7 @@ pub struct Customer {
     pub fax: String,
     pub email: String,
     pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime,
+    pub updated_at: Option<NaiveDateTime>,
 }
 
 #[derive(Queryable, Serialize)]
@@ -23,7 +23,7 @@ pub struct Order {
     pub customer_id: i32,
     pub comment: Option<String>,
     pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime,
+    pub updated_at: Option<NaiveDateTime>,
 }
 
 #[derive(Queryable, Serialize)]
@@ -34,8 +34,9 @@ pub struct OrderItem {
     pub price: i32,
     pub tax_rate: i32,
     pub product_id: i32,
+    pub quantity: i32,
     pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime,
+    pub updated_at: Option<NaiveDateTime>,
 }
 
 #[derive(Queryable, Serialize)]
@@ -53,5 +54,5 @@ pub struct Product {
     pub out_of_stock: bool,
     pub order: i32,
     pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime,
+    pub updated_at: Option<NaiveDateTime>,
 }

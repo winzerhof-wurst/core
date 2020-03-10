@@ -6,6 +6,12 @@ use crate::database;
 use crate::database::models::{Customer, Product};
 
 #[derive(Deserialize)]
+pub struct OrderProduct {
+    id: i32,
+    quantity: i32,
+}
+
+#[derive(Deserialize)]
 pub struct Order {
     firstname: String,
     lastname: String,
@@ -17,7 +23,7 @@ pub struct Order {
     telephone: String,
     fax: String,
     comment: Option<String>,
-    product_ids: Vec<i32>,
+    products: Vec<OrderProduct>,
 }
 
 pub fn fetch_products(conn: &database::Connection) -> Result<Vec<Product>, Error> {
@@ -53,10 +59,13 @@ fn save_order(
     let db_order = database::save_order(conn, &customer.id, order.comment.as_ref())?;
 
     order
-        .product_ids
+        .products
         .iter()
-        .flat_map(|id| database::find_product(conn, id))
-        .map(|p| database::save_order_item(conn, &db_order.id, &p.name, &p.price, p.tax_rate))
+        .map(|p| {
+            let product = database::find_product(conn, &p.id)?;
+
+            database::save_order_item(conn, &db_order.id, &product.name, &product.price, product.tax_rate, p.quantity)
+        })
         .collect::<Result<Vec<_>, Error>>()?;
 
     Ok(())

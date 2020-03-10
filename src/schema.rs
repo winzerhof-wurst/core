@@ -6,7 +6,7 @@ table! {
         street -> Varchar,
         nr -> Varchar,
         city -> Varchar,
-        zipcode -> Int4,
+        zip_code -> Int4,
         country_code -> Bpchar,
         telephone -> Varchar,
         fax -> Varchar,
@@ -21,9 +21,8 @@ table! {
         id -> Int4,
         order_id -> Int4,
         name -> Varchar,
-        price -> Int4,
-        tax_rate -> Int4,
-        product_id -> Int4,
+        wine_id -> Nullable<Int4>,
+        tidbit_id -> Nullable<Int4>,
         created_at -> Timestamp,
         updated_at -> Timestamp,
     }
@@ -40,16 +39,27 @@ table! {
 }
 
 table! {
-    products (id) {
+    tidbits (id) {
         id -> Int4,
         name -> Varchar,
         price -> Int4,
-        year -> Nullable<Int4>,
+        tax_rate -> Int4,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+table! {
+    wines (id) {
+        id -> Int4,
+        name -> Varchar,
+        price -> Int4,
+        year -> Int4,
         tax_rate -> Int4,
         #[sql_name = "type"]
         type_ -> Varchar,
         description -> Varchar,
-        text -> Nullable<Varchar>,
+        text -> Varchar,
         unit -> Varchar,
         available -> Bool,
         out_of_stock -> Bool,
@@ -60,12 +70,14 @@ table! {
 }
 
 joinable!(order_items -> orders (order_id));
-joinable!(order_items -> products (product_id));
+joinable!(order_items -> tidbits (tidbit_id));
+joinable!(order_items -> wines (wine_id));
 joinable!(orders -> customers (customer_id));
 
 allow_tables_to_appear_in_same_query!(
     customers,
     order_items,
     orders,
-    products,
+    tidbits,
+    wines,
 );

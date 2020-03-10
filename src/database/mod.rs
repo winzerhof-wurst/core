@@ -38,6 +38,7 @@ pub fn save_order_item(
     name: &String,
     price: &i32,
     tax_rate: i32,
+    quantity: i32,
 ) -> Result<models::OrderItem, Error> {
     use schema::order_items::dsl;
 
@@ -47,6 +48,7 @@ pub fn save_order_item(
             dsl::name.eq(name),
             dsl::price.eq(price),
             dsl::tax_rate.eq(tax_rate),
+            dsl::quantity.eq(quantity),
         ))
         .get_result(conn)?)
 }

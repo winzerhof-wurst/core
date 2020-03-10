@@ -1,6 +1,8 @@
 #[macro_use]
 extern crate diesel;
 #[macro_use]
+extern crate log;
+#[macro_use]
 extern crate serde_derive;
 
 use std::env;
@@ -26,7 +28,10 @@ async fn post_order(
 ) -> Result<HttpResponse, Error> {
     match services::shop::post_order(order.into_inner(), &db.get().unwrap()) {
         Ok(wines) => Ok(HttpResponse::Ok().json(wines)),
-        Err(_) => Ok(HttpResponse::InternalServerError().into()),
+        Err(e) => {
+            error!("could not save order {}", e);
+            Ok(HttpResponse::InternalServerError().into())
+        },
     }
 }
 

@@ -12,7 +12,7 @@ table! {
         fax -> Varchar,
         email -> Varchar,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
+        updated_at -> Nullable<Timestamp>,
     }
 }
 
@@ -24,8 +24,9 @@ table! {
         price -> Int4,
         tax_rate -> Int4,
         product_id -> Int4,
+        quantity -> Int4,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
+        updated_at -> Nullable<Timestamp>,
     }
 }
 
@@ -35,7 +36,7 @@ table! {
         customer_id -> Int4,
         comment -> Nullable<Text>,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
+        updated_at -> Nullable<Timestamp>,
     }
 }
 
@@ -55,7 +56,7 @@ table! {
         out_of_stock -> Bool,
         order -> Int4,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
+        updated_at -> Nullable<Timestamp>,
     }
 }
 

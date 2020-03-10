@@ -12,7 +12,7 @@ CREATE TABLE products (
   out_of_stock BOOLEAN NOT NULL DEFAULT FALSE,
   "order" INTEGER NOT NULL DEFAULT 0,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
-  updated_at timestamp NOT NULL
+  updated_at timestamp NULL
 );
 
 SELECT diesel_manage_updated_at('products');
@@ -30,7 +30,7 @@ CREATE TABLE customers (
   fax VARCHAR NOT NULL,
   email VARCHAR NOT NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
-  updated_at timestamp NOT NULL
+  updated_at timestamp NULL
 );
 
 SELECT diesel_manage_updated_at('customers');
@@ -40,7 +40,7 @@ CREATE TABLE orders (
   customer_id INTEGER REFERENCES customers(id) NOT NULL,
   comment TEXT NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
-  updated_at timestamp NOT NULL
+  updated_at timestamp NULL
 );
 
 SELECT diesel_manage_updated_at('orders');
@@ -52,8 +52,9 @@ CREATE TABLE order_items (
   price INTEGER NOT NULL,
   tax_rate INTEGER NOT NULL,
   product_id INTEGER REFERENCES products(id) NOT NULL,
+  quantity INTEGER NOT NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
-  updated_at timestamp NOT NULL
+  updated_at timestamp NULL
 );
 
 SELECT diesel_manage_updated_at('order_items');
