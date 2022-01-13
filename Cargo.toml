@@ -5,7 +5,7 @@ authors = ["Christoph Wurst <christoph@winzerhof-wurst.at>"]
 edition = "2018"
 
 [dependencies]
-actix-rt = "1.0"
+actix-rt = "2.6"
 actix-web = "2.0.0"
 chrono = { version = "0.4", features = ["serde"] }
 diesel = { version = "1.4", features = ["chrono", "postgres", "r2d2"] }
